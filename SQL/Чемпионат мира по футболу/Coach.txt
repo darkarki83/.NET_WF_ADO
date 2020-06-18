@@ -1,0 +1,33 @@
+1	Pim verbeek	1	1
+2	Rabah Saadan	43	2
+3	Fabio Capello	43	4
+4	Diego Maradona	30	30
+5	Dunga	3	3
+6	Milovan Raevac	13	13
+7	Joachim Loew	5	5
+8	Otto Rehagel	6	6
+9	Reynaldo Rueda	39	7
+10	Morten Olsen	20	20
+11	Vicente del Bosque	18	18
+12	Marcello Lippi	9	9
+13	Paul Le Guine	38	8
+14	Kim Jong Hong	35	10
+15	Sven-Joran Ericsson	36	11
+16	Javier Aguirre	37	12
+17	Lars Lagerbek	48	14
+18	Burt van Marwijk	27	27
+19	Ricky Herbert	40	15
+20	Gerardo Martino	41	32
+21	Carlos Keyrosh	42	21
+22	Ho jung moo	34	22
+23	Radomir Antich	23	23
+24	Vladimir Weiss	16	16
+25	Matyazhe Kek	17	17
+26	Bob Bradley	47	24
+27	Oscar Tabares	38	25
+28	Raymond Domenech	26	26
+29	Marcelo Bielsa	31	31
+30	Ottmar Hitzfeld	19	19
+31	Carlos Alberto Parreira	45	28
+32	Takeshi Okada	35	29
+

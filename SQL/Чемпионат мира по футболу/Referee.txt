@@ -1,0 +1,29 @@
+1	AFK	Khalil al-Hamdi	44
+2	AFK	"
+Ravshan Irmatov"	33
+3	AFK	Subhiddin Mohd Salleh	34
+4	AFK	Yuiti Nishimura	35
+5	CAF	Coman Coulibaly	36
+6	CAF	Jerome Damon	44
+7	CAF	Eddie Maye	45
+8	CONCACAF	Benito Archundia	37
+9	CONCACAF	Carlos Batres	41
+10	CONCACAF	Marco Rodriguez	37
+11	CONMEBOL	Hector Baldassi	30
+12	CONMEBOL	Jorge Larrionda	38
+13	CONMEBOL	Pablo Poso	31
+14	CONMEBOL	Oscar Ruiz	39
+15	CONMEBOL	Carlos Simon	3
+16	CONMEBOL	Martin Vasquez	37
+17	OFC	Michael Hester	40
+18	OFC	Peter O'Leary	40
+19	UEFA	Olegario Benkerensa	42
+20	UEFA	Massimo Buzakka	19
+21	UEFA	Frank De Blecker	2
+22	UEFA	Martin Hanson	20
+23	UEFA	Victor Kashshai	7
+24	UEFA	Stefan Lannois	26
+25	UEFA	Roberto Rosetti	9
+26	UEFA	Wolfgang Stark	5
+27	UEFA	Alberto Undiano	18
+28	UEFA	Howard Webb	43

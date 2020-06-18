@@ -1,0 +1,98 @@
+CREATE DATABASE Store;
+GO
+
+USE Store;
+Go
+
+
+CREATE TABLE PublishingHouse(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    PublishingHouseName VARCHAR(50) NOT NULL,
+	[Format] VARCHAR(50),
+    Pressrun INT 
+);
+Go
+
+CREATE TABLE Author(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	NameAuthor VARCHAR(50) NOT NULL
+);
+GO
+
+CREATE TABLE Themes(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	Theme VARCHAR(50) NOT NULL
+);
+GO
+
+CREATE TABLE Departments(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	Department VARCHAR(50),
+	TotalSell MONEY NOT NULL
+);
+GO
+
+CREATE TABLE ThemeInDepartment(
+	DepartmentFK INT NOT NULL,
+	ThemeFK INT NOT NULL
+	PRIMARY KEY(DepartmentFK, ThemeFK),
+	FOREIGN KEY (DepartmentFK) REFERENCES Departments(ID),
+	FOREIGN KEY (ThemeFK) REFERENCES Themes(ID)
+);
+GO
+
+CREATE TABLE Books(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	BookName VARCHAR(50) NOT NULL,
+	Pages INT,
+	Price MONEY NOT NULL,
+	AuthorFK INT NOT NULL,
+	PublishingHouseFK INT NOT NULL, 
+	--DepartmentFK INT NOT NULL,
+	FOREIGN KEY(AuthorFK) REFERENCES Author(ID),
+	FOREIGN KEY(PublishingHouseFK) REFERENCES PublishingHouse(ID)
+);
+GO
+
+CREATE TABLE Buyers(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	[Name] VARCHAR(50) NOT NULL,
+	Discount FLOAT,
+);
+GO
+
+CREATE TABLE Orders(
+	[Order] INT PRIMARY KEY IDENTITY(1,1),
+	BookFK INT NOT NULL,
+	BuyerFK INT NOT NULL,
+	CountOfBooks INT NOT NULL,
+	TotalCost MONEY NOT NULL
+	--PRIMARY KEY ([Order], BookFK),
+	FOREIGN KEY(BookFK) REFERENCES Books(ID),
+	FOREIGN KEY(BuyerFK) REFERENCES Buyers(ID)
+);
+GO
+
+CREATE TABLE Workers(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	[Name] VARCHAR(50) NOT NULL,
+	Selery MONEY NOT NULL,
+	[OrderFK] INT NOT NULL
+	FOREIGN KEY (OrderFK) REFERENCES Orders([Order]),
+);
+GO
+
+CREATE TABLE WorkerInDepartment(
+	DepartmentsFK INT NOT NULL,
+	WorkersFK INT NOT NULL,
+	PRIMARY KEY (DepartmentsFK, WorkersFK),
+	FOREIGN KEY (DepartmentsFK) REFERENCES Departments(ID),
+	FOREIGN KEY (WorkersFK) REFERENCES Workers(ID)
+);
+GO
+
+
+
+
+
+
