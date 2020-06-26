@@ -104,17 +104,19 @@ namespace Spetial_sait
                         listBoxHapen.Items.Add(s);
                     }*/
                     // Добавляем полученное сообщение в список
-                    listBoxHapen.Items.Add(s);
+
+                    listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add(s)));
                     // При получении сообщения EXIT завершаем работу приложения
                     if (s.ToUpper() == "EXIT")
                     {
                         listner.Stop();
                         Close();
                     }
-                    if (s.ToUpper() == "GET")
+                    if (s.ToUpper() == "Get")
                     {
-                        byte[] message = Encoding.Unicode.GetBytes(/*Names.Trim() + ":" + */"Paluchai");
                         NetworkStream nstream = client.GetStream();
+                        byte[] message = Encoding.Unicode.GetBytes(/*Names.Trim() + ":" + */"Paluchai");
+
                         //StreamWriter streams = new StreamWriter(client.GetStream(), Encoding.Unicode);
                         //new StreamWriter(client.GetStream(), Encoding.Unicode);
                         nstream.Write(message, 0, message.Length);

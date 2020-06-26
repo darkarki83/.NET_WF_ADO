@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ParseStr
@@ -18,50 +20,34 @@ namespace ParseStr
         }
         private static async Task<List<string>> ParseAsync(string str)
         {
-            // Асинхронно читаем файл и построчно выводим на экран
-
             List<string> linc = new List<string>();
             string open = string.Empty;
 
-            try
+            Regex regex = new Regex(@"(\w*)(\s*).html");
+            MatchCollection matches = regex.Matches(str);
+            if (matches.Count > 0)
             {
-                for (int i = 0; i < str.Length; i++)
+                foreach (Match match in matches)
                 {
-                    if (str[i] == '<')
+                    if (match.Value[match.Value.Length - 5] == '.')
                     {
-                        if (str[i + 1] == 'a')
-                        {
-                            if (str[i + 2] == ' ')
-                            {
-
-                                for (int j = i; str[j] != '"'; j++)
-                                {
-                                    i++;
-                                }
-                                i++;
-                                for (int j = i; str[j] != '"'; j++)
-                                {
-                                    open += str[j];
-                                    i++;
-                                }
-                            }
-                            if (open[0] == 'h' && open[1] == 't')
-                                open = string.Empty;
-                            //Alllinc.Add(linc[i]);
-                            else
-                            {
-                                linc.Add("https://www.barabash.com/" + open);
-                                open = string.Empty;
-                            }
-                        }
+                        linc.Add("https://www.barabash.com/" + (match.Value));
                     }
                 }
-                return linc;
             }
-            catch (Exception ex)
+            linc.Sort();
+            return RemoneAtDouble(linc);
+        }
+        private static List<string> RemoneAtDouble(List<string> linc)
+        {
+            for (int i = linc.Count - 1; i > 0; i--)
             {
-                return linc;
+                if (linc[i] == linc[i - 1])
+                {
+                    linc.RemoveAt(i);
+                }
             }
+            return linc;
         }
         static async Task<int> Main(string[] args)
         {
@@ -71,8 +57,6 @@ namespace ParseStr
 
             string start = "https://www.barabash.com/index.html";
             string str = string.Empty;
-
-            string open = string.Empty;
 
             try
             {
@@ -92,15 +76,10 @@ namespace ParseStr
             {
                 Console.WriteLine($"Ошибка: {ex.Message}");
             }
+
             Alllinc.Sort();
-           
-            for(int i = Alllinc.Count - 1; i > 1; i--)
-            {
-                if(Alllinc[i] == Alllinc[i - 1])
-                {
-                    Alllinc.RemoveAt(i);
-                }
-            }
+            RemoneAtDouble(Alllinc);
+
             foreach (var item in Alllinc)
             {
                 Console.WriteLine(item);
