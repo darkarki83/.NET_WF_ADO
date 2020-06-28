@@ -14,12 +14,16 @@ namespace HW.Views
     public partial class FormView : Form, IFormView
     {
 
-
+        public PictureBox picture { get; set; }
         public FormView()
         {
             InitializeComponent();
         }
 
+        public void test()
+        {
+            string str = "eeeeeeeee";
+        }
        
     }
 }
