@@ -20,10 +20,16 @@ namespace HW.Views
 
             InitializeComponent();
         }
+        public PictureBox picture1 { get; set; }
+        public PictureBox picture2 { get; set; }
+        public PictureBox picture3 { get; set; }
+        public PictureBox picture4 { get; set; }
 
         public void test()
         {
-            string str = "eeeeeeeee";
+            string str = "eee";
+            string str1 = "eee";
+            string str2 = "eee";
         }
        
     }
