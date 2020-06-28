@@ -22,7 +22,11 @@ namespace HW.Views
 
         public void test()
         {
-            string str = "eeeeeeeee";
+            string str = "1000";
+            int i = int.Parse(str);
+
+
+
         }
        
     }
