@@ -26,6 +26,10 @@ namespace HW
             Console.WriteLine("rsdgffdsvdsgvfdsfvds");
             Console.WriteLine("rsdgffdsvdsgvfdsfvds");
             Console.WriteLine("rsdgffdsvdsgvfdsfvds");
+            Console.WriteLine("rsdgffdsvdsgvfdsfvds");
+            Console.WriteLine("rsdgffdsvdsgvfdsfvds");
+            Console.WriteLine("rsdgffdsvdsgvfdsfvds");
+            Console.WriteLine("rsdgffdsvdsgvfdsfvds");
         }
     }
 }
