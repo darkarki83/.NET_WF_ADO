@@ -17,6 +17,7 @@ namespace HW.Views
 
         public FormView()
         {
+
             InitializeComponent();
         }
 

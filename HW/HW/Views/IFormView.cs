@@ -11,6 +11,12 @@ namespace HW.Views
     public interface IFormView : IView
     {
         PictureBox picture { get; set; }
+        PictureBox picture1 { get; set; }
+        PictureBox picture2 { get; set; }
+        PictureBox picture3 { get; set; }
+        PictureBox picture4 { get; set; }
+
+
 
 
     }
