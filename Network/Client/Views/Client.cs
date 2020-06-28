@@ -101,37 +101,10 @@ namespace Client
                 MessageBox.Show("Ошибка:" + ex.Message);
                 client.Close();
             }
-            //Thread.Sleep(500);
-            /*try
-            {
-                client = new TcpClient();
-                client.Connect(endPoint);
-                while (true)
-                {
-                    var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-                    string s = stream.ReadLine();
-                    if (s != null)
-                    {
-                        listBoxMassege.Items.Add(s);
-                        break;
-                    }
-                }
-
-                 client.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка:" + ex.Message);
-                client.Close();
-            }*/
 
             Thread thread = new Thread(new ThreadStart(ClientThreadProc));
             thread.IsBackground = true;
             thread.Start();
-
-
-
         }
 
         private void ClientThreadProc()
@@ -145,14 +118,16 @@ namespace Client
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
-
             while (true)
             {
+                byte[] message = new byte[255];
                 // Сообщаем клиенту о готовности к соединению
-               
+                NetworkStream nstream = client.GetStream();
+                nstream.Read(message, 0, 255);
+
                 // Читаем данные из сети в формате Unicode
-                var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-                string s = stream.ReadLine();
+                //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
+                string s = message.ToString();
                 if (s != null)
                 {
                     // Добавляем полученное сообщение в список

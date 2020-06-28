@@ -63,48 +63,6 @@ namespace Spetial_sait
                 string s = stream.ReadLine();
                 if (s != null)
                 {
-                    /*if (s != null)
-                    {
-                        string name = string.Empty;
-                        string massage = string.Empty;
-                        bool inName = false;
-                        foreach (var item in s)
-                        {
-                            if (item == ':' && inName == false)
-                            {
-                                inName = true;
-                            }
-                            else if (item != ':' && inName == false)
-                            {
-                                name += item;
-                            }
-                            else if (item != ':' && inName == true)
-                            {
-                                massage += item;
-                            }
-                        }
-                        inName = false;
-                        name = name.Trim();
-                        massage = massage.Trim();
-                        foreach (var user in UsersLists)
-                        {
-                            if (user.Name == name)
-                            {
-                                user.Masseges.Add(massage);
-                                inName = true;
-                            }
-                        }
-                        if (inName == false)
-                        {
-                            var user = new UsersList();
-                            user.Name = name;
-                            user.Masseges.Add(massage);
-                            UsersLists.Add(user);
-                        }
-                        listBoxHapen.Items.Add(s);
-                    }*/
-                    // Добавляем полученное сообщение в список
-
                     listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add(s)));
                     // При получении сообщения EXIT завершаем работу приложения
                     if (s.ToUpper() == "EXIT")
@@ -112,11 +70,11 @@ namespace Spetial_sait
                         listner.Stop();
                         Close();
                     }
-                    if (s.ToUpper() == "Get")
+                    if (s == "Get")
                     {
                         NetworkStream nstream = client.GetStream();
                         byte[] message = Encoding.Unicode.GetBytes(/*Names.Trim() + ":" + */"Paluchai");
-
+                        Thread.Sleep(500);
                         //StreamWriter streams = new StreamWriter(client.GetStream(), Encoding.Unicode);
                         //new StreamWriter(client.GetStream(), Encoding.Unicode);
                         nstream.Write(message, 0, message.Length);

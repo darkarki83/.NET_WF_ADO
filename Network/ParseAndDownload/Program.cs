@@ -27,12 +27,26 @@ namespace ParseAndDownload
             string open = string.Empty;
 
             Regex regex = new Regex(@"(\w*)(\s*).html");
+            Regex regexCss = new Regex(@"(\w*)(\s*).css");
             MatchCollection matches = regex.Matches(str);
             if (matches.Count > 0)
             {
                 foreach (Match match in matches)
                 {
                     if (match.Value[match.Value.Length - 5] == '.')
+                    {
+                        Console.WriteLine($"insaide i");
+
+                        linc.Add("https://www.barabash.com/" + (match.Value));
+                    }
+                }
+            }
+            matches = regexCss.Matches(str);
+            if (matches.Count > 0)
+            {
+                foreach (Match match in matches)
+                {
+                    if (match.Value[match.Value.Length - 4] == '.')
                     {
                         Console.WriteLine($"insaide i");
 
@@ -101,7 +115,7 @@ namespace ParseAndDownload
                  {
                      if (strDownload[k] == '/')
                      {
-                         for (int q = k + 1; strDownload[q] != '.' ; q++)
+                         for (int q = k + 1; q < strDownload.Length; q++)
                          {
                              name += strDownload[q];
                          }

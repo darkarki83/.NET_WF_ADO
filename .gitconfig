@@ -47,6 +47,11 @@
 
 [alias]
   st = status
+  str = status -s
+  add = add :/
+  cm = commit
+  mgnoff = merge --no-ff
+
 	
 [credential]
 	helper = wincred
@@ -54,6 +59,9 @@
 [bitbucket]
 	user = darkarki
 	token = 123456
+[github]
+	user = Artem Krol
+	token = f07440a26cf6b7688492ca1bc4afe5f4cca7c1de
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
