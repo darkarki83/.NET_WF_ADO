@@ -1,0 +1,33 @@
+﻿<Window x:Class="HW1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Name="b1" Grid.Column="0" Grid.Row="0" MouseDoubleClick="button_Click">
+            <Image Name="one" Source="/4.jpg"  Width="200" Height="200"/>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="1" MouseDoubleClick="button_Click" >
+            <Image Name="two" Source="/5.jpg" Width="200" Height="200"/>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="0" MouseDoubleClick="button_Click">
+            <Image Name="three" Source="/6.jpg"  Width="200" Height="200"/>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="1" MouseDoubleClick="button_Click">
+            <Image Name="four" Source="/7.jpg"  Width="200" Height="200"/>
+        </Button>
+        <TextBlock Name="textB" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" Height="100"></TextBlock>
+    </Grid>
+</Window>

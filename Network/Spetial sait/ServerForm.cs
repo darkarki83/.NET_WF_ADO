@@ -23,6 +23,10 @@ namespace Spetial_sait
         {
             InitializeComponent();
             UsersLists = new List<UsersList>();
+
+            textBoxIp.Text = "127.0.0.1";
+            textBoxPort.Text = "80";
+            buttonStart_Click(new object(), EventArgs.Empty);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -60,10 +64,12 @@ namespace Spetial_sait
                 TcpClient client = listner.AcceptTcpClient();
                 // Читаем данные из сети в формате Unicode
                 var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
+                listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add("idu dalshe")));
                 string s = stream.ReadLine();
                 if (s != null)
                 {
                     listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add(s)));
+                    listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add("Chitaiu snova")));
                     // При получении сообщения EXIT завершаем работу приложения
                     if (s.ToUpper() == "EXIT")
                     {
@@ -78,12 +84,13 @@ namespace Spetial_sait
                         //StreamWriter streams = new StreamWriter(client.GetStream(), Encoding.Unicode);
                         //new StreamWriter(client.GetStream(), Encoding.Unicode);
                         nstream.Write(message, 0, message.Length);
+                        listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add("Sending")));
+
                     }
                 }
-
+                listBoxHapen.Invoke((MethodInvoker)(() => listBoxHapen.Items.Add("idu dalshe")));
                 client.Close();
             }
-
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

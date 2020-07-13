@@ -1,0 +1,42 @@
+﻿<Window x:Class="TabControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TabControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" Grid.Column="0" Margin="10">
+            <TabItem Header="Category _1" IsSelected="True"></TabItem>
+            <TabItem  Header="Category _2"></TabItem>
+            <TabItem  Header="Category _3"></TabItem>
+            <TabItem  Header="Category _4"></TabItem>
+        </TabControl>
+        <TabControl Grid.Row="1" Grid.Column="0" Margin="10" TabStripPlacement="Bottom" >
+            <TabItem Header="Item 1" >
+                <StackPanel>
+                    <TextBox Text=" ffkkd kdcvkdvkd skdvkdsjfkds sdkfjdsk"/>
+                    <Button Content="Button"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/image.png" Width="60" ></Image>
+                        <TextBlock Text="new item" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem  Header="Item 3"></TabItem>
+            <TabItem  Header="Item 4" IsSelected="True"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>

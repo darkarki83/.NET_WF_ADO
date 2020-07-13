@@ -1,0 +1,77 @@
+﻿<Window x:Class="LabelAndScrol.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabelAndScrol"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="380" FontSize="20">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,2,0,2" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Name="buttonLineDown" Click="ButtonLineDown_Click" ToolTip="Line dowm" Width="40" >
+                <Image Source="/down.png" Width="40" />
+            </Button>
+            <Button Name="buttonLineUp"  Click="ButtonLineUp_Click" ToolTip="Line up">
+                <Image Source="/up.png" Width="40" Height="40"/>
+            </Button>
+            
+            <Separator Margin="80, 0, 80, 0" />
+            
+            <Button Name="buttonPageDown" Click="ButtonPageDown_Click" ToolTip="Page dowm" >
+                <Image Source="/page_down.png" Width="40"/>
+            </Button>
+            <Button Name="buttonPageUp" Click="ButtonPageUp_Click" ToolTip="Page up" >
+                <Image Source="/page_up.png" Width="40"/>
+            </Button>
+        </StackPanel>
+    <ScrollViewer Name="scrollViewer">
+        <Grid Margin="10, 0, 10, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" MinWidth="110"/>
+                </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Farst name :" Target="{Binding ElementName=textBoxFirstName}"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="textBoxFirstName" Margin="5" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Second name :" Target="{Binding ElementName=textBoxSecondName}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="textBoxSecondName" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Age :" Target="{Binding ElementName=textBoxAge}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="textBoxAge" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Gender :" Target="{Binding ElementName=textBoxGender}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="textBoxGender" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="4" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Passport :" Target="{Binding ElementName=textBoxPassport}"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="textBoxPassport" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="5" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Phone number :" Target="{Binding ElementName=textBoxPhone}"/>
+                <TextBox Grid.Row="5" Grid.Column="1" Margin="5" Name="textBoxPhone" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="6" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Cart number :" Target="{Binding ElementName=textBoxCart}"/>
+                <TextBox Grid.Row="6" Grid.Column="1" Margin="5" Name="textBoxCart" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="7" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Validite :" Target="{Binding ElementName=textBoxValidite}"/>
+                <TextBox Grid.Row="7" Grid.Column="1" Margin="5" Name="textBoxValidite" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="8" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Town :" Target="{Binding ElementName=textBoxTown}"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Margin="5" Name="textBoxTown" VerticalAlignment="Center" Height="Auto"></TextBox>
+
+                <Label Grid.Row="9" Grid.Column="0" Margin="3" VerticalAlignment="Center" Content="_Street :" Target="{Binding ElementName=textBoxStreet}"/>
+                <TextBox Grid.Row="9" Grid.Column="1" Margin="5" Name="textBoxStreet" VerticalAlignment="Center" Height="Auto"></TextBox>
+            </Grid>
+    </ScrollViewer>
+     </DockPanel>
+</Window>

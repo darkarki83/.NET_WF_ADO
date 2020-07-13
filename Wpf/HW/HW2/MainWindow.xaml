@@ -1,0 +1,212 @@
+﻿<Window x:Class="HW2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800" FontSize="25">
+    <Window.Resources >
+        <Label  x:Key="MyLabel" Grid.Column="0"  Content="rotate : " FontSize="20" ></Label>
+    </Window.Resources >
+    
+    <Grid  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" >
+            <Expander IsExpanded="False">
+                <ScrollViewer>
+                    <StackPanel>
+                        <RadioButton IsChecked="True" Checked="RadioButton_Checked">
+                            <Image Source="/1.jpg" Width="50" Height="50"/>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/2.png" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <Image Source="/3.jpg" Width="50" Height="50"/>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/4.jpg" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/5.jpg" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/6.png" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/7.jpg" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/8.jpg" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/9.jpg" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton Checked="RadioButton_Checked">
+                            <RadioButton.Content>
+                                <Image Source="/10.png" Width="50" Height="50"/>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackPanel>
+                </ScrollViewer>
+            </Expander>
+            <Expander IsExpanded="True">
+
+                <ScrollViewer>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                        
+                            <Label  Grid.Column="0"  Content="Width : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="WidthSlider" Minimum="200" SmallChange="20" Value="400" Width="auto" VerticalAlignment="Center" ValueChanged="WidthSlider_ValueChanged" Maximum="600">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="Width"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="Height : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="HeightSlider" Minimum="200" SmallChange="20" Value="400" VerticalAlignment="Center"  Maximum="800">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="Height"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="offset x : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="OffsetXSlider" Minimum="0" SmallChange="20" Value="0" VerticalAlignment="Center"  Maximum="300">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="offset x"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="offset y : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="OffsetYSlider" Minimum="0" SmallChange="20" Value="0" VerticalAlignment="Center"  Maximum="300">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="offset y"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="trans x : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="TransXSlider" Minimum="0" SmallChange="10" Value="0" VerticalAlignment="Center"  Maximum="200">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="trans x"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="trans y : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="TransYSlider" Minimum="0" SmallChange="10" Value="0" VerticalAlignment="Center"  Maximum="200">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="trans y"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Column="0"  Content="rotate : " FontSize="20" ></Label>
+                            <Slider Grid.Column="1" Name="RotateSlider" Minimum="0" SmallChange="20" Value="0" VerticalAlignment="Center"  Maximum="360">
+                                <Slider.ToolTip>
+                                    <TextBlock Text="rotate x"/>
+                                </Slider.ToolTip>
+                            </Slider>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Expander>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <Image Name="bigFhoto" Stretch="Fill" Width="{Binding ElementName=WidthSlider, Path=Value}" Height="{Binding ElementName=HeightSlider, Path=Value}" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="{Binding Value, ElementName=TransXSlider}" AngleY="{Binding Value, ElementName=TransYSlider}"/>
+                        <RotateTransform Angle="{Binding Value, ElementName=RotateSlider}"/>
+                        <TranslateTransform X="{Binding Value, ElementName=OffsetXSlider}" Y="{Binding Value, ElementName=OffsetYSlider}"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+                <Image.Source>
+                <ImageSource>/1.jpg</ImageSource>
+            </Image.Source>
+            </Image>
+
+
+            <!--<Image Name="bigFhoto" Source="/1.jpg" Width="auto" Height="auto"/>-->
+        </StackPanel>
+
+
+    </Grid>
+</Window>

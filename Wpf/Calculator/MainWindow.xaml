@@ -7,17 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400" FontSize="20" Background="AliceBlue">
     <!--<StackPanel VerticalAlignment="Stretch" Visibility="Visible">-->
-        <Grid>
-            <Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto" />
             <RowDefinition  Height="auto" />
             <RowDefinition  Height="auto" />
             <RowDefinition  Height="*" />
-            </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0" Margin="0,10,0,0" BorderThickness="0"  Background="LightSteelBlue" Padding="0, 20, 5, 0" TextAlignment="Right" FontSize="30"  Text="0"/>
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0">
+        <DockPanel>
+        <Menu>
+            <MenuItem Header="File"/>
+            <MenuItem Header="Edit">
+                <MenuItem Header="_Copy" Command="Copy"
+                    CommandTarget="{Binding ElementName=textBox}"/>
+            </MenuItem>
+        </Menu>
+        </DockPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0, -10, 0, 0">
+            <TextBox x:Name="textBox" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0" BorderThickness="0"  Background="LightSteelBlue" Padding="0, 20, 5, 0" TextAlignment="Right" FontSize="30"  Text="0"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -36,7 +50,7 @@
             <Button Grid.Row="0" Grid.Column="4" Padding="10" Content="MS" Background="LightSteelBlue" BorderThickness="0"></Button>
             <Button Grid.Row="0" Grid.Column="5" Padding="10" Content="M_" Background="LightSteelBlue" BorderThickness="0"></Button>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="0">
+        <Grid Grid.Row="3" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -48,7 +62,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Row="0" Grid.Column="0" Padding="10" Background="LightBlue" Content="%" BorderThickness="0"></Button>
@@ -59,20 +73,20 @@
             <Button Grid.Row="1" Grid.Column="1" Padding="10" Background="LightBlue" Content="x^2" BorderThickness="0"></Button>
             <Button Grid.Row="1" Grid.Column="2" Padding="10" Background="LightBlue" Content="2/x" BorderThickness="0"></Button>
             <Button Grid.Row="1" Grid.Column="3" Padding="10" Background="LightBlue" Content="/" BorderThickness="0" HorizontalContentAlignment="Center"></Button>
-            <Button Grid.Row="2" Grid.Column="0" Padding="10" Content="7" BorderThickness="0"></Button>
-            <Button Grid.Row="2" Grid.Column="1" Padding="10" Content="8" BorderThickness="0"></Button>
-            <Button Grid.Row="2" Grid.Column="2" Padding="10" Content="9" BorderThickness="0"></Button>
+            <Button Grid.Row="2" Grid.Column="0" Padding="10" Name="Num7" Content="7" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="2" Grid.Column="1" Padding="10" Name="Num8" Content="8" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="2" Grid.Column="2" Padding="10" Name="Num9" Content="9" BorderThickness="0" Click="Button_Click"></Button>
             <Button Grid.Row="2" Grid.Column="3" Padding="10" Background="LightBlue" Content="*" BorderThickness="0"></Button>
-            <Button Grid.Row="3" Grid.Column="0" Padding="10" Content="4" BorderThickness="0"></Button>
-            <Button Grid.Row="3" Grid.Column="1" Padding="10" Content="5" BorderThickness="0"></Button>
-            <Button Grid.Row="3" Grid.Column="2" Padding="10" Content="6" BorderThickness="0"></Button>
-            <Button Grid.Row="3" Grid.Column="3" Padding="10" Background="LightBlue" Content="-" BorderThickness="0"></Button>
-            <Button Grid.Row="4" Grid.Column="0" Padding="10" Content="1" BorderThickness="0"></Button>
-            <Button Grid.Row="4" Grid.Column="1" Padding="10" Content="2" BorderThickness="0"></Button>
-            <Button Grid.Row="4" Grid.Column="2" Padding="10" Content="3" BorderThickness="0"></Button>
+            <Button Grid.Row="3" Grid.Column="0" Padding="10" Name="Num4" Content="4" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="3" Grid.Column="1" Padding="10" Name="Num5" Content="5" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="3" Grid.Column="2" Padding="10" Name="Num6" Content="6" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="3" Grid.Column="3" Padding="10" Background="LightBlue" Content="-" BorderThickness="0" Click="Button_Click_1"></Button>
+            <Button Grid.Row="4" Grid.Column="0" Padding="10" Name="Num1" Content="1" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="4" Grid.Column="1" Padding="10" Name="Num2" Content="2" BorderThickness="0" Click="Button_Click"></Button>
+            <Button Grid.Row="4" Grid.Column="2" Padding="10" Name="Num3" Content="3" BorderThickness="0" Click="Button_Click"></Button>
             <Button Grid.Row="4" Grid.Column="3" Padding="10" Background="LightBlue" Content="+" BorderThickness="0"></Button>
-            <Button Grid.Row="5" Grid.Column="0" Padding="10" Content="+/-" BorderThickness="0"></Button>
-            <Button Grid.Row="5" Grid.Column="1" Padding="10" Content="0" BorderThickness="0"></Button>
+            <Button Grid.Row="5" Grid.Column="0" Padding="10" Content="+/-" BorderThickness="0" Click="Button_Click_PlusMin"></Button>
+            <Button Grid.Row="5" Grid.Column="1" Padding="10" Name="Num0" Content="0" BorderThickness="0" Click="Button_Click"></Button>
             <Button Grid.Row="5" Grid.Column="2" Padding="10" Content="," BorderThickness="0"></Button>
             <Button Grid.Row="5" Grid.Column="3" Padding="10" Background="LightBlue" Content="=" BorderThickness="0"></Button>
         </Grid>

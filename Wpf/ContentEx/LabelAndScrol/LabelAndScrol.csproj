@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="down.png" />
+    <None Remove="page_down.png" />
+    <None Remove="page_up.png" />
+    <None Remove="up.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="down.png" />
+    <Resource Include="page_down.png" />
+    <Resource Include="page_up.png" />
+    <Resource Include="up.png" />
+  </ItemGroup>
+
+</Project>

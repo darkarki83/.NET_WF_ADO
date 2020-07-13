@@ -28,6 +28,9 @@ namespace Client
         {
             InitializeComponent();
             buttonLogIn.Enabled = false;
+            textBoxName.Text = "art";
+            textBoxIP.Text = "127.0.0.1";
+            textBoxServer.Text = "80";
         }
 
         private void buttonLogIn_Click(object sender, EventArgs e)

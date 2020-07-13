@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculator
+namespace HW2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,22 +25,29 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            Button num = sender as Button;
-            int number = (num.Name[3] - 48);
-            textBox.Text = number.ToString();
+            RadioButton button = e.OriginalSource as RadioButton;
+
+            try
+            {
+                Image image = (Image)button.Content;
+
+                if (bigFhoto != null)
+                    bigFhoto.Source = image.Source;
+            }
+            catch
+            {
+                
+            }
+
+
+
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void WidthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-        }
-
-        private void Button_Click_PlusMin(object sender, RoutedEventArgs e)
-        {
-            int temp = int.Parse(textBox.Text);
-            textBox.Text = (temp * -1).ToString();
         }
     }
 }

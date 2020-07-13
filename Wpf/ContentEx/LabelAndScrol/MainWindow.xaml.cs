@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calculator
+namespace LabelAndScrol
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,22 +25,24 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLineUp_Click(object sender, RoutedEventArgs e)
         {
-            Button num = sender as Button;
-            int number = (num.Name[3] - 48);
-            textBox.Text = number.ToString();
+            scrollViewer.LineUp();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonLineDown_Click(object sender, RoutedEventArgs e)
         {
-
+            scrollViewer.LineDown();
         }
 
-        private void Button_Click_PlusMin(object sender, RoutedEventArgs e)
+        private void ButtonPageDown_Click(object sender, RoutedEventArgs e)
         {
-            int temp = int.Parse(textBox.Text);
-            textBox.Text = (temp * -1).ToString();
+            scrollViewer.PageDown();
+        }
+
+        private void ButtonPageUp_Click(object sender, RoutedEventArgs e)
+        {
+            scrollViewer.PageUp();
         }
     }
 }

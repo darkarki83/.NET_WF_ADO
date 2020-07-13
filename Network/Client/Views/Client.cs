@@ -89,7 +89,6 @@ namespace Client
                 nstream.WriteAsync(message, 0, message.Length);
 
                 client.Close();
-
             }
             catch (SocketException sockEx)
             {
@@ -105,25 +104,31 @@ namespace Client
             Thread thread = new Thread(new ThreadStart(ClientThreadProc));
             thread.IsBackground = true;
             thread.Start();
+
         }
 
         private void ClientThreadProc()
         {
             TcpClient client = new TcpClient();
-            try
-            {
-                client.Connect(endPoint);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-            }
             while (true)
             {
+                try
+                {
+                    client.Connect(endPoint);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex.Message);
+                }
+
+                //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
+                // string s = stream.ReadLine();
+                
                 byte[] message = new byte[255];
-                // Сообщаем клиенту о готовности к соединению
+
                 NetworkStream nstream = client.GetStream();
-                nstream.Read(message, 0, 255);
+                nstream.ReadAsync(message, 0, 255);
+                // Сообщаем клиенту о готовности к соединению
 
                 // Читаем данные из сети в формате Unicode
                 //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
@@ -131,7 +136,8 @@ namespace Client
                 if (s != null)
                 {
                     // Добавляем полученное сообщение в список
-                    listBoxMassege.Items.Add(s);
+                    listBoxMassege.Invoke((MethodInvoker)(() => listBoxMassege.Items.Add(s)));
+                    //listBoxMassege.Items.Add(s);
                     // При получении сообщения EXIT завершаем работу приложения
                     if (s.ToUpper() == "EXIT")
                     {
@@ -140,7 +146,9 @@ namespace Client
 
                     break;
                 }
+                
             }
+            Thread.Sleep(1000);
             client.Close();
         }
 
