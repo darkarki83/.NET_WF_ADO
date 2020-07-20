@@ -1,0 +1,43 @@
+﻿<Window x:Class="ExSmile.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExSmile"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="363" Width="645" FontSize="20">
+    <Window.Resources>
+        <ImageBrush x:Key="MyBrush" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,32,32"
+                    ImageSource="/HappyFace.jpg" Opacity="0.3"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Background="{DynamicResource MyBrush}" Content="Spesial button" Margin="10"></Button>
+        <Button Grid.Row="1" Background="{StaticResource MyBrush}" Content="Spesial button"></Button>
+        <Button Grid.Row="2" Content="Change Resourse" Click="ButtonChange_Click"  ></Button>
+        <Button Grid.Row="3" Content="Spashial + Button" >
+            <Button.Resources>
+                <ImageBrush x:Key="MyBrush"
+                            TileMode="Tile"
+                            ViewportUnits="RelativeToBoundingBox"
+                            Viewport="0,0,0.5,0.5"
+                            ImageSource="/HappyFace.jpg"
+                            Opacity="0.5"/>
+            </Button.Resources>
+            <Button.Background>
+                <StaticResource ResourceKey="MyBrush"/>
+            </Button.Background>
+        </Button>
+        <Button Grid.Row="4" Background="{DynamicResource MyBrush}" Content="Spesial button"></Button>
+
+    </Grid>
+</Window>

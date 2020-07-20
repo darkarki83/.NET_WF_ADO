@@ -122,24 +122,39 @@ namespace Client
                 }
 
                 //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-                // string s = stream.ReadLine();
-                
-                byte[] message = new byte[255];
 
+                //string s = stream.ReadLine();
                 NetworkStream nstream = client.GetStream();
-                nstream.ReadAsync(message, 0, 255);
+
+                //BinaryReader reader = new BinaryReader(stream);
+                //message = reader.ReadString();
+                //Console.WriteLine("Получен ответ: " + message);
+
+                StringBuilder s = new StringBuilder();
+                byte[] data = new byte[256];
+                do
+                {
+                    int bytes = nstream.Read(data, 0, data.Length);
+                    s.Append(Encoding.UTF8.GetString(data, 0, bytes));
+                }
+                while (nstream.DataAvailable);
+
+                //byte[] message = new byte[255];
+
+                //NetworkStream nstream = client.GetStream();
+                //nstream.ReadAsync(message, 0, 255);
                 // Сообщаем клиенту о готовности к соединению
 
                 // Читаем данные из сети в формате Unicode
                 //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-                string s = message.ToString();
+                //string s = message.ToString();
                 if (s != null)
                 {
                     // Добавляем полученное сообщение в список
                     listBoxMassege.Invoke((MethodInvoker)(() => listBoxMassege.Items.Add(s)));
                     //listBoxMassege.Items.Add(s);
                     // При получении сообщения EXIT завершаем работу приложения
-                    if (s.ToUpper() == "EXIT")
+                    if (s.ToString() == "EXIT")
                     {
                         client.Close();
                     }
