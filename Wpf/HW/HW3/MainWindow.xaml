@@ -5,7 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontSize="20">
+        Title="MainWindow" Height="450" Width="auto" FontSize="24">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:HWCommands.CkickTab1" Executed="one_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab2" Executed="two_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab3" Executed="tree_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab4" Executed="four_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab5" Executed="five_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab6" Executed="six_Click"/>
+        <CommandBinding Command="local:HWCommands.CkickTab7" Executed="seven_Click"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -16,43 +25,46 @@
         </Grid.RowDefinitions>
         <ToolBar Grid.Row="0" VerticalAlignment="Center" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton Name="one" Click="one_Click">
-                    <Image Source="/1.jpg" Width="50" Height="50"/>
+                <RadioButton Command="local:HWCommands.CkickTab1" Name="radio1" IsChecked="True">
+                    <Image Source="/1.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab2" Name="radio2" >
                     <Image Source="/2.png"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab3" Name="radio3">
                     <Image Source="/3.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab4" Name="radio4">
                     <Image Source="/4.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab5" Name="radio5">
                     <Image Source="/5.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab6" Name="radio6">
                     <Image Source="/6.png"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton>
+                <RadioButton Command="local:HWCommands.CkickTab7" Name="radio7">
                     <Image Source="/7.jpg"  Width="50" Height="50"/>
+                </RadioButton>
+                <RadioButton   Name="result">
+                    <Image Source="/result.jpg"  Width="50" Height="50"/>
                 </RadioButton>
             </StackPanel>
         </ToolBar>
         <Grid Grid.Row="1">
             <TabControl>
-                <TabItem Header="test 1" Name="tabOne">
-                    <StackPanel>
+                <TabItem Header="test 1" Name="tab1">
+                    <StackPanel Width="auto">
                         
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="test 2"></TabItem>
-                <TabItem Header="test 3"></TabItem>
-                <TabItem Header="test 4"></TabItem>
-                <TabItem Header="test 5"></TabItem>
-                <TabItem Header="test 6"></TabItem>
-                <TabItem Header="test 7"></TabItem>
-                <TabItem Header="result"></TabItem>
+                <TabItem Header="test 2" Name="tab2" IsSelected="{Binding ElementName=radio2, Path=IsChecked}"></TabItem>
+                <TabItem Header="test 3" Name="tab3" IsSelected="{Binding ElementName=radio3, Path=IsChecked}"></TabItem>
+                <TabItem Header="test 4" Name="tab4" IsSelected="{Binding ElementName=radio4, Path=IsChecked}"></TabItem>
+                <TabItem Header="test 5" Name="tab5" IsSelected="{Binding ElementName=radio5, Path=IsChecked}"></TabItem>
+                <TabItem Header="test 6" Name="tab6" IsSelected="{Binding ElementName=radio6, Path=IsChecked}"></TabItem>
+                <TabItem Header="test 7" Name="tab7" IsSelected="{Binding ElementName=radio7, Path=IsChecked}"></TabItem>
+                <TabItem Header="result" Name="resultTab" IsSelected="{Binding ElementName=result, Path=IsChecked, Mode=TwoWay}"></TabItem>
             </TabControl>
         </Grid>
 
