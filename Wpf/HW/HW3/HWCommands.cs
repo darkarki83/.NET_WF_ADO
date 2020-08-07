@@ -14,5 +14,6 @@ namespace HW3
         public static readonly RoutedUICommand CkickTab5 = new RoutedUICommand("Tab_5", "CkickTab5", typeof(HWCommands));
         public static readonly RoutedUICommand CkickTab6 = new RoutedUICommand("Tab_6", "CkickTab6", typeof(HWCommands));
         public static readonly RoutedUICommand CkickTab7 = new RoutedUICommand("Tab_7", "CkickTab7", typeof(HWCommands));
+        public static readonly RoutedUICommand ShowQ = new RoutedUICommand("Q1Show", "ShowQ", typeof(HWCommands));
     }
 }
