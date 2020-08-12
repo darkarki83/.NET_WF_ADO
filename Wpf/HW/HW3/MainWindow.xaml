@@ -14,7 +14,9 @@
         <CommandBinding Command="local:HWCommands.CkickTab5" Executed="five_Click"/>
         <CommandBinding Command="local:HWCommands.CkickTab6" Executed="six_Click"/>
         <CommandBinding Command="local:HWCommands.CkickTab7" Executed="seven_Click"/>
+        <CommandBinding Command="local:HWCommands.ClickResult" Executed="result_Click"/>
         <CommandBinding Command="local:HWCommands.ShowQ" Executed="ShowQ_Click"/>
+        <CommandBinding Command="local:HWCommands.NextTest" Executed="NaxtAndSave_Click"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,25 +31,25 @@
                 <RadioButton Command="local:HWCommands.CkickTab1" Name="radio1" IsChecked="True">
                     <Image Source="/1.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab2" Name="radio2" >
+                <RadioButton Command="local:HWCommands.CkickTab2"  Name="radio2" Checked="two_Click" >
                     <Image Source="/2.png"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab3" Name="radio3">
+                <RadioButton Command="local:HWCommands.CkickTab3" Name="radio3" Checked="tree_Click" >
                     <Image Source="/3.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab4" Name="radio4">
+                <RadioButton Command="local:HWCommands.CkickTab4" Name="radio4" Checked="four_Click">
                     <Image Source="/4.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab5" Name="radio5">
+                <RadioButton Command="local:HWCommands.CkickTab5" Name="radio5" Checked="five_Click">
                     <Image Source="/5.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab6" Name="radio6">
+                <RadioButton Command="local:HWCommands.CkickTab6" Name="radio6" Checked="six_Click">
                     <Image Source="/6.png"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton Command="local:HWCommands.CkickTab7" Name="radio7">
+                <RadioButton Command="local:HWCommands.CkickTab7" Name="radio7" Checked="seven_Click">
                     <Image Source="/7.jpg"  Width="50" Height="50"/>
                 </RadioButton>
-                <RadioButton   Name="result">
+                <RadioButton Command="local:HWCommands.ClickResult"  Name="result" Checked="result_Click">
                     <Image Source="/result.jpg"  Width="50" Height="50"/>
                 </RadioButton>
             </StackPanel>
@@ -90,30 +92,30 @@
                     <StackPanel Grid.Column="1"  Width="auto" MinWidth="400">
                             <TextBlock Text="Answers" HorizontalAlignment="Center"/>
                             <StackPanel Visibility="Visible"  Name="FirstQoution" >
-                                <RadioButton  Content="а) 4"></RadioButton>
-                                <RadioButton  Content="б) 6"></RadioButton>
-                                <RadioButton  Content="в) 12"></RadioButton>
-                                <RadioButton  Content="с) 2"></RadioButton>
+                                <RadioButton Content="а) 4"></RadioButton>
+                                <RadioButton Name="one1" Content="б) 6"></RadioButton>
+                                <RadioButton Content="в) 12"></RadioButton>
+                                <RadioButton Content="с) 2"></RadioButton>
                             </StackPanel>
                             <StackPanel Visibility="Collapsed"  Name="SecondQoution">
-                                <RadioButton  Content="а) прямая"></RadioButton>
-                                <RadioButton  Content="б) радиус"></RadioButton>
-                                <RadioButton  Content="в) диаметр"></RadioButton>
-                                <RadioButton  Content="с) хорда"></RadioButton>
+                                <RadioButton Content="а) прямая"></RadioButton>
+                                <RadioButton Content="б) радиус"></RadioButton>
+                                <RadioButton Content="в) диаметр"></RadioButton>
+                                <RadioButton Name="one2" Content="с) хорда"></RadioButton>
                             </StackPanel>
                             <StackPanel Visibility="Collapsed" Name="ThreesQoution">
-                                <RadioButton  Content="а) 28"></RadioButton>
-                                <RadioButton  Content="б) 42"></RadioButton>
-                                <RadioButton  Content="в) 56"></RadioButton>
-                                <RadioButton  Content="с) 36"></RadioButton>
+                                <RadioButton Name="one3" Content="а) 28"></RadioButton>
+                                <RadioButton Content="б) 42"></RadioButton>
+                                <RadioButton Content="в) 56"></RadioButton>
+                                <RadioButton Content="с) 36"></RadioButton>
                             </StackPanel>
                             <StackPanel Visibility="Collapsed" Name="FoursQoution">
-                                <RadioButton  Content="а) конус"></RadioButton>
-                                <RadioButton  Content="б) призма"></RadioButton>
-                                <RadioButton  Content="в) пирамида"></RadioButton>
-                                <RadioButton  Content="с) цилиндр"></RadioButton>
+                                <RadioButton Content="а) конус"></RadioButton>
+                                <RadioButton Name="one4" Content="б) призма"></RadioButton>
+                                <RadioButton Content="в) пирамида"></RadioButton>
+                                <RadioButton Content="с) цилиндр"></RadioButton>
                             </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20"></Button>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
                         </StackPanel>
                         
                     </Grid>
@@ -176,16 +178,50 @@
                                 <CheckBox  Content="в) пирамида"></CheckBox>
                                 <CheckBox  Content="с) цилиндр"></CheckBox>
                             </StackPanel>
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20"></Button>
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="test 3" Name="tab3" IsSelected="{Binding ElementName=radio3, Path=IsChecked mo}"></TabItem>
-                <TabItem Header="test 4" Name="tab4" IsSelected="{Binding ElementName=radio4, Path=IsChecked}"></TabItem>
-                <TabItem Header="test 5" Name="tab5" IsSelected="{Binding ElementName=radio5, Path=IsChecked}"></TabItem>
-                <TabItem Header="test 6" Name="tab6" IsSelected="{Binding ElementName=radio6, Path=IsChecked}"></TabItem>
-                <TabItem Header="test 7" Name="tab7" IsSelected="{Binding ElementName=radio7, Path=IsChecked}"></TabItem>
-                <TabItem Header="result" Name="resultTab" IsSelected="{Binding ElementName=result, Path=IsChecked, Mode=TwoWay}"></TabItem>
+                <TabItem Header="test 3" Name="tab3" IsSelected="{Binding ElementName=radio3, Path=IsChecked}">
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
+
+                </TabItem>
+                <TabItem Header="test 4" Name="tab4" IsSelected="{Binding ElementName=radio4, Path=IsChecked}">
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
+
+                </TabItem>
+                <TabItem Header="test 5" Name="tab5" IsSelected="{Binding ElementName=radio5, Path=IsChecked}">
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
+
+                </TabItem>
+                <TabItem Header="test 6" Name="tab6" IsSelected="{Binding ElementName=radio6, Path=IsChecked}">
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
+
+                </TabItem>
+                <TabItem Header="test 7" Name="tab7" IsSelected="{Binding ElementName=radio7, Path=IsChecked}">
+                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Save and next test" Margin="20, 100, 30, 20" Command="local:HWCommands.NextTest"></Button>
+
+                </TabItem>
+                <TabItem Header="result" Name="resultTab" IsSelected="{Binding ElementName=result, Path=IsChecked, Mode=TwoWay}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="test 1 = "></TextBlock>
+                        <TextBlock  Grid.Column="1" Grid.Row="0"   Name="Text1text"></TextBlock>
+                     
+                    </Grid>
+                </TabItem>
             </TabControl>
         </Grid>
 
