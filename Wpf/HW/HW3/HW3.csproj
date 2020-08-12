@@ -14,6 +14,7 @@
     <None Remove="5.jpg" />
     <None Remove="6.png" />
     <None Remove="7.jpg" />
+    <None Remove="result.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <Resource Include="5.jpg" />
     <Resource Include="6.png" />
     <Resource Include="7.jpg" />
+    <Resource Include="result.jpg" />
   </ItemGroup>
 
 </Project>
