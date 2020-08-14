@@ -21,14 +21,12 @@ namespace Client
         public string Names { get; set; }
         public string Ip { get; set; }
         public string Port { get; set; }
-
-        //private TcpClient client;
         private IPEndPoint endPoint;
-        //private NetworkStream nstream;
         public ClientForm()
         {
             InitializeComponent();
         }
+
         private void ClientForm_Load(object sender, EventArgs e)
         {
             GetConectInfo(sender, e);
@@ -45,6 +43,7 @@ namespace Client
             //client.Connect(endPoint);
             //nstream = client.GetStream();
         }
+
         private void buttonSend_Click(object sender, EventArgs e)
         {
             TcpClient client = new TcpClient();
@@ -71,6 +70,7 @@ namespace Client
                 client.Close();
             }
         }
+
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Close();
@@ -100,78 +100,29 @@ namespace Client
                 MessageBox.Show("Ошибка:" + ex.Message);
                 client.Close();
             }
-
-            TcpClient tcpClient = new TcpClient();
-            string s = string.Empty;
-            while (true)
-            {
-                try
-                {
-                    //client.Connect(endPoint);
-                    tcpClient.Connect(endPoint);
-                    //var stream = new StreamReader(tcpClient.GetStream(), Encoding.Unicode);
-
-                    //s = stream.ReadLine();
-                    //tcpClient.Connect(endPoint);
-
-                    NetworkStream nstream = tcpClient.GetStream();
-                    byte[] message = new byte[225];
-                    nstream.(message, 0, message.Length);
-                    s = System.Text.Encoding.UTF8.GetString(message);
-                    //nstream.WriteAsync(message, 0, message.Length);
-
-                    //tcpClient.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка: " + ex.Message);
-                }
-                if (s != string.Empty)
-                {
-                    // Добавляем полученное сообщение в список
-                    listBoxMassege.Invoke((MethodInvoker)(() => listBoxMassege.Items.Add(s)));
-                    //listBoxMassege.Items.Add(s);
-                    // При получении сообщения EXIT завершаем работу приложения
-                    if (s.ToString() == "EXIT")
-                    {
-                        tcpClient.Close();
-                    }
-
-                    break;
-                }
-
-            }
-            Thread.Sleep(1000);
-            tcpClient.Close();
-            //Thread thread = new Thread(new ThreadStart(ClientThreadProc));
-            //thread.IsBackground = true;
-            //thread.Start();
-
+            Thread thread = new Thread(new ThreadStart(ClientThreadProc));
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         private void ClientThreadProc()
         {
             TcpClient tcpClient = new TcpClient();
-            //byte[] data;
+
             string s = string.Empty;
             while (true)
             {
                 try
                 {
-                    //client.Connect(endPoint);
                     tcpClient.Connect(endPoint);
                     //var stream = new StreamReader(tcpClient.GetStream(), Encoding.Unicode);
-
                     //s = stream.ReadLine();
                     //tcpClient.Connect(endPoint);
-
                     NetworkStream nstream = tcpClient.GetStream();
                     byte[] message = new byte[225];
                     nstream.Read(message, 0, message.Length);
                     s = message.ToString();
-                    //nstream.WriteAsync(message, 0, message.Length);
-
-                    //tcpClient.Close();
+                    tcpClient.Close();
                 }
                 catch (Exception ex)
                 {
@@ -187,15 +138,11 @@ namespace Client
                     {
                         tcpClient.Close();
                     }
-
                     break;
                 }
-                
             }
             Thread.Sleep(1000);
             tcpClient.Close();
         }
-
-
     }
 }

@@ -10,6 +10,5 @@ namespace Client.Views
 {
     public interface ILogInView : IView
     {
-        event EventHandler LogIn;
     }
 }

@@ -28,7 +28,6 @@ namespace Spetial_sait
             textBoxPort.Text = "80";
             buttonStart_Click(new object(), EventArgs.Empty);
         }
-
         private void buttonStart_Click(object sender, EventArgs e)
         {
             try
@@ -40,7 +39,6 @@ namespace Spetial_sait
                     Convert.ToInt32(textBoxPort.Text.Trim()));
                 // Начинаем прослушивание клиентов
                 listner.Start();
-
                 // Создаем отдельный поток для чтения сообщения и запускаем его
                 var thread = new Thread(new ThreadStart(ClientThreadProc));
                 thread.IsBackground = true;
@@ -92,7 +90,6 @@ namespace Spetial_sait
                 client.Close();
             }
         }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (listner != null)

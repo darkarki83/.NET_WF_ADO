@@ -16,11 +16,9 @@ namespace Client
 {
     public partial class LogInForm : Form , ILogInView
     {
-        public event EventHandler LogIn;
         public string Names { get; set; }
         public string Ip { get; set; }
         public string Port { get; set; }
-
         private TcpClient client;
         private IPEndPoint endPoint;
 
@@ -35,7 +33,6 @@ namespace Client
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-
             Names = textBoxName.Text;
             Ip = textBoxIP.Text;
             Port = textBoxServer.Text;
