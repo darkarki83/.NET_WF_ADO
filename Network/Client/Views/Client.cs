@@ -101,54 +101,32 @@ namespace Client
                 client.Close();
             }
 
-            Thread thread = new Thread(new ThreadStart(ClientThreadProc));
-            thread.IsBackground = true;
-            thread.Start();
-
-        }
-
-        private void ClientThreadProc()
-        {
-            TcpClient client = new TcpClient();
+            TcpClient tcpClient = new TcpClient();
+            string s = string.Empty;
             while (true)
             {
                 try
                 {
-                    client.Connect(endPoint);
+                    //client.Connect(endPoint);
+                    tcpClient.Connect(endPoint);
+                    //var stream = new StreamReader(tcpClient.GetStream(), Encoding.Unicode);
+
+                    //s = stream.ReadLine();
+                    //tcpClient.Connect(endPoint);
+
+                    NetworkStream nstream = tcpClient.GetStream();
+                    byte[] message = new byte[225];
+                    nstream.(message, 0, message.Length);
+                    s = System.Text.Encoding.UTF8.GetString(message);
+                    //nstream.WriteAsync(message, 0, message.Length);
+
+                    //tcpClient.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ошибка: " + ex.Message);
                 }
-
-                //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-
-                //string s = stream.ReadLine();
-                NetworkStream nstream = client.GetStream();
-
-                //BinaryReader reader = new BinaryReader(stream);
-                //message = reader.ReadString();
-                //Console.WriteLine("Получен ответ: " + message);
-
-                StringBuilder s = new StringBuilder();
-                byte[] data = new byte[256];
-                do
-                {
-                    int bytes = nstream.Read(data, 0, data.Length);
-                    s.Append(Encoding.UTF8.GetString(data, 0, bytes));
-                }
-                while (nstream.DataAvailable);
-
-                //byte[] message = new byte[255];
-
-                //NetworkStream nstream = client.GetStream();
-                //nstream.ReadAsync(message, 0, 255);
-                // Сообщаем клиенту о готовности к соединению
-
-                // Читаем данные из сети в формате Unicode
-                //var stream = new StreamReader(client.GetStream(), Encoding.Unicode);
-                //string s = message.ToString();
-                if (s != null)
+                if (s != string.Empty)
                 {
                     // Добавляем полученное сообщение в список
                     listBoxMassege.Invoke((MethodInvoker)(() => listBoxMassege.Items.Add(s)));
@@ -156,7 +134,58 @@ namespace Client
                     // При получении сообщения EXIT завершаем работу приложения
                     if (s.ToString() == "EXIT")
                     {
-                        client.Close();
+                        tcpClient.Close();
+                    }
+
+                    break;
+                }
+
+            }
+            Thread.Sleep(1000);
+            tcpClient.Close();
+            //Thread thread = new Thread(new ThreadStart(ClientThreadProc));
+            //thread.IsBackground = true;
+            //thread.Start();
+
+        }
+
+        private void ClientThreadProc()
+        {
+            TcpClient tcpClient = new TcpClient();
+            //byte[] data;
+            string s = string.Empty;
+            while (true)
+            {
+                try
+                {
+                    //client.Connect(endPoint);
+                    tcpClient.Connect(endPoint);
+                    //var stream = new StreamReader(tcpClient.GetStream(), Encoding.Unicode);
+
+                    //s = stream.ReadLine();
+                    //tcpClient.Connect(endPoint);
+
+                    NetworkStream nstream = tcpClient.GetStream();
+                    byte[] message = new byte[225];
+                    nstream.Read(message, 0, message.Length);
+                    s = message.ToString();
+                    //nstream.WriteAsync(message, 0, message.Length);
+
+                    //tcpClient.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex.Message);
+                }
+                if (s != string.Empty)
+                {
+                    // Добавляем полученное сообщение в список
+                    listBoxMassege.Invoke((MethodInvoker)(() => listBoxMassege.Items.Add(s)));
+                    //listBoxMassege.Items.Add(s);
+                    // При получении сообщения EXIT завершаем работу приложения
+                    if (s.ToString() == "EXIT")
+                    {
+                        tcpClient.Close();
                     }
 
                     break;
@@ -164,7 +193,7 @@ namespace Client
                 
             }
             Thread.Sleep(1000);
-            client.Close();
+            tcpClient.Close();
         }
 
 
