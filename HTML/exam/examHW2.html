@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="styles.css" rel="stylesheet">
+    <title>Блочная верстка в HTML5</title>
+    <style>
+        body
+        {
+            background-color: white;
+            color:black
+        }
+        nav{
+            float:right;
+            color: darkgoldenrod;
+            font-size: 1.2em;
+            padding-top: 1.5em;
+            margin-left: 1em;
+        }
+
+        #foto{
+            float:left
+        }
+
+        .navigathion
+        {
+            background-color: white;
+            overflow: auto;
+            border-style:solid;
+            border-color: black;
+            border-width: 0.1em;
+            margin-top: 0.5em;
+            margin-right: -0.5em;
+            margin-left: -0.4em;
+        }
+
+        #borderleftblock
+        {
+            list-style: none;
+            margin-left: 1.6em;
+            color:black;
+            border-style: solid;
+            border-width: 0.1em; 
+            border-color: black;
+            
+        }
+
+        .leftblock
+        {
+            float:left;
+            margin-top: -2em;
+            margin-left: -3.5em;
+            padding-right: 2em;
+            font-size: 1em;
+            padding-bottom: 100%;
+        }
+
+        .leftblock li
+        {
+            text-align:left;
+            padding-right: 2em;
+            margin-left: -2.1em;
+            margin-top: 0.5em;
+        }
+
+        .leftblock li:hover
+        {
+            border-top:solid;
+            border-bottom:solid;
+            border-width: 0.1em;
+        }
+
+        .rightblock
+        {
+           float:right;
+           margin-top: 1em;
+           padding-left: 1em;
+           margin-bottom: 4em;
+        }
+        .midblock
+        {
+            float:left;
+            padding-right: 2em ;
+            margin-top: 1em;
+            margin-bottom: 100%;
+        }
+        nav a
+        {
+            color: rgb(165, 190, 49);
+            text-decoration: none;
+            margin-left: 1em;
+        }
+        #polosa
+        {
+            background-color: blue;
+            color:white;
+            margin-left: 13em;
+            margin-top: 1em;
+            margin-right: -1em;
+        }
+        a
+        {
+            text-decoration: none;
+            color:red;
+        }
+        .p1
+        {
+            color: blue;
+        }
+        footer{
+            background-color: black;
+            margin-left: 2em;
+            margin-top:2em;
+
+        }
+
+        td{
+            width: 15em; 
+            height: 2em;
+        }
+
+    </style>  
+</head>
+<body>
+    <header class="navigathion">
+        <div id="foto">
+            <img src="image/header.gif" alt="header">
+        </div>
+        <nav>
+                <a href="#">Home</a>
+                <a href="#">Programs</a>
+                <a href="#">Forum</a>
+                <a href="#">Contacts</a>
+                <a href="#">About us</a>
+                <a href="#">English</a>
+        </nav>
+    </header>  
+    <div class="leftblock">
+        <nav>
+            <ul id="borderleftblock">
+                <li style="border-bottom: solid; border-width: 0.1em; text-align: center; ">Parallaxis WinClip</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Capabilities</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">Buy</a></li>
+                <li><a href="#">A new Version</a></li>
+                <li><a href="#">Press Center</a></li>
+                <li><a href="#">Awards</a></li>
+                <li><a href="#">Servises</a></li>
+                <li><a href="#">Work with us</a></li>
+                <li><a href="#">Affilliate program</a></li> 
+            </ul>
+        </nav>
+    </div>
+    <main>
+    <div id="polosa"><strong>WinClip Tour</strong></div>
+    <div class="rightblock">
+        <img src="image/tour_big7.gif" alt="header">
+    </div>
+    <article>
+        <p class="p1"><strong>WinClip для дезайнеров</strong></p>
+        <p>WinClip - идеальное средство для дизайнеров. Наверняка Вы, как опытный дизайнер, наработали множество шаблонов, которые часто используете в своей работе.</p>
+        <p> Вот только некоторые примеры часто используемых шаблонов: </p>  
+        <ul style="list-style:url(image/arrow.gif)">
+            <li><a href="#">Графические элементы (стрелки, сетки и т.п.)</a></li>
+            <li><a href="#">Графические стили</a></li>
+            <li><a href="#">Маски</a></li>
+            <li><a href="#">Шаблоны таблиц</a></li>
+            <li><a href="#">Шаблоны CSS и HTML стилей</a></li>
+            <li><a href="#">Готовые шаблоны веб-страниц</a></li>
+            <li><a href="#">Часто используемые изображения</a></li>
+        </ul>
+        <p>
+            С помощью WinClip Вы сможете удобно организовать работу с шаблонами. Для этого создайте банк с названием, таким как "Мои шаблоны". По мере накопления шаблонов, копируйте их в созданный банк. Шаблоны могут быть мгновенно вставлены в картину или веб-страницу по нажатию клавиши Ctrl+Q и выбору нужного шаблона.
+        </p>
+    </article>
+    <div class="midblock">
+        <img src="image/tour_big8.gif" alt="header">
+    </div>
+    <article style="padding-top: 1em;">Вы с легкостью сможете создавать сложнейшие и красивейшие образцы дизайна, если будете постоянно пользоваться Вашими заготовками. Вместо того, чтобы постоянно рисовать весь дизайн заново, Вы сможете использовать сделанные заранее заготовки, что несомненно облегчит Ваш труд и ускорит Вашу работу.</article>
+    <article style="padding-top: 1em;"><strong>Веб-дизайнеру:</strong> в банках WinClip Вы можете хранить различные стили, таблицы и шаблоны страниц. Обратите, например, внимание на дизайн этого сайта. Вы видите множество таблиц с тонкими цветными границами. Создать такую таблицу в редакторе типа DreamWeaver довольно сложно, надо набрать вручную следующий код:</article>
+    </main>
+    <footer  >
+        <table>
+            <tr style="width: 50em;">
+                <td><a href="#">Home</a></td>
+                <td><a href="#">Capabilities</a></td>
+                <td><a href="#">Download</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Buy</a></td>
+                <td><a href="#">A new Version</a></td>
+                <td><a href="#">Press Center</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Awards</a></td>
+                <td><a href="#">Servises</a></td>
+                <td><a href="#">Work with us</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
