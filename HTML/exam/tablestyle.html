@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet"> 
+</head>
+<body id="bodytablestyle">
+    <header class="navigathion">
+        <div id="foto">
+            <img src="image/header.gif" alt="header">
+        </div>
+        <nav>
+            <a href="examHW2.html">Home</a>
+            <a href="program.html">Programs</a>
+            <a href="#">Forum</a>
+            <a href="aboutass.html#contact">Contacts</a>
+            <a href="aboutass.html">About us</a>
+            <a href="#">English</a>
+        </nav>
+    </header>
+    <article class="maintablestyle">
+        <header>
+            <h1>Как сделать - стрелки</h1>
+        </header>
+        <body>
+            <p>Узнайте, как создавать стрелки/треугольники с помощью CSS.</p>
+            <hr>
+            <p>Right  arrow: <i class="right"></i></p>
+            <p>Left arrow: <i class="left"></i></p>
+            <p>Up arrow: <i class="up"></i></p>
+            <p>Down arrow: <i class="down"></i></p>
+            <hr>
+            <h2>Как создать стрелки</h2>
+            <h5>Шаг 1) добавить HTML:</h5>
+            <div>
+                <h3>Пример</h3>
+                <div>
+                <span style="color:brown"><span style="color:mediumblue">&lt;</span>p<span style="color:mediumblue">&gt;</span></span>Right arrow: <span style="color:brown"><span style="color:mediumblue">&lt;</span>i<span style="color:red"> class<span style="color:mediumblue">="arrow right"</span></span><span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/i<span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/p<span style="color:mediumblue">&gt;</span></span><br><span style="color:brown"><span style="color:mediumblue">&lt;</span>p<span style="color:mediumblue">&gt;</span></span>Left arrow: <span style="color:brown"><span style="color:mediumblue">&lt;</span>i<span style="color:red">
+                class<span style="color:mediumblue">="arrow left"</span></span><span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/i<span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/p<span style="color:mediumblue">&gt;</span></span><br><span style="color:brown"><span style="color:mediumblue">&lt;</span>p<span style="color:mediumblue">&gt;</span></span>Up arrow: <span style="color:brown"><span style="color:mediumblue">&lt;</span>i<span style="color:red"> class<span style="color:mediumblue">="arrow up"</span></span><span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/i<span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/p<span style="color:mediumblue">&gt;</span></span><br>
+                <span style="color:brown"><span style="color:mediumblue">&lt;</span>p<span style="color:mediumblue">&gt;</span></span>Down arrow: <span style="color:brown"><span style="color:mediumblue">&lt;</span>i<span style="color:red"> class<span style="color:mediumblue">="arrow down"</span></span><span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/i<span style="color:mediumblue">&gt;</span></span><span style="color:brown"><span style="color:mediumblue">&lt;</span>/p<span style="color:mediumblue">&gt;</span></span> </div>
+                </div>
+                <br>
+                <h5>Шаг 2) добавить CSS:</h5>
+                <div>
+                    <h3>Пример</h3>
+                    <div><span style="color:brown">
+                    i <span style="color:black">{</span><span style="color:red"><br>&nbsp;&nbsp;&nbsp; border<span style="color:mediumblue"><span style="color:black">:</span> solid black<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp;
+                    border-width<span style="color:mediumblue"><span style="color:black">:</span> 0 3px 3px 0<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp; display<span style="color:mediumblue"><span style="color:black">:</span> inline-block<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp;
+                    padding<span style="color:mediumblue"><span style="color:black">:</span> 3px<span style="color:black">;</span></span><br></span><span style="color:black">}</span><br><br>.right <span style="color:black">{</span><span style="color:red"><br>&nbsp;&nbsp;&nbsp;
+                    transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(-45deg)<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp; -webkit-transform<span style="color:mediumblue"><span style="color:black">:</span>
+                    rotate(-45deg)<span style="color:black">;</span></span><br></span><span style="color:black">}</span><br><br>.left <span style="color:black">{</span><span style="color:red"><br>&nbsp;&nbsp;&nbsp;
+                    transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(135deg)<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp; -webkit-transform<span style="color:mediumblue"><span style="color:black">:</span>
+                    rotate(135deg)<span style="color:black">;</span></span><br></span><span style="color:black">}</span><br><br>
+                    .up <span style="color:black">{</span><span style="color:red"><br>&nbsp;&nbsp;&nbsp; transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(-135deg)<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp;
+                    -webkit-transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(-135deg)<span style="color:black">;</span></span><br></span><span style="color:black">}</span><br><br>.down <span style="color:black">{</span><span style="color:red"><br>&nbsp;&nbsp;&nbsp; transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(45deg)<span style="color:black">;</span></span><br>&nbsp;&nbsp;&nbsp;
+                    -webkit-transform<span style="color:mediumblue"><span style="color:black">:</span> rotate(45deg)<span style="color:black">;</span></span><br></span><span style="color:black">}</span> </span></div>
+                    <form target="_blank" action="https://html5css.ru/edithtm/index.php" method="post">
+                    <input type="hidden" name="postcode" value="
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+                    <style>
+                    i {
+                      border: solid black;
+                      border-width: 0 3px 3px 0;
+                      display: inline-block;
+                      padding: 3px;
+                    }
+                    
+                    .right {
+                        transform: rotate(-45deg);
+                        -webkit-transform: rotate(-45deg);
+                    }
+                    
+                    .left {
+                        transform: rotate(135deg);
+                        -webkit-transform: rotate(135deg);
+                    }
+                    
+                    .up {
+                        transform: rotate(-135deg);
+                        -webkit-transform: rotate(-135deg);
+                    }
+                    
+                    .down {
+                        transform: rotate(45deg);
+                        -webkit-transform: rotate(45deg);
+                    }
+                    </style>
+                    </head>
+                    <body>
+                    
+                    <h2>CSS Arrows</h2>
+                    
+                    <p>Right arrow: <i class=&quot;right&quot;></i></p>
+                    <p>Left arrow: <i class=&quot;left&quot;></i></p>
+                    <p>Up arrow: <i class=&quot;up&quot;></i></p>
+                    <p>Down arrow: <i class=&quot;down&quot;></i></p>
+                    
+                    </body>
+                    </html>
+                    ">
+                    <button type="submit" class="button1">Просмотр демо в редакторе</button>
+                    </form>
+                    </div>
+        </body>
+    </article>
+    <article class="maintablestyle" id="maintablestyle2">
+        <header>
+            <h1>Каскадные таблицы стилей</h1>
+        </header>
+        <body>
+           <h2>Что такое таблицы стилей </h2>
+           <div>
+                <em>Каскадные (многоуровневые) таблицы стилей </em>
+                - <b>cascading style sheets (CSS)</b>
+                - 
+                это мощный стандарт 
+                на основе текстового формата, определяющий представление данных в броузере.<br>
+                
+                Если формат HTML предоставляет информацию о составе документа, то таблицы 
+                стилей сообщают как он должен выглядеть. Таким образом каскадные таблицы 
+                стилей дают возможность хранить содержимое отдельно от его представления.
+                <p></p>
+                
+                Стиль включает все типы элементов дизайна: шрифт, фон, текст, цвета 
+                ссылок, поля и расположение объектов на странице.
+                CSS разрабатывались так, чтобы обеспечить больший уровень контроля над 
+                размещением текста и графики.
+                Каскадные таблицы стилей обеспечивают должный уровень единства 
+                оформления, организации и контроля во время разработки узла, который 
+                является недостижимым с помощью одного только HTML. 
+                <p></p>
+                <p>CSS предполагает 3 типа таблиц стилей - встроенные, внедренные 
+                (внутренние) и связанные (внешние). </p>
+                <p>Впервые идея форматирования HTML-документов с помощью CSS была 
+                рекомендована 
+                <a href="#" title="Справка о Консорциуме W3C">
+                Консорциумом W3C</a>
+                в 1996 году. Эта рекомендация, которая была обновлена в 
+                1998 году, используется Web-разработчиками и по сей день.<br>
+
+                Это означает, что вы можете использовать все три типа стилей, и броузер 
+                будет интерпретировать сначала связанные, затем внедренные и, наконец, 
+                встроенные стили. Даже если ко всему узлу будут применены образцы стилей,
+                можно будет управлять отдельными аспектами страниц с помощью внедренных 
+                стилей, а отдельными областями внутри этих страниц - с помощью 
+                встроенных стилей.
+                <br>
+ 
+                Другой аспект каскадирования - 
+                <em>наследование (inheritance).</em>
+                Наследование означает, что если не указано иное, то конкретный стиль 
+                будет унаследован другими элементами страницы HTML. Например, если вы 
+                примените определенный цвет текста в теге 
+                <em>&lt;р&gt;</em>
+                , то все теги внутри 
+                этого абзаца наследуют этот цвет, если не оговорено иное.
+                </p>
+            </div>
+        </body>
+    </article>
+    <div class="divback">
+        <a href="examHW2.html">BACK</a>
+    </div> 
+    <footer>
+        <table style="margin-left:3em ; ">
+            <tr style="width: 50em;">
+                <td><a href="examHW2.html">Home</a></td>
+                <td><a href="tablestyle.html">Capabilities</a></td>
+                <td><a href="https://www.adobe.com/ru/products/photoshop.html" target="blank">Download</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://www.adobe.com/ru/products/photoshop.html" target="blank">Buy</a></td>
+                <td><a href="#">A new Version</a></td>
+                <td><a href="presssenter.html">Press Center</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Awards</a></td>
+                <td><a href="#">Servises</a></td>
+                <td><a href="aboutass.html#workwithus">Work with us</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>

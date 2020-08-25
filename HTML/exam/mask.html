@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet"> 
+</head>
+<body>
+    <header class="navigathion">
+        <div id="foto">
+            <img src="image/header.gif" alt="header">
+        </div>
+        <nav>
+            <a href="examHW2.html">Home</a>
+            <a href="program.html">Programs</a>
+            <a href="#">Forum</a>
+            <a href="aboutass.html#contact">Contacts</a>
+            <a href="aboutass.html">About us</a>
+            <a href="#">English</a>
+        </nav>
+    </header>
+    <article id="mainmask">
+        <header>
+            <h1>Маски CSS</h1>
+        </header>
+        <div>
+            <p>
+                <img src="https://webformyself.com/wp-content/uploads/2016/835/100.jpg"
+                title="Маски CSS" width="100"
+                height="100">
+            </p>
+            <p>
+                <em>
+                    <strong>От автора:</strong>
+                    " две часто применяемые операции в компьютерной графике – это обрезка (clip) и наложение маски (mask). Обе операции скрывают видимые части элемента. Если вы до этого работали с "
+                    <a href="https://www.w3.org/TR/SVG/masking.html" rel="nofollow">SVG</a>
+                    " или "
+                    <a href="http://www.w3.org/TR/2dcontext/" target="_blank" rel="nofollow">HTML Canvas</a>
+                    ", то они, скорее всего, не новы для вас. Обрезка определяет видимую область элемента. Все, находящееся вокруг этой области, не видно – оно «отсекается». При наложении маски изображение-маска компонуется с элементом, влияя на альфа-канал этого элемента. Детали элемента с наложенной маской становятся полностью или частично прозрачными. Новая спецификация "
+                    <a href="http://dvcs.w3.org/hg/FXTF/raw-file/tip/masking/index.html" target="_blank" rel="nofollow">CSS Masking</a>
+                    " ставит своей целью укоренить эти две операции в мире HTML."
+                </em>
+            </p>
+            <p><h3>Обрезка в CSS 2.1</h3></p>
+            <p><a href="http://www.w3.org/TR/2004/CR-CSS21-20040225/visufx.html#clipping" target="_blank" rel="nofollow">CSS 2.1</a>
+            " уже занесли в спецификации свойство clip. Оно ограничено до прямоугольной обрезки с помощью функции rect(), принимающей четыре аргумента расстояния для верхнего, правого, нижнего и левого краев. Раздражает следующее: свойство clip применяется исключительно к абсолютно позиционированным элементам. В других элементах оно просто игнорируется."
+            </p>
+            <p></p>
+            <div style="position: relative; z-index: 1; overflow: hidden;">
+                <table>
+                <tbody>
+                     <tr>
+                        <td style="background-color: blueviolet; font-size: larger; width: auto;"> 
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                        </td>
+                        <td style="background-color: grey; font-size: larger">
+                            <div>
+                            <div><span>img {</span></div>
+
+                            <div><span>position : absolute</span></div>
+                            <div><span>clip rect (10px, 290px, 190px, 10px);</span></div>
+                            <div><span >}</span></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                </table> 
+            </div>
+            <p></p>
+            <div ><span style="background-color: grey; font-size: larger">&lt; img src = "image.jpg" width "568" &gt;</span></div>
+            <p><img src="image/mask1.jpg" width="503" height="376"></p>
+            <p><img src="image/mask2.jpg" width="503" height="376"></p>
+            <p>Свойство clip также ограничено до определенных элементов в SVG. Это причина того, почему спецификация SVG добавила свойство clip-path, которое сейчас адаптировано к CSS Masking.
+            </p>
+            <h3>Свойство clip-path</h3>
+            <p>Свойство clip-path можно применять ко всем элементам HTML, графическим элементам SVG и элементам-контейнерам SVG. Оно также ссылается на элемент clipPath или одну из базовых фигур, представленных
+            <a href="http://dev.w3.org/csswg/css3-exclusions"  rel="nofollow">CSS Exclusions</a> 
+            </p>
+            <p> Элемент берет любой графический элемент из SVG и использует их как область отсечения. Графические элементы в SVG – это rect, circle, ellipse, path, polygon, image и text. clipPath также дает возможность объединять множество графических элементов. Комбинация всех фигур затем используется как область отсечения. Применение clipPath демонстрирует следующий пример:</p>
+        </div>
+    </article>
+    <div class="divback">
+        <a href="examHW2.html">BACK</a>
+    </div> 
+    <footer>
+        <table style="margin-left:3em ; ">
+            <tr style="width: 50em;">
+                <td><a href="examHW2.html">Home</a></td>
+                <td><a href="tablestyle.html">Capabilities</a></td>
+                <td><a href="https://www.adobe.com/ru/products/photoshop.html" target="blank">Download</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://www.adobe.com/ru/products/photoshop.html" target="blank">Buy</a></td>
+                <td><a href="#">A new Version</a></td>
+                <td><a href="presssenter.html">Press Center</a></td>
+            </tr>
+            <tr>
+                <td><a href="#">Awards</a></td>
+                <td><a href="#">Servises</a></td>
+                <td><a href="aboutass.html#workwithus">Work with us</a></td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
