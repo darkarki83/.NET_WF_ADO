@@ -5,7 +5,7 @@ function HW4()
     let flag = true;
     let oneName = ``;
 
-    let names = [];
+    let names = [];d
 
     while(flag) {
         let name = prompt(`Get name father name and surname ?`, `Ivan ivanich ivanov`);
