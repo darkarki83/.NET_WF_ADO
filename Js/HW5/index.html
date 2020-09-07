@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prim</title>
+    <title>HW5</title>
     <script src="code.js" ></script>
+    <style>
+        img{
+            width: 150px; 
+            height: 150px;
+            margin: 20px;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div><img style="width: 40px; height: 40px;" id="one" src="image/1.jpg" alt="1" onclick="HW5(id)" ></div>
-    <div><img  style="width: 40px; height: 40px;" id="two" src="image/2.png" alt="1" onclick="HW5(id)" ></div>
-    <div><img  style="width: 40px; height: 40px;" id="three" src="image/3.jpg" alt="1" onclick="HW5(id)" ></div>
+    <h2>Выбери меня</h3>
+    <div>
+        <span>Состояние </span><span id=mytext> </span>
+    </div> <textbox id="text"> </textbox>
+    <span><img style="width: 100px; height: 100px;" id="one" src="image/1.jpg" alt="1" onclick="HW5(src)" data-tooltip="1.jpg (500*500 13.4kb)" ></span>
+    <span><img  style="width: 100px; height: 100px;" id="two" src="image/2.png" alt="2" onclick="HW5(src)" data-tooltip="2.png (500*500 202kb)" ></span>
+    <span><img  style="width: 100px; height: 100px;" id="three" src="image/3.jpg" alt="3" onclick="HW5(src)" data-tooltip="3.jpg (500*500 384kb)"></span>
+    <span><img style="width: 100px; height: 100px;" id="one" src="image/4.jpg" alt="4" onclick="HW5(src)" data-tooltip="4.jpg (500*500 25.2kb)" ></span>
+    <br>
+    <span><img  style="width: 100px; height: 100px;" id="two" src="image/5.jpg" alt="5" onclick="HW5(src)" data-tooltip="5.jpg (500*500 53.8kb)"></span>
+    <span><img  style="width: 100px; height: 100px;" id="three" src="image/6.png" alt="6" onclick="HW5(src)" data-tooltip="6.png (500*500 254kb)"></span>
+    <span><img style="width: 100px; height: 100px;" id="one" src="image/7.jpg" alt="7" onclick="HW5(src)" data-tooltip="7.jpg (500*500 21.5kb)"></span>
+    <span><img  style="width: 100px; height: 100px;" id="two" src="image/8.jpg" alt="8" onclick="HW5(src)" data-tooltip="8.jpg (500*500 28.7kb)"></span>
+    <br>
+    <span><img  style="width: 100px; height: 100px;" id="three" src="image/9.jpg" alt="9" onclick="HW5(src)" data-tooltip="9.jpg (500*500 21.4kb)"></span>
+    <span><img style="width: 100px; height: 100px;" id="one" src="image/10.png" alt="10" onclick="HW5(src)" data-tooltip="10.png (500*500 4.9kb)"></span>
     <script>
        //HW5();
     </script>
