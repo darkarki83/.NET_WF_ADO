@@ -9,8 +9,31 @@ function prim()
 
     let names = [];
 
-   
-        for (let i = 0 ; i < adress.length; i++) {
+    let lastindex = adress.indexOf('/');
+    names[0] = adress.slice(0, lastindex);
+    let tempStr = adress.slice(lastindex + 2);
+
+    lastindex = tempStr.indexOf('/');
+    names[1] = tempStr.slice(0, lastindex);
+    tempStr = tempStr.slice(lastindex);
+
+    lastindex = tempStr.lastIndexOf('/');
+    names[2] = tempStr.slice(0, lastindex + 1);
+    tempStr = tempStr.slice(lastindex + 1);
+
+    lastindex = tempStr.lastIndexOf('?');
+    names[3] = tempStr.slice(0, lastindex);
+    tempStr = tempStr.slice(lastindex + 1);
+    
+    names[4] = tempStr;
+
+    console.log(names);
+    names.forEach(element => {
+        console.log(`${element}` + `\n`);
+        document.write(element + "<br />");
+    });
+
+        /*for (let i = 0 ; i < adress.length; i++) {
             if(names.length == 0) {
                 if(adress.charAt(i) == `/`) {
                     i++;
@@ -68,5 +91,5 @@ function prim()
                 oneName += adress.charAt(i);
                 console.log(oneName);
             }
-        }
+        }*/
 }
