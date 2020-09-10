@@ -6,15 +6,10 @@ const da = 3 * Math.PI / 180;        // Приращение
 let a = 0;     // Угол (в 
 
 let Arr = [];                      
-function moveElem(a = 0, b = 0) {
-    if(Arr[0] == Number){
+function moveElem() {
+  
     elemToMove.style.left = Arr[0] + R * Math.cos(a) + "px";
     elemToMove.style.top = Arr[1] + R * Math.sin(a) + "px";
-    }
-    else{
-        elemToMove.style.left = a + R * Math.cos(a) + "px";
-        elemToMove.style.top = b + R * Math.sin(a) + "px";
-    }
 
     a += da;
 }
