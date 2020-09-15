@@ -41,6 +41,7 @@
         return false;
     };
 
+    
     /*function HW5(alt) 
     {
         currentImage = alt - 1;

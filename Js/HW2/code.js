@@ -10,7 +10,7 @@ function HW2()
     do {
         mynumber = prompt(`Get num?`, `${mynumber}`);
         flag = num == mynumber;
-        flag ? alert(flag ? `you are winner` : `you are loss`);
+        alert(flag ? `you are winner` : `you are loss`);
         flag = !confirm(`Do you want to continius?`);
     } while (!flag)
 

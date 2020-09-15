@@ -1,6 +1,6 @@
 "use strict"
 
-function HW3() 
+function HW4() 
 {
     
     let answer = [2,3,2,4,2];
@@ -18,19 +18,31 @@ function HW3()
     qoution.forEach((item) => console.log(item)); // на посмотреть
 
     for(let i = 0; i < qoution.length; i++) {
-        let ans = parseInt(prompt(qoution[i], `1`));
+        let ans = 0;
+        let flag = false;
+        do {
+        ans = parseInt(prompt(qoution[i], `1`));
+        flag = checkNumber(ans);
+        }while(!flag)
 
-        if (ans != NaN && (ans >= 1 && ans <= 4)) {
-            if(answer[i] == ans) {
-                result += 20;
-            }
-        }
-        else {
-            alert(`wrong input try again`);
-            i--;
-            continue;
+        if(answer[i] == ans) {
+            result += 20;
         }
     }
 
     alert(` your result is = ${result}`);
+}
+
+function checkNumber(number) {
+    // Создаем рег.выражение, определяющие номер телефона с кодом
+    const r = /\b[1-4]{1}\b/;
+
+    // Метод test просто проверяет подпадает или нет строка под регулярное выражение.
+    // Т.е., он возвращает true или false.
+    if (r.test(number))
+        return true;
+    else {
+        alert("wrong input try again");
+        return false;
+    }
 }
