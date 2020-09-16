@@ -8,10 +8,10 @@ let flag = false, myX, myY;
 
 function myMouseDown(event) {
 
-    flag = true
+    flag = true;
     myX = event.offsetX;
     myY = event.offsetY;
-    console.log("myMouseDown");
+    //console.log("myMouseDown");
 }
 
 function myMouseUp(event) {
@@ -20,15 +20,18 @@ function myMouseUp(event) {
 }
 
 function myMouseMove(event) {
-    console.log(`X : ${event.offsetX} , Y : ${event.offsetY}`);
-    div1.style.width = 500 + event.offsetX - myX + "px";
-    console.log(div1.style.width);
-    div1.style.height = 200 + event.offsetY - myY + "px";
+    if(flag == true) {
+        //console.log(`X : ${div1.style.width} , Y : ${div1.style.height}`);
+        //console.log(`X : ${parseInt(div1.style.width.slice(0,3))} , Y : ${parseInt(div1.style.height.slice(0,3))}`);
+        div1.style.width = 100 + event.offsetX  + "px";
+        //console.log(div1.style.width);
+        div1.style.height = 100 + event.offsetY  + "px";
+    }
 }
 
 div1.addEventListener("mousedown", myMouseDown);
 myBody.addEventListener("mousemove", myMouseMove);
 div1.addEventListener("mouseup", myMouseUp);
 
-car.addEventListener("mousedown", DownHandler);
-car.addEventListener("mouseup", UpHandler);
+//car.addEventListener("mousedown", DownHandler);
+//car.addEventListener("mouseup", UpHandler);
