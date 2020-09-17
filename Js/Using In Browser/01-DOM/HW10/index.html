@@ -4,12 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW10</title>
-    <script src="codeHW10.js"></script>
+    <style>
+        .space-around {
+            justify-content: space-around;
+        }
+        .flex-container {
+            display: flex;
+            border: 1px #ccc solid;
+            flex-wrap: wrap;
+            min-height: 500px;
+            flex-direction: column;
+        }
+        #myButton {
+            font-size: medium;
+            margin: 10px;
+            width: auto;
+            height: 50px;
+        }
+    </style>
 </head>
 <body>
-    <script>
+    <div>
+        <p>
+            <input type="radio" name="radio" value="value1"  checked /> Add element in the end
+            <input type="text" id="text1" style="margin-left: 40px;">
+        </p>
+        <p>
+            <input type="radio" name="radio" value="value2" /> Add element
+            <input type="text" id="text2" style="margin-left: 40px;">
+        </p>
+        <p>
+            <input type="radio" name="radio" value="value3" /> Change text element
+            <input type="text" id="text3" style="margin-left: 40px;">
+        </p>
+        <p>
+            <input type="radio" name="radio" value="value4" /> Add nested element
+            <input type="text" id="text4" style="margin-left: 40px;">
+        </p>
+        <p>
+            <input type="radio" name="radio" value="value5" /> Delete element
+        </p>
+    </div>
+    <button id="myButton" onclick="buttonClick(event)" > add new element </button> >
 
-    </script>
+    <script src="codeHW10.js"></script>
     
 </body>
 </html>
