@@ -1,0 +1,47 @@
+data/README.md.i
+data/vector/main.cpp.i
+data/vector/vector.vcxproj.i
+data/vector/vector.cpp.i
+data/class string/class string.vcxproj.i
+data/class string/str.h.i
+data/.hgignore.i
+data/class string/main.cpp.i
+data/class string/mercurial.ini.i
+data/class string/class string.vcxproj.filters.i
+data/vector/vector.sln.i
+data/class string/class string.sln.i
+data/vector/vector.vcxproj.filters.i
+data/vector/vector.h.i
+data/class string/str.cpp.i
+data/fraction/fraction.h.i
+data/fraction/fraction.vcxproj.i
+data/fraction/main.cpp.i
+data/fraction/fraction.sln.i
+data/fraction/fraction.cpp.i
+data/fraction/fraction.vcxproj.filters.i
+data/Date/main.cpp.i
+data/Date/Date.cpp.i
+data/Date/Date.vcxproj.filters.i
+data/Date/Date.h.i
+data/Date/Date.sln.i
+data/Date/Date.vcxproj.i
+data/fraction/desktop.ini.i
+data/Data/Date.vcxproj.i
+data/Data/Date.sln.i
+data/Data/Date.h.i
+data/Data/Date.vcxproj.filters.i
+data/Data/Date.cpp.i
+data/Data/main.cpp.i
+data/var/str.cpp.i
+data/var/var.sln.i
+data/var/var.vcxproj.i
+data/var/main.cpp.i
+data/var/var.h.i
+data/var/var.vcxproj.filters.i
+data/var/str.h.i
+data/shablon/shablon.vcxproj.i
+data/shablon/shablon.vcxproj.filters.i
+data/var/var.cpp.i
+data/shablon/main.cpp.i
+data/shablon/super_vector.h.i
+data/shablon/shablon.sln.i

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW18</title>
+</head>
+<body>
+<form id="myForm">
+<table>
+    <thead>
+        <tr style="text-align: center">
+            <td colspan="2"> Registration</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Login:</td>
+            <td>
+                <input
+                        id="text_login"
+                        type="text"
+                        value=""
+                        size="26"
+                        name="text-login"
+                        placeholder="Write name"
+                        pattern="[a-zA-Z0-9.-_]{3,12}"
+                        required
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input
+                        id="password1"
+                        type="text"
+                        value=""
+                        size="26"
+                        name="text-password"
+                        placeholder="Write password"
+                        pattern="[a-zA-Z0-9]{6,12}"
+                        required
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>Confirmation:</td>
+            <td>
+                <input
+                        id="password2"
+                        type="text"
+                        value=""
+                        size="26"
+                        name="text-confirmation"
+                        placeholder="Write confirmation"
+                        pattern="[a-zA-Z0-9]{6,12}"
+                        required
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>Full name:</td>
+            <td>
+                <input
+                        type="text"
+                        value=""
+                        size="26"
+                        name="text-fullname"
+                        placeholder="Write full name"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">Sex:</td>
+            <td >
+                <input type="radio" value="M" id="radio1" size="26" name="radio-sex"/> M<br />
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <input type="radio" value="W" id="radio2" size="26" name="radio-sex"/> W<br />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">Specialization:</td>
+            <td>
+                <input type="checkbox" name="choice_1" class="checkbox" value="Dising"/> Dising<br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="choice_2" class="checkbox" value="Programming"/> Programming<br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="choice_3" class="checkbox" value="Admin"/> Admin<br />
+            </td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td>
+                <input
+                        type="text"
+                        list="positionList"
+                        size="26"
+                        name="position"
+                        placeholder="PHP Junior"
+                        required
+                />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input id="submit" type="submit" value="Send" style="width: 70px" onclick="return LoginValidator()"/>
+                <input type="reset" value="Reset" style="width: 70px"/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>
+<datalist id="positionList">
+    <option value="PHP Junior" />
+    <option value="PHP Middle" />
+    <option value="JS Junior" />
+    <option value="JS Middle" />
+    <option value="C# Middle" />
+</datalist>
+
+
+
+<script src="codeHW18.js"></script>
+</body>
+</html>

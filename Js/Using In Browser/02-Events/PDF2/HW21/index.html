@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW21</title>
+    <style>
+        div {
+            margin-right: 100px;
+            margin-left: 100px;
+            margin-top: -15px;
+            background-color: #6633FF;
+            color: white;
+            border-color: black;
+            border-style:solid;
+            border-width: 5px;
+            height: 40px;
+        }
+        p {
+            background-color:deepskyblue;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="div0" style="margin-top: 20px"  >all Gays Hi
+    <p id="p0">Этот код создает объект options с геттером для свойства passive, устанавливающим
+        флаг passiveSupported в true, если он вызван. Это означает, что если браузер
+        проверяет значение свойства passive на объекте options, значение passiveSupported
+        будет установлено в true; в противном случае он останется ложным.</p>
+</div>
+<div id="div1">Затем мы вызываем
+    <p id="p1">addEventListener, чтобы настроить фальшивый обработчик событий, указав эти параметры
+        для проверки опций, если браузер распознает объект в качестве третьего параметра.
+        Для проверки поддержки использования какой-либо опции можно просто добавить геттер
+        для нее, используя код, подобный тому, что показан выше.</p>
+</div>
+<div id="div2">Для проверки поддержки
+    <p id="p2">десь мы добавляем слушателя для события mouseup элемента someElement. Для третьего
+        параметра, если passiveSupported имеет значение true, мы указываем объект options
+        с passive: true; в противном случае мы знаем, что нам нужно передать логическое
+        значение, и мы передаем false как значение параметра</p>
+</div>
+<div id="div3">Примеры
+    <p id="p3">Добавление простого слушателя
+        Эти примеры демонстрируют как использовать
+        addEventListener() для наблюдения за щелчками мышкой по элементу.
+        HTML Содержимое</p>
+</div>
+<script src="codeHW21.js"> </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW16</title>
+    <style>
+        body {
+            background-image: url(IMG/BG1.jpg);
+        }
+        h2{
+            text-align: center;
+            color: White;
+        }
+        #state {
+            text-aling: center;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <div>0
+        <img src="IMG\TITLE.jpg">
+    </div>
+    <h2 >Only Programming</h2>
+    <div>
+        <img style="width: 100px; height: 100px;" id="P0" src="SMALL\P0.jpg" alt="400*265"
+             data-tooltip="P0.jpg (400*265 5kb)" onclick="HW16(id)">
+        <img  style="width: 100px; height: 100px;" id="two" src="SMALL\P1.jpg" alt="1" onclick="HW5(src)"
+              data-tooltip="P1.jpg (400*300 13kb)" onclick="location.replace('index2.html?SMALL\P1.jpg')">
+        <img  style="width: 100px; height: 100px;" id="three" src="SMALL\P2.jpg" alt="2" onclick="HW5(src)"
+              data-tooltip="P2.jpg (400*300 18kb)" onclick="location.replace('index2.html?SMALL\P2.jpg')">
+        <img style="width: 100px; height: 100px;" id="four" src="SMALL\P3.jpg" alt="3" onclick="HW5(src)"
+             data-tooltip="P3.jpg (400*300 9kb)" onclick="location.replace('index2.html?SMALL\P3.jpg')" >
+        <img  style="width: 100px; height: 100px;" id="five" src="SMALL\P4.jpg" alt="4" onclick="HW5(src)"
+              data-tooltip="P4.jpg (400*300 28kb)" onclick="location.replace('index2.html?SMALL\P4.jpg')">
+        <img  style="width: 100px; height: 100px;" id="six" src="SMALL\P5.jpg" alt="5" onclick="HW5(src)"
+              data-tooltip="P5.jpg (400*297 21kb)" onclick="location.replace('index2.html?SMALL\P5.jpg')">
+        <img style="width: 100px; height: 100px;" id="seven" src="SMALL\P6.jpg" alt="6" onclick="HW5(src)"
+                   data-tooltip="P6.jpg (400*600 31kb)" onclick="location.replace('index2.html?SMALL\P6.jpg')">
+    </div>
+    <div id="state">
+        <p style="text-align: center">Состояние</p>
+        <p style="text-align: center" id=mytext> </p>
+        <textbox id="text"> </textbox>
+    </div>
+    <script src="codeHW16.js" ></script>
+</body>
+</html>
