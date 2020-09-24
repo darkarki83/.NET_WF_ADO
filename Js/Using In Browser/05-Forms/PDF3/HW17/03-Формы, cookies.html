@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Регистрационная форма</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="codeHW17.js"></script>
     <style>
         body {
             font: 10pt Tahoma;
@@ -22,7 +24,7 @@
     </style>
 </head>
 <body>
-    <form name="frm1">
+    <form id="form" name="form">
         <table class="form_holder1" cellspacing="1">
             <thead>
                 <tr>
@@ -32,15 +34,18 @@
             <tbody>
                 <tr>
                     <td>Логин:</td>
-                    <td><input size="26" type="text" name="login" /></td>
+                    <td><input id="login" size="26" type="text" name="login" value="" placeholder="KokaKolia" required
+                    /></td>
                 </tr>
                 <tr>
                     <td>Пароль:</td>
-                    <td><input size="26" type="password" name="text_password1" /></td>
+                    <td><input id="password1" size="26" type="password" name="text_password1" value=""
+                               placeholder="123456" required/></td>
                 </tr>
                 <tr>
                     <td>Подтверждение:</td>
-                    <td><input size="26" type="password" name="text_password2" /></td>
+                    <td><input id="password2" size="26" type="password" name="text_password2" value=""
+                               placeholder="123456" required /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -49,7 +54,7 @@
                 </tr>
                 <tr>
                     <td>Полное имя (ФИО):</td>
-                    <td><input size="26" type="text" name="fullname" /></td>
+                    <td><input size="26" type="text" name="fullname" value="" placeholder="Koka Kolia Zavod"/></td>
                 </tr>
                 <tr valign="top">
                     <td>Пол:</td>
@@ -84,7 +89,8 @@
                 </tr>
                 <tr>
                     <td>e-mail:</td>
-                    <td><input size="26" type="text" name="e_mail" /></td>
+                    <td><input size="26" type="text" name="e_mail" value=""
+                               placeholder="%@%.com" required/></td>
                 </tr>
                 <tr valign="top">
                     <td>
@@ -97,7 +103,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="button" value="Готово" /> <input type="reset" value="Сброс" />
+                        <input id="ready" type="submit" value="Ready" /> <input type="reset" value="Reset" />
                     </td>
                 </tr>
             </tbody>
@@ -105,3 +111,4 @@
     </form>
 </body>
 </html>
+

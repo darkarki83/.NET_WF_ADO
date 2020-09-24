@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW25</title>
+    <style>
+        #div0 {
+            background-color: aliceblue;
+        }
+        body {
+            width: 550px;
+        }
+        #artseats {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+<div id="div0">
+    <form style="margin: 15px;">
+        <span style="margin-right: 25px">Direction:</span>
+        <select id="city" name="city" style="margin-right: 25px">
+            <option value="lviv-odessa">lviv-odessa</option>
+            <option value="lviv-kiev">lviv-kiev</option>
+            <option value="kiev-lviv">kiev-lviv</option>
+            <option value="odessa-kiev">odessa-kiev</option>
+            <option value="kiev-odessa">kiev-odessa</option>
+        </select>
+        <span style="margin-right: 25px">Date:</span>
+       <input id="tdate" type="date" name="date" value="2020-05-01" max="2021-05-15" style="margin-right: 25px"/>
+       <input id="search" type="button" name="search" value="search"  style="margin-right: 25px"/>
+        <article id="artseats" style="visibility: hidden">
+        <hr />
+            <div>
+                <span>
+                    <input class="cbox" type="checkbox" name="check1" value="1" outerText="1">
+                    <input class="cbox"  type="checkbox" name="check2" value="2" outerText="3">
+                    <input class="cbox"  type="checkbox" name="check3" value="3" outerText="5">
+                    <input class="cbox"  type="checkbox" name="check4" value="4">
+                    <input class="cbox"  type="checkbox" name="check5" value="5">
+                    <input class="cbox"  type="checkbox" name="check6" value="6">
+                    <input class="cbox"  type="checkbox" name="check7" value="7">
+                    <input class="cbox"  type="checkbox" name="check8" value="8">
+                    <input class="cbox"  type="checkbox" name="check9" value="9">
+                    <input class="cbox"  type="checkbox" name="check10" value="10">
+                    <input class="cbox"  type="checkbox" name="check11" value="11">
+                    <input class="cbox"  type="checkbox" name="check12" value="12">
+                    <input class="cbox"  type="checkbox" name="check13" value="13">
+                    <input class="cbox"  type="checkbox" name="check14" value="14">
+                    <input class="cbox"  type="checkbox" name="check15" value="15">
+                </span>
+                <br>
+                <span>
+                    <input class="cbox"  type="checkbox" name="check16" value="16">
+                    <input class="cbox"  type="checkbox" name="check17" value="17">
+                    <input class="cbox"  type="checkbox" name="check18" value="18">
+                    <input class="cbox"  type="checkbox" name="check19" value="19">
+                    <input class="cbox"  type="checkbox" name="check20" value="20">
+                    <input class="cbox" type="checkbox" name="check21" value="21">
+                    <input class="cbox" type="checkbox" name="check22" value="22">
+                    <input class="cbox" type="checkbox" name="check23" value="23">
+                    <input class="cbox" type="checkbox" name="check24" value="24">
+                    <input class="cbox" type="checkbox" name="check25" value="25">
+                    <input class="cbox" type="checkbox" name="check26" value="26">
+                    <input class="cbox" type="checkbox" name="check27" value="27">
+                    <input class="cbox" type="checkbox" name="check28" value="28">
+                    <input class="cbox" type="checkbox" name="check29" value="29">
+                    <input class="cbox" type="checkbox" name="check30" value="30">
+                </span>
+            </div>
+            <hr/>
+            <div style="text-align: right; margin-bottom: -20px ">
+                <span>total price :</span>
+                <label id="money">0</label>
+                <span>$</span>
+                <input id="mybook" type="button" name="book" value="book" style="width: 95px">
+            </div>
+        </article >
+        <article id="artnoseats" style="visibility: hidden; height:0px" >
+            <div> no have train in this date </div>
+        </article>
+    </form><br><br/>
+
+    <article id="tickets" style="visibility: hidden">
+        <h2 style="text-align: left">My tickets:</h2>
+        <table id="mytable" style="font-size: 16px; width: 400px"  >
+            <tr id="first" style="margin: 20px">
+                <td style="margin: 10px">Direction</td>
+                <td>Date</td>
+                <td>Seat</td>
+            </tr>
+        </table>
+    </article>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="object.js"></script>
+<script src="codeHW25.js"></script>
+</body>
+</html>
