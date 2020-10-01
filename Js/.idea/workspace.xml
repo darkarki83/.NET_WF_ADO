@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5864f39e-3ff1-4f56-a970-e556a4d1f623" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Using In Browser/05-Forms/PDF2/HW19/codeHW19.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/img/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/img/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/img/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/img/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/img/pixel.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clock l/index2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/codeHW16.js" beforeDir="false" afterPath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/codeHW16.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Using In Browser/04-BOM/HW16/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Using In Browser/05-Forms/PDF3/HW17/03-Формы, cookies.html" beforeDir="false" afterPath="$PROJECT_DIR$/Using In Browser/05-Forms/PDF3/HW17/03-Формы, cookies.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1i7EuDGZTfUoPtsl68EsXzW7uF4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Apache24/Apache24/htdocs" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5864f39e-3ff1-4f56-a970-e556a4d1f623" name="Default Changelist" comment="" />
+      <created>1601250450300</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601250450300</updated>
+      <workItem from="1601250451431" duration="5000000" />
+      <workItem from="1601323352361" duration="113000" />
+      <workItem from="1601337582838" duration="7106000" />
+      <workItem from="1601407943754" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="266" y="261" key="FileChooserDialogImpl" timestamp="1601407968504">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="266" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601407968504" />
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1" timestamp="1601344211749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1601344211749" />
+  </component>
+</project>

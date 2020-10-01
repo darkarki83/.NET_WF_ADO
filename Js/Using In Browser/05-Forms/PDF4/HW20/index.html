@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW20</title>
+    <style>
+        :invalid {
+            box-shadow: none;
+        }
+
+        :-moz-submit-invalid {
+            box-shadow: none;
+        }
+
+        :-moz-ui-invalid {
+            box-shadow:none;
+        }
+        input:invalid {
+            background-color: #ffdddd;
+        }
+
+        form:invalid {
+            border: 5px solid #ffdddd;
+        }
+
+        input:valid {
+            background-color: #ddffdd;
+        }
+
+        form:valid {
+            border: 5px solid #ddffdd;
+        }
+
+        input:required {
+            border-color: #800000;
+            border-width: 3px;
+        }
+        input:required {
+            border-color: #800000;
+            border-width: 3px;
+        }
+    </style>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="codeHW20.js"></script>
+</body>
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <td style="text-align: center">Registration</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Email:</td>
+                </tr>
+                <tr>
+                    <td><input id="em" type="email"data-tooltip="эта подсказка длиннее, чем элемент" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="pass1" required></td>
+                </tr>
+                <tr>
+                    <td>Repeat:</td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="pass2" required></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="sign" value="Sign Up" ></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</html>

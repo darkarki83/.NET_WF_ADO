@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Поля для ввода url, email, телефона</title>
+  </head>
+  <body>
+    <form>
+      <p>
+        <label for="email">Email: </label>
+        <input autocomplete="off"
+          type="email"
+          placeholder="ivanov@gmail.com"
+          pattern=".+@[a-z]+\.[a-z]{2,3}"
+          required
+          id="email"
+          name="email"
+        />
+      </p>
+      <p>
+        <label for="url">URL: </label>
+        <input autocomplete="off"
+          type="url"
+          name="url"
+          id="url"
+          placeholder="https://itstep.org"
+          pattern="https://.*"
+          required
+        />
+      </p>
+      <p>
+        <label for="phone">Телефон: </label>
+        <input autocomplete="off"
+          type="tel"
+          placeholder="XXX-XXX-XXXX"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          required
+          id="phone"
+          name="phone"
+        />
+      </p>
+      <p>
+        <button type="submit">Отправить</button>
+      </p>
+    </form>
+  </body>
+</html>

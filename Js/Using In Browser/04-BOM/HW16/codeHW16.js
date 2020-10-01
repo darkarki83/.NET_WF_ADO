@@ -11,7 +11,7 @@ function HW16(id)
         newWin = window.open(
             `index2.html?BIG${'/' + id}.jpg`,
             `${id}`,
-            `width=${withg}, height=300, left=350, top=50, resizable=yes, menubar=yes, toolbar=yes, location=yes,` +
+            `width=auto, height=auto, left=350, top=50, resizable=yes, menubar=yes, toolbar=yes, location=yes,` +
             ` scrollbars=yes`
         );
         //location.href=`index2.html?SMALL${'/' + id}.jpg`
