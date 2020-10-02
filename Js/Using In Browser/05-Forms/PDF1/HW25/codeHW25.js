@@ -14,7 +14,7 @@
 
 console.log(search[0]);   games jQuery  :)))))
 */
-search = document.getElementById("search");                 // id button search
+let search = document.getElementById("search");                 // id button search
 search.addEventListener("click", ClickSearch);
 
 let mybook = document.getElementById("mybook");                // id button book
@@ -47,6 +47,7 @@ function ClickSearch() {
     let i = 0;
     for (i; i < allTrains.length; i++) {
         if (city.selectedOptions[0].innerText == allTrains[i].direction) {
+            console.log(allTrains[i].direction);
             if (tdate.value == allTrains[i]["date"]) {
                 LoadThisTickets(i);
                 tickets.style.visibility = "hidden";
