@@ -14,7 +14,7 @@ $nwords = array( "zero", "one", "two", "three", "four", "five", "six", "seven",
     "separator"=>"and", "minus"=>"minus");
 
 
-     $input = $_POST['text_1'];
+     $input = $_REQUEST['text_1'];
      //$input = '-44552';
      if(!is_numeric($input)) {
          echo "wrong input";
