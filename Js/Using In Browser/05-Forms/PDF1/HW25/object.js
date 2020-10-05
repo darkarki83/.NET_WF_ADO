@@ -25,6 +25,7 @@ function DirDateSeat(spasialdirection, spasialdate, spasialcost) {
 
 let allTrains = [];
 allTrains.push(DirDateSeat("lviv-odessa", "2020-05-02", 30));
+allTrains.push(DirDateSeat("lviv-odessa", "2020-05-01", 30));
 allTrains.push(DirDateSeat("lviv-kiev", "2020-05-02", 30));
 allTrains.push(DirDateSeat("kiev-lviv", "2020-05-02", 30));
 allTrains.push(DirDateSeat("odessa-kiev", "2020-05-02", 30));

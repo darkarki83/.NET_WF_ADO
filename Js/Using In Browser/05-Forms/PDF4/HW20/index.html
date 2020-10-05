@@ -4,78 +4,102 @@
     <meta charset="UTF-8">
     <title>HW20</title>
     <style>
-        :invalid {
-            box-shadow: none;
+
+        #grid {
+            display: grid;
+            grid-template-areas:
+                    "griditem1  griditem1"
+                    "griditem2 griditem3"
+                    "griditem4 griditem4"
+                    "griditem5 griditem6"
+                    "griditem7 griditem7"
+                    "griditem8 griditem9"
+                    "griditem10 griditem10"
+                    "griditem11 griditem11";
+
+
+            grid-template-rows: 6% 3% 5% 3% 5% 3% 5% 5% ;
+            grid-template-columns: 1fr 1fr ;
+            height: 100vh;
+            font-size: 20px;
+            background-color: bisque;
         }
 
-        :-moz-submit-invalid {
-            box-shadow: none;
+        #gridItem1 {
+            grid-area: griditem1;
+            text-align: center;
         }
 
-        :-moz-ui-invalid {
-            box-shadow:none;
-        }
-        input:invalid {
-            background-color: #ffdddd;
+        #gridItem2  {
+            grid-area: griditem2;
+            text-align: left;
         }
 
-        form:invalid {
-            border: 5px solid #ffdddd;
+        #gridItem3 {
+            grid-area: griditem3;
+            text-align: right;
         }
 
-        input:valid {
-            background-color: #ddffdd;
+        #gridItem4 {
+            grid-area: griditem4;
+            font-size: 20px;
         }
 
-        form:valid {
-            border: 5px solid #ddffdd;
+        #gridItem5 {
+            grid-area: griditem5;
+            text-align: left;
         }
 
-        input:required {
-            border-color: #800000;
-            border-width: 3px;
+        #gridItem6 {
+            grid-area: griditem6;
+            text-align: right;
         }
-        input:required {
-            border-color: #800000;
-            border-width: 3px;
+
+        #gridItem7 {
+            grid-area: griditem7;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        #gridItem8 {
+            grid-area: griditem8;
+            text-align: left;
+        }
+
+        #gridItem9 {
+            grid-area: griditem9;
+            text-align: right;
+        }
+
+        #gridItem10 {
+            grid-area: griditem10;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        #gridItem11 {
+            grid-area: griditem11;
+            margin-top: 15px;
+            text-align: center;
         }
     </style>
+
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="codeHW20.js"></script>
-</body>
-    <form>
-        <table>
-            <thead>
-                <tr>
-                    <td style="text-align: center">Registration</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Email:</td>
-                </tr>
-                <tr>
-                    <td><input id="em" type="email"data-tooltip="эта подсказка длиннее, чем элемент" name="email" required></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="pass1" required></td>
-                </tr>
-                <tr>
-                    <td>Repeat:</td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="pass2" required></td>
-                </tr>
-                <tr>
-                    <td><input type="button" name="sign" value="Sign Up" ></td>
-                </tr>
-            </tbody>
-        </table>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="codeHW20.js"></script>
+    <form id="grid" style="display: grid">
+        <label id="gridItem1">Registration</label>
+        <label id="gridItem2">Email:</label>
+        <label id="gridItem3" style="visibility: hidden">Wrong email address</label>
+        <input id="gridItem4" type="email" name="email"></input>
+        <label id="gridItem5">Password</label>
+        <label id="gridItem6" style="visibility: hidden">Wrong password</label>
+        <input id="gridItem7" type="password" name="pass1"></input>
+        <label id="gridItem8" >Confirm</label>
+        <label id="gridItem9" style="visibility: hidden">Wrong confirm</label>
+        <input id="gridItem10" type="password" name="pass2"></input>
+        <input id="gridItem11" type="button" name="sign" value="Save"></input>
     </form>
-
+</body>
 </html>

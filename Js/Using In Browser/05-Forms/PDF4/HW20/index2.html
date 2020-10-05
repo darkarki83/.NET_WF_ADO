@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All about object</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+</head>
+<body style="width: 550px; font-size: 20px">
+<script>
+    let clientMail = localStorage.getItem("email");
+    if(clientMail == undefined) {
+        location.href = 'index.html';
+    }
+</script>
+    <div style="text-align: right">
+        <span id="client"> </span>
+        <span> <a id="exit" href="index.html"> exit</a></span>
+        <br><hr>
+    </div>
+    <form id="sform">
+        <table id="table2" style="width: 550px">
+            <thead >
+                <tr style="text-align: center">
+                    <td colspan="2"><b>User info</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First Name:</td>
+                    <td>Last Name:</td>
+                </tr>
+                <tr>
+                    <td><input style="width: 220px"  type="text" name="firstName" required></td>
+                    <td ><input style="width: 220px" type="text" name="lastName" required></td>
+                </tr>
+                <tr>
+                    <td>Year of birth:</td>
+                    <td>Gender:</td>
+                </tr>
+                <tr>
+                    <td><input type="date" name="year" value="2020-10-04" min="1930-01-01" max="2020-10-05" required></td>
+                    <td>
+                        <select name="gender">
+                            <option value="Man" selected>Man</option>
+                            <option value="Women">Women</option>
+                            <option value="Bi">Bi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone number:</td>
+                    <td>Skype:</td>
+                </tr>
+                <tr>
+                    <td><input type="tel" name="phone"></td>
+                    <td><input type="text" name="skype"></td>
+                </tr>
+                <tr>
+                    <td><br></td>
+                    <td><br></td>
+                </tr>
+                <tr >
+                    <td colspan="2"><input type="button" name="save" value="save"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+    <label id="bye" style="margin: 20px; visibility: hidden"> thank you bye !!!</label>
+<script src="codeHW20.2.js"></script>
+</body>
+</html>

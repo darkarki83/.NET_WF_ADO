@@ -16,6 +16,7 @@ function HW16(id)
         );
         //location.href=`index2.html?SMALL${'/' + id}.jpg`
     //let src = location.search.slice(1);
+
 };
 
 let tooltipElem;
