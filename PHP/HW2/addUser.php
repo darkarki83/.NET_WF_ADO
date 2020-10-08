@@ -57,7 +57,7 @@ if(isset($_REQUEST['nickinput'])) {
 
 if(isset($_REQUEST['pass1'])) {
     $pass1 = $_REQUEST['pass1'];
-    $add_info .= $pass1 . ";";
+    $add_info .= md5($pass1) . ";";
 }
 
 if(isset($_REQUEST['email'])) {

@@ -1,7 +1,7 @@
 <?php
 
-    $myuser = fopen('user.txt', 'r+') or die('can not open the file');
 
+    $myuser = fopen('user.txt', 'r+') or die('can not open the file');
     $index = 0;
     echo '<table>';
     while(!feof($myuser)) {
