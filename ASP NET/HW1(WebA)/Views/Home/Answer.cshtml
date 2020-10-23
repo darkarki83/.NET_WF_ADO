@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Answer";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+@using HW1_WebA_.Helpers
+@{
+    string cal_action = ViewData["action"].ToString();
+}
+
+<div>
+    @ViewData["num1"] @cal_action @ViewData["num2"] =
+    @Html.Calculate(Convert.ToInt32(ViewData["num1"]), Convert.ToInt32(ViewData["num2"]), cal_action)
+</div>
+

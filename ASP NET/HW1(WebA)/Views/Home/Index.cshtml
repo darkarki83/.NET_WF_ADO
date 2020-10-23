@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "HW1";
+}
+
+
+    @using (@Html.BeginForm("Answer", "Home", FormMethod.Post))
+    {
+    <table style="border:0 ; margin:50px">
+        <tr>
+            <td colspan="2">@Html.Label("Num1", "Number 1 :")</td>
+            <td colspan="2">@Html.TextBox("Num1")</td>
+        </tr>
+        <tr>
+            <td colspan="2">@Html.Label("Num2", "Number 2 :")</td>
+            <td colspan="2">@Html.TextBox("Num2")</td>
+        </tr>
+        <tr>
+            <td style="width:100%"><button style="width:100%" name="action" value="+" >+</td>
+            <td style="width:100%"><button style="width:100%" name="action" value="-">-</td>
+            <td style="width:100%"><button style="width:100%" name="action" value="*">*</td>
+            <td style="width:100%"><button style="width:100%" name="action" value="/">/</td>
+        </tr>
+    </table>
+    }
+
