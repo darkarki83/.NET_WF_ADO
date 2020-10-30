@@ -35,6 +35,18 @@ namespace HW2.Controllers
         }
         public IActionResult MyProduct(string a)
         {
+            if(a == "/a.jpg")
+            {
+                ViewData["About"] = "black auto number one";
+            }
+            else if(a == "/b.jpg")
+            {
+                ViewData["About"] = "orange auto number two";
+            }
+            else if (a == "/c.jpg")
+            {
+                ViewData["About"] = "yellow auto number three";
+            }
             ViewData["Prod"] = a;
             return View();
         }
