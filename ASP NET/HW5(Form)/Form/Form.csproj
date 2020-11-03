@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>HW3_Model_</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

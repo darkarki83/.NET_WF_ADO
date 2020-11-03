@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Registry";
+}
+
+<h1>Registry</h1>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+<table style="border:2">
+    <tr>
+        [Required]
+        <td>@Html.Label("Login", "Login :")</td>
+        <td>@Html.TextBox("Login", null, new { @type = "login", required = "required"})</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Pass", "Password :")</td>
+        <td>@Html.Password("Pass", null, new { type = "password", required = "required" } )</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Confirm", "Confirm :")</td>
+        <td>@Html.Password("Confirm", null, new { type = "password", required = "required" })</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Email", "Email :")</td>
+        <td>@Html.TextBox("Email", null, new { type = "email", required = "required" })</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="submit" name="submit" value="Registry"  />
+        </td>
+    </tr>
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+}
+
+

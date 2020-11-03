@@ -1,9 +1,75 @@
-﻿@{
-    ViewData["Title"] = "Your Order";
+﻿@model HW3_Model_.Models.Order
+
+@{
+    ViewData["Title"] = "YourOrder";
 }
-<h1>@ViewData["Title"]</h1>
 
-@Html.DisplayForModel()
+<h1>YourOrder</h1>
 
-@Html.EditorForModel()
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row" style="text-align:right; width:70%">
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.FlowerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayNameFor(model => model.FlowerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Count)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Count)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CostomerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CostomerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOrder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOrder)
+        </dd>
 
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderAdress.Town)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderAdress.Town)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderAdress.Street)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderAdress.Street)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderAdress.House)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderAdress.House)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderAdress.Apartment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderAdress.Apartment)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+@using (@Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+<table style="border: 2">
+    <tr>
+        <td>@Html.Label("Login", "Login : ")</td>
+        <td>@Html.TextBox("Login")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Pass", "Password : ")</td>
+        <td>@Html.Password("Pass")</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center">
+            <input style="width:50%" type="submit" name="submit" value="Login" />
+        </td>
+    </tr>
+
+
+
+</table>
+}
+

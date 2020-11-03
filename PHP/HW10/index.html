@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<script src="jquery-3.5.1.js"></script>
+</head>
+<body>
+<form action="login.php" id="loginForm" method="post">
+    <input id="login" style="border-style: solid;  border-width: 3px" type="text" name="login"
+           placeholder="Логин"
+           onchange="Color()"
+    /><br /><br />
+    <input type="password" name="password" placeholder="Пароль" /><br /><br />
+    <input type="submit" value="Go" />
+</form>
+<div id="result"></div>
+<script type="text/javascript">
+    $(function(){
+        $("#loginForm").submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: $("#loginForm").attr('action'),
+                data: $("#loginForm").serialize(),
+                type: 'POST',
+                // Функция, код которой будет выполнен если запрос будет завершен успешно.
+                success: function(data){
+                    $('#result').html(data);
+                },
+                // Функция, код которой будет выполнен если во время исполнения запроса произойдет ошибка.
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        });
+    });
+
+    function Color() {
+        $.ajax({
+            url: $("#loginForm").attr('action'),
+            data: $("#login").serialize(),
+            type: 'POST',
+            // Функция, код которой будет выполнен если запрос будет завершен успешно.
+            success: function(data){
+
+                if(data == 1) {
+
+                    $('#login').css("border-color", 'red').css("background-color", "lightgrey");
+                }
+                else{
+                    $('#login').css("border-color", 'blue').css("background-color", "lightgreen");
+                }
+            },
+
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+</script>
+</body>
+</html>

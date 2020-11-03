@@ -1,0 +1,47 @@
+﻿@model List<ModelView.Models.Product>
+
+@{
+    ViewData["Title"] = "ProductPage";
+}
+
+<h1>ProductPage</h1>
+
+<div>
+    <h4>Id.Name - Price</h4>
+    <hr />
+
+    @Html.Partial("Partial")
+
+</div>
+
+<div>
+    <h4>Table </h4>
+    <hr />
+    <table style="width:80%">
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(Model => Model[0].Id)</td>
+                <td>@Html.DisplayNameFor(Model => Model[0].Name)</td>
+                <td>@Html.DisplayNameFor(Model => Model[0].Price)</td>
+                <td>@Html.DisplayNameFor(Model => Model[0].CreateDate)</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(Model => item.Id)</td>
+                        <td>@Html.DisplayTextFor(Model => item.Name)</td>
+                        <td>@Html.DisplayFor(Model => item.Price)</td>
+                        <td>@Html.DisplayFor(Model => item.CreateDate)</td>
+                    </tr>
+            }
+            }
+            </tbody>
+        </table>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
