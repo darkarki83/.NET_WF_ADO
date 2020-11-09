@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DB.Models.Account>
+
+@{
+    ViewData["Title"] = "AllUsers";
+}
+
+<h1>AllUsers</h1>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <table>
+        <tr class="tab-content">
+            <td style="width:150px">Id</td> 
+            <td style="width:150px">User</td>
+            <td style="width:150px">Pass</td>
+            <td style="width:150px">Confirm</td>
+            <td style="width:150px">Email</td>
+        </tr>
+        @foreach(var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.User</td>
+                <td>@user.Pass</td>
+                <td>@user.PassConfirm</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+   
+</div>

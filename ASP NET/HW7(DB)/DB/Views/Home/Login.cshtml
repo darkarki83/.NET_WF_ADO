@@ -1,0 +1,54 @@
+﻿@model DB.Models.Account
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+   
+    <div>
+      @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+      {
+          <table>
+            <tr>
+                <td style="width:150px">@Html.LabelFor(Model => Model.Id)</td>
+                <td>@Html.TextBoxFor(Model => Model.Id)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.Id)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.User)</td>
+                <td>@Html.TextBoxFor(Model => Model.User)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.User)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.Pass)</td>
+                <td>@Html.PasswordFor(Model => Model.Pass)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.Pass)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.PassConfirm)</td>
+                <td>@Html.PasswordFor(Model => Model.PassConfirm)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.PassConfirm)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(Model => Model.Email)</td>
+                <td>@Html.TextBoxFor(Model => Model.Email)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.Email)</td>
+            </tr>
+            <tr>
+                <td >
+                    <input style="width: 100px" type="submit" name="login" value="Add" />
+                </td>
+            </tr>
+           </table>
+      }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("AllUsers", "AllUsers", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
