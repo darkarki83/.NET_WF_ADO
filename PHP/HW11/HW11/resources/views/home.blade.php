@@ -5,7 +5,27 @@
 @endsection
 
 @section('content')
-<h1>Home page</h1>
+    <form action="{{ route('home') }}" method="post">
+        @csrf
+        <select name="Country">
+            <option value="0" disabled selected>Choose option</option>
+            @if(isset($date))
+                @foreach($date as $el)
+                    <option  value="{{ $el->id }}" >{{ $el->country }}</option>
+                @endforeach
+            @endif
+        </select>
+        <select name="City">
+            <option value="" disabled selected>Choose option</option>
+
+            @if(isset($city))
+                @foreach($city as $el)
+                    <option  value="{{ $el->id }}" >{{ $el->city }}</option>
+                @endforeach
+            @endif
+        </select>
+
+
 @endsection
 
 @section('aside')

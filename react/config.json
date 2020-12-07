@@ -1,0 +1,15 @@
+{
+    "database":{
+        "host": "localhost",
+        "port": 3306,
+        "user": "ar_user",
+        "password": "ART",
+        "database": "ar_db",
+        "charset": "utf8"
+    },
+    "pages": [
+        "Home",
+        "Products",
+        "Contact"
+    ]
+}

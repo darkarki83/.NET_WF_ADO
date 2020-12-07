@@ -1,0 +1,14 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "database basics",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Artem K.",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^2.2.5"
+  }
+}

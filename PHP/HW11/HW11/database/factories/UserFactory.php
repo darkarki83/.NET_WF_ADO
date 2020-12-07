@@ -15,6 +15,14 @@ class UserFactory extends Factory
      */
     protected $model = User::class;
 
+   // protected $count_model = countries::class;
+
+   /*public function definitionC()
+    {
+        return [
+            'country' => $this->faker->name,
+         ];
+    }*/
     /**
      * Define the model's default state.
      *

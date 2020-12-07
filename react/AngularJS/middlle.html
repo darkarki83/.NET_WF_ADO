@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS middlle</title>
+</head>
+<body ng-app="mainModule">
+    <h1>AngularJS: модули контролеры</h1>
+    Модуль (прложение) - указаной дерективой ng-app облость документа
+    Для доступа к функциям приложения его именуют ng-app="имяПриложения". 
+    Доступ обеспечевается в скриптовом блоке инструкций <br/>
+    <tt>angular.module("имяПриложения", [зависимые модули])</tt><br/>
+    <strong>angular.module("имяПриложения") - гетер - поиск модуля</strong>
+    Проверка: <div>{{ 1 + 2 }}</div>
+    Контролер - обьектб обеспечевающий лакализацию даных и управления ими.<br/>
+    Разделение контролеров позволяет делать независимыми отдельные блоки одного приложения(страницы)<br/>
+    controller создается дерективой controller модуля приложения.<br/>
+    -блок, находящийся под управлением контролера задается отрибутом ng-controller <br/>
+    -Инициализация контролера - <tt>app.controller("имяКонролера", функция инициализации)</tt><br/>
+
+    <div style="border: 2px solid #888" ng-controller="contr1"> 
+        <p>Date1: {{ data1}} </p>
+    </div>
+    <div style="border: 2px solid #555" ng-controller="contr2"> 
+        <p>Date1: {{ data1}} </p>
+        <p>x : {{ x }} </p>
+        <p>y : {{ y }} </p>
+    </div>
+    <div style="border: 2px solid #555" ng-controller="contr3"> 
+        <b>{{  num  }}</b>
+        <input type="button" value="+" ng-click="plusClick">
+    </div>
+    
+    
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        var app = angular.module("mainModule", []);  // Создение моделя у обьекта Window
+        app.controller( // make controller
+            "contr1",  // controler name 
+            function( $scope ) {  // функция инициализации $scope - служебное слово
+                $scope.data1 = "The data 1";
+            
+        });
+        app.controller( // make controller
+            "contr2",  // controler name 
+            function( $scope ) {  // функция инициализации $scope - служебное слово
+                $scope.data1 = "The data 1 in contr 2";
+                $scope.x = 10;
+                $scope.y = 10.5;
+            
+        });
+
+        app.controller( // make controller
+            "contr3",  // controler name 
+            function( $scope ) {  // функция инициализации $scope - служебное слово
+                $scope.num = 10;
+            
+        });
+
+    </script>
+
+</body>
+</html>

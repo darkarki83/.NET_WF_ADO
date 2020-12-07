@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS basics</title>
+</head>
+<body>
+    <h1>AngularJS basics</h1>
+    Angular - Frontend framework  - инстрементарий для разработки интерфейса пользавателя <br/> 
+    AngularJS - (Angular 1.x) - HTML орентированый вариант <br/> 
+    Angular (CLI, 2...) - для более маштабных проэктов <br/> 
+    <h1>Установка</h1>
+    1)Скачать с https://angularjs.org/ <br/> 
+    2) установка через npm iangular( если новая папка не забыть создфть конфиг npm init) <br/> 
+    3) подключить скрипты <br/>
+
+    <h2>Used (Проверка подключения)</h2>
+    1) указать облость (блок) действия Angular : этот блок должен содержать ng-app 
+    в большенстве проэктов ng-app относится ко всему документу html <br/>
+    2)Add Angular expression { { 1 + 3 } } <br/>
+
+    <div ng-app style="margin: 20px; font-size: 20px; background-color: aqua;"> {{ 1 + 3 }} {{"Hello" + "Work"}}</div>
+
+    <h2>Banding - связывание даных</h2>
+    MVC / MVVM - Model-View-Controler <br/>
+    1. Model(источник даных - в Angular переменные) <br/>
+    2. View(отоброжение переменой - вырожение) <br/>
+
+    <div style="padding: 10px; background-color: aqua;">
+        Model: <input ng-model="userinput"/> <br/>
+        <div style="background-color: tomato; font-size: 20px;" > View: {{ userinput}} </div>
+    </div>
+
+    <table style="width: 50%;">
+        <tr style="text-align: center;">
+            <th>Model</th>
+            <th style="border-left: 2px solid maroon;">View<th>
+        </tr>
+        <tr >
+            <td>
+                Text: <input ng-model="my_text" />
+            </td>
+            <td style="border-left: 2px solid maroon;">
+                Text: {{my_text}}
+            </td>
+        </tr>
+        <tr >
+            <td>
+                Text2: <input ng-model="my_text2" />
+            </td>
+            <td style="border-left: 2px solid maroon;">
+                Text2: {{my_text2}}
+            </td>
+        </tr>
+        <tr >
+            <td> </td>
+            <td style="border-left: 2px solid maroon;">
+                Combinate: {{my_text}} {{my_text2}}
+            </td>
+        </tr>
+        <tr >
+            <td>Color: <input type="color" ng-model="my_color" /> </td>
+            <td style="border-left: 2px solid maroon;">
+                Color: {{my_color}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Number: <input type="number" ng-model="my_num" />
+            </td>
+            <td style="border-left: 2px solid maroon;">
+                Number: {{my_num}} <br/>
+            <td>
+        </tr>
+        <tr>
+            <td>
+                Gander: <input type="radio" name="radio1" ng-model="r1" value="Male" />M
+                <input type="radio" name="radio1" ng-model="r1" value="Famale" />F
+            </td>
+            <td style="border-left: 2px solid maroon;">
+                Number: {{r1}} <br/>
+            <td>
+        </tr>
+    </table>
+    
+   
+  
+    
+
+    <script src="node_modules/angular/angular.min.js"></script>
+</body>
+</html>
