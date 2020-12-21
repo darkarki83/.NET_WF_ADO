@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,9 @@ namespace HW8_DB_.Models
 {
     public class Product
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
+
         [Required(ErrorMessage = "Required field")]
         [Remote("CheckProduct", "Home", ErrorMessage = "there is a product with that name")]
         [DataType(DataType.Text)]

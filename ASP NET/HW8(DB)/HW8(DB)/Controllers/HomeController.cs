@@ -1,5 +1,6 @@
 ﻿using HW8_DB_.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,13 @@ namespace HW8_DB_.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private StoreDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(StoreDBContext context)
         {
-            _logger = logger;
+            _context = context;
         }
+
 
         public IActionResult Index()
         {
@@ -28,9 +30,29 @@ namespace HW8_DB_.Controllers
             return View();
         }
 
-        public IActionResult ProductView()
+        public IActionResult CreateProduct()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                product.Date = DateTime.Now;
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ProductView));
+            }
+            else
+                return View(product);
+            
+        }
+
+        public async Task<IActionResult> ProductView()
+        {
+            return View(await _context.Products.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

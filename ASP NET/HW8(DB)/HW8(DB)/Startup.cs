@@ -1,6 +1,8 @@
+using HW8_DB_.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,13 @@ namespace HW8_DB_
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Читаем строку соединения из файла конфигурации (по умолчанию
+            // в сгенерированном проекте ASP.NET Core MVC — это файл appsettings.json)
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            // Регистрируем контекст для доступа к нашей БД в коллекции сервисов нашего MVC-приложения
+            services.AddDbContext<StoreDBContext>(options => options.UseSqlServer(connectionString));
+
+
             services.AddControllersWithViews();
         }
 

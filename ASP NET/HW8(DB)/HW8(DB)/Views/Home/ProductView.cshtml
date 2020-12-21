@@ -1,4 +1,4 @@
-﻿@model HW8_DB_.Models.Product
+﻿@model IEnumerable<HW8_DB_.Models.Product>
 
 @{
     ViewData["Title"] = "ProductView";
@@ -8,45 +8,27 @@
 
 <div>
     <h4>Product</h4>
-    <hr />
-    <dl class="row">
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
 </div>
 
 <div id="productform">
-    <form asp-action="ProductView" asp-controller="Home" method="post" >
-        <div asp-validation-summary="All"></div>
-        <table>
-            <tr>
-                <td style="width:150px"><label asp-for="Name"></label></td>
-                <td>
-                    <input asp-for="Name" size="50" />
-                    <span asp-validation-for="Name"></span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:150px"><label asp-for="Cost"></label></td>
-                <td>
-                    <input asp-for="Cost" size="50" />
-                    <span asp-validation-for="Cost"> </span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:150px"><label asp-for="Description"></label></td>
-                <td>
-                    <textarea asp-for="Description"  cols="53" rows="7"></textarea>
-                    <span asp-validation-for="Description"> </span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="collapsing">
-                    <input type="submit"id="add" name="add" value="Add" style="width:150px"/>
-                </td>
-            </tr>
+    <table class="table">
+        <tr>
+            <th scope="col"> ID </th>
+            <td scope="col"> Name </td>
+            <td scope="col"> Cost </td>
+            <td scope="col"> Description </td>
+            <td scope="col"> Date </td>
+        </tr>
+            @foreach (var prod in Model)
+            {
+                 <tr>
+                     <th scope="row"> @prod.Id </th>
+                     <td> @prod.Name </td>
+                     <td> @prod.Cost </td>
+                     <td> @prod.Description </td>
+                     <td> @prod.Date </td>
+                 </tr>
+             }
+
         </table>
-    </form>
 </div>

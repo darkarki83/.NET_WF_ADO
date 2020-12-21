@@ -1,0 +1,52 @@
+﻿@model HW8_DB_.Models.Product
+
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<h1>CreateProduct</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div id="productform">
+    <form asp-action="CreateProduct" asp-controller="Home" method="post">
+        <!--<div asp-validation-summary="All"></div>-->
+        <table>
+            <tr>
+                <td style="width:150px"><label asp-for="Name"></label></td>
+                <td>
+                    <input asp-for="Name" size="50" />
+                    <span asp-validation-for="Name"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:150px"><label asp-for="Cost"></label></td>
+                <td>
+                    <input asp-for="Cost" size="50" />
+                    <span asp-validation-for="Cost"> </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:150px"><label asp-for="Description"></label></td>
+                <td>
+                    <textarea asp-for="Description" cols="53" rows="7"></textarea>
+                    <span asp-validation-for="Description"> </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="collapsing">
+                    <input type="submit" id="add" name="add" value="Add" style="width:150px" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>

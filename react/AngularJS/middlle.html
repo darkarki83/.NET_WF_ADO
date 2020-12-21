@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS middlle</title>
+    <style>
+        td {
+            border-right: 2px solid rgb(32, 22, 22);
+            width: 33%;
+            
+        }
+    </style>
 </head>
 <body ng-app="mainModule">
     <h1>AngularJS: модули контролеры</h1>
@@ -29,9 +36,33 @@
     </div>
     <div style="border: 2px solid #555" ng-controller="contr3"> 
         <b>{{  num  }}</b>
-        <input type="button" value="+" ng-click="plusClick">
+        <input type="button" value="+" ng-click="plusClick()">
+        <input type="button" value="-" ng-click="minusClick()">
+        
     </div>
-    
+    <div style="border: 2px solid #555" ng-controller="contr4"> 
+        <h3 ng-repeat="a in arr">Element - {{ a }} </h3>
+        <div style="border: 2px solid rgb(32, 22, 22); display: inline-block; margin: 10px" 
+            ng-repeat="b in objarr">
+            <p style="text-align: center;">{{ b.id }}</p>
+            <b>{{ b.name }}</b>
+            <i>{{ b.val }}</i>
+        </div>
+    </div>
+    <div style="border: 2px solid #555" ng-controller="contrRates">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Short name</td>
+                <td>Rate</td>
+            </tr>
+            <tr ng-repeat="r in rates"> 
+                <td> {{ r.txt }} </td>
+                <td> {{ r.cc }} </td>
+                <td> {{ r.rate }} </td>
+            </tr>
+        </table>``
+    </div>
     
     <script src="node_modules/angular/angular.min.js"></script>
     <script>
@@ -55,9 +86,39 @@
             "contr3",  // controler name 
             function( $scope ) {  // функция инициализации $scope - служебное слово
                 $scope.num = 10;
-            
+                $scope.plusClick = function() {
+                    $scope.num += 1;   // banding - изменение сразу отображается
+                };                     // не требуется label.text = num / update / refresh / invalidate
+                $scope.minusClick = function() {
+                    if($scope.num > 0) {
+                    $scope.num -=  1;
+                    }
+                };
         });
 
+        angular.module( "mainModule" )   // без  ,[] это (get)запросить модуль аналог переменой app
+        .controller( // make controller
+            "contr4",  // controler name 
+           ( $scope ) =>  {  // функция инициализации $scope - служебное слово
+                $scope.arr = [ 1, 25, 3, 4, 5, 6, 7, 8, 9];
+                $scope.objarr = [ 
+                    { name: "obj1", val: 11, id: 1},
+                    { name: "obj2", val: 12, id: 2},
+                    { name: "obj3", val: 13, id: 3},
+                    { name: "obj4", val: 14, id: 4},
+                    { name: "obj5", val: 15, id: 5},
+                ]
+        });
+
+        app.controller( // make controller
+            "contrRates", function($scope, $http) {          // http - ресурс для работы с HTTP
+                $http.get( "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json" )// ~windows.fatch
+                .then(
+                    response => { // даные от сервера приходят в data
+                        $scope.rates = response.data;
+                    }
+                ); 
+        });
     </script>
 
 </body>

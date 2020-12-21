@@ -1,7 +1,10 @@
 {
     "database":{
         "host": "localhost",
-        "port": 3306
+        "port": 3306,
+        "user": "numbers_user",
+        "password": "numbers_pass",
+        "database": "numbers"
     },
     "pages": [
         "Home",

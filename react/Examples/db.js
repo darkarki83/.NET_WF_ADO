@@ -63,7 +63,7 @@ async function showAll() {
         }).catch(console.error);
 }
 
-async function addNumber() {
+/*async function addNumber() {
     if(typeof config == 'undefined') {
         throw "Config undefined (addNumber)"; // exceptions
     }
@@ -78,9 +78,9 @@ async function addNumber() {
             con.end();
         });
 
-}
+}*/
 
-async function createTable() {
+/*async function createTable() {
     if(typeof config == 'undefined') {
         throw "Config undefined (create table)"; // exceptions
     }
@@ -102,4 +102,4 @@ async function createTable() {
             //con.end();
         }
     );
-}
+}*/

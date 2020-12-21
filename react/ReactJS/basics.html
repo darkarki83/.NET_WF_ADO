@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sublist{
+            background-color: blueviolet;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>ReactJS basics</h1>
+    <p>
+        Подготовка: <br/>
+        - Создание папки ReactJS <br/>
+        - Инициализация ее (npm install init) <br/>
+        - Установки пакетов (npm i react react-dom) <br/>
+    </p>Подготовка 
+
+    <p>
+        Подключение (script) <br/>
+        node_modules/react/cjs/react.development.js (script) <br/>
+        node_modules/react/cjs/react.production.min.js () <br/>
+        Мини пакет если сайт рабочий (без вывода ошибок)<br/>
+
+        node_modules/react-dom/cjs/react-dom.development.js (script) <br/>
+        node_modules/react-dom/cjs/react-dom.production.min.js <br/>
+        Мини пакет если сайт рабочий (без вывода ошибок)<br/>
+
+        !!Порядок подключения важен!! <br/>
+    </p>
+    <p>
+        Hello, world! <br>
+        1. В HTML создания container <br>
+        2. Add script <br>
+        2.1 Реакт-Компонент является классом - наследника React.Component
+        2.2 Класс должен реализовывать метод reader ()
+        2.3 Обьект класса вставяется в контейнер средствами react-dom
+
+    </p>
+    <div id="container1"></div>
+    <div id="container2"></div>
+
+    <p>
+        React.createElament ( <br/>
+            1. Тег или Класс создаваемого обьекта<br/>
+            2. Обьект (JSON) своств (props)<br/>
+            3. Дочерний елемент<br/>
+    </p>
+
+    <script src="scripts/react.development.js" ></script>
+    <script src="scripts/react-dom.development.js" ></script>
+    <script>
+        class OurHello extends React.Component {
+            render() {
+                return React.createElement( 'h1', null, 'HELLO, WORLD!!!');
+            }
+        }
+        ReactDOM.render(
+            React.createElement( OurHello, null, null ),
+            document.getElementById( "container1" )
+        )
+
+        class Cont2 extends React.Component {
+            render() {
+                return React.createElement( 
+                    'ul', //Tag    
+                    { style: { color:"maroon" } }, //props - object prorerties
+                    
+                    // children - CSV (comma separated values) / or array
+                    React.createElement( 'li', {}, 'Item 1'),
+                    React.createElement( 'li', {}, 'Item 2'),
+                    React.createElement( 'li', {}, 'Item 3'),
+                    React.createElement( 'li', {}, 'Item 4'),
+                    React.createElement( 'li', {}, 'Item 5'),
+                    React.createElement( 'ol', {className: "sublist" , id: "sub"}, 
+                    [
+                        React.createElement( 'li', { key: 1 }, 'SubItem 1'),
+                        React.createElement( 'li', { key: 2 }, 'SubItem 2'),
+                        React.createElement( 'li', { key: 3 }, 'SubItem 3'),
+                    ]
+                    ),
+                );
+            }
+        }
+        ReactDOM.render(
+            React.createElement( Cont2, null, null ),
+            document.getElementById( "container2" )
+        )
+    </script>
+</body>
+</html>

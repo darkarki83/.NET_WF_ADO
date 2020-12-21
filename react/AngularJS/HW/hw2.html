@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS middlle</title>
+    <style>
+        td {
+            border-right: 2px solid rgb(32, 22, 22)
+        }
+    </style>
+</head>
+<body ng-app="mainModule">
+
+  
+  <div style="border: 2px solid #555" ng-controller="contrRates">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Short name</td>
+                <td>Rate</td>
+            </tr>
+            <tr ng-repeat="r in rates"> 
+                <td> {{ r.txt }} </td>
+                <td> {{ r.cc }} </td>
+                <td> {{ r.rate }} </td>
+            </tr>
+        </table>
+    </div>
+    
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var app = angular.module("mainModule", []);  // Создение моделя у обьекта Window
+      
+        app.controller("contrRates", function($scope, $http) { $http.get( "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json" ).then(
+                    response => { // даные от сервера приходят в data
+                        $scope.rates = response.data;
+                        console.log($scope.rates);
+                    }
+                ); 
+        });
+    </script>
+</body>
+</html>

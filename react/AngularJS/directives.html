@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular directives</title>
+</head>
+<body ng-app="mainApp">
+    <h1> AngularJS: Дерективы </h1>
+    <p>
+        Директивы AngularJS - эволюция идеи контролеров -
+        движение в направлении усилия локолизации. 
+        Директивы призваны уменьшить облости "пересечения" при 
+        размецении блока в HTML - они кроме кода (контролеров)
+        включают  себя разметку (template)
+    </p>
+    <p>
+        Дерективы размецаются одним из 4 способов:<br>
+        Атрибутом(А) -  &lt;div dir1> &lt;/div><br>
+        Классом(С) -  &lt;div class="dir2"> &lt;/div><br>
+        Тэгом(E) -  &lt;dir3>&lt;/dir3><br>
+        Коментарием(M) - &lt;!-- directive:dir4-->
+        Смешаный (комбинированый) - restrict:"ACE"
+    </p>
+    <div style="background-color: azure;">
+        <div dir1> </div>
+        <div class="dir2"> </div>
+        <dir3></dir3>
+        <!-- directive:dir4 -->
+        
+    </div>
+    <script src="node_modules/angular/angular.min.js" ></script>
+    <script>
+        const app = angular.module( "mainApp", [] );
+        
+        app.directive( "dir1", function() {
+            return {
+                restrict: "A", 
+                template: "<b>directive 1</b> <div>Popka durakk</div>"
+            }
+        });
+        app.directive( "dir2", function() {
+            return {
+                restrict: "C", 
+                template: "<b><i>directive 2</i></b> <div>Popka durakk</div>"
+            }
+        });
+        app.directive( "dir3", () => { 
+            return {
+                restrict: "E", 
+                template: "<b><i>directive 3</i></b> <br> <b>x1 = {{ x1 }} </b> <div>Popka durakk</div>",
+                controller: function($scope) {
+                    $scope.x1 = 10;
+                }
+            }
+        });
+        app.directive( "dir4", function() {
+            return {
+                restrict: "M", 
+                template: "<s>Directive 4</s> ",
+                replace: true
+            }
+        });
+    </script>
+</body>
+</html>

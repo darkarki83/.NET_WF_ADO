@@ -1,0 +1,14 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "artem",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2"
+  }
+}

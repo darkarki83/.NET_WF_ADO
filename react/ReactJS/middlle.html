@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React middlle</title>
+    <style>
+        .mydiv{
+            border: 2px solid black;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>ReactJS: constructor, state</h1>
+    <div id="container1"></div>
+
+    <div id="calcContainer1"></div>
+    <div id="calcContainer2"></div>
+  
+
+    <script src="scripts/react.development.js"></script>
+    <script src="scripts/react-dom.development.js"></script>
+    <script>
+        const e = React.createElement ;
+        
+        class Cont1 extends React.Component {
+            constructor( props ) {
+                super( props ) ;  // parametr in constructor при оздании обьекта 
+
+                this.state = { y: 20 } ; // Обьект состояния Object state
+            }
+
+
+            render() {
+                return e( 'b', {}, 'Work ' + this.props.x + ' // ' + this.state.y );
+            }
+        }
+
+        ReactDOM.render( 
+            e ( Cont1, { x: 50 }, null ),
+            document.getElementById( "container1")
+            );
+
+        class Calc extends React.Component {
+            constructor( props ) {
+                super( props ) ;  // parametr in constructor при оздании обьекта 
+
+                this.state =  { num: `${props.num}` } ;
+                this.plusClick = this.plusClick.bind( this ); 
+                this.minusClick = this.minusClick.bind( this ); 
+            }
+
+            plusClick() {
+                this.setState( st => {
+                    if(st.num < 100 ) {
+                    st.num++;
+                    return st; 
+                    }
+                });
+            }
+
+            minusClick() {
+
+                this.setState( st => {
+                    if(st.num > 0 ) {
+                    st.num--;
+                    return st;
+                    } 
+                });
+            }
+
+            render() {
+                return e( // может возврацать только один элемент
+                   'div', // оболочка - для трех элементов
+                    { className : 'mydiv' },
+                    e( 'button',  { onClick: this.minusClick}, '-' ),
+                    e( 'span',  {}, this.state.num ),
+                    e( 'button',  { onClick: this.plusClick }, '+' )
+                );
+            }
+        }
+
+        ReactDOM.render( 
+            e( Calc, { num:12 }, null ),
+            document.getElementById( "calcContainer1")
+            );
+
+        ReactDOM.render( 
+            e( Calc, { num:50 }, null ),
+            document.getElementById( "calcContainer2")
+            );
+    </script>
+</body>
+</html>

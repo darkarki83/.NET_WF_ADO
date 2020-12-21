@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS middlle</title>
+    <style>
+        td {
+            border-right: 2px solid rgb(32, 22, 22)
+        }
+    </style>
+</head>
+<body ng-app="mainModule">
+
+  <div rateblock >
+    </div>
+    
+  
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        var app = angular.module("mainModule", []);  // Создение моделя у обьекта Window
+      
+     
+        app.directive( "rateblock", () => {
+            return {
+                restrict: "A",
+                templateUrl: "rate_tamplate.html",
+                controller: ($scope, $http) => {
+                    $http.get( "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json" ).then(
+                    response => { // даные от сервера приходят в data
+                        $scope.rates = response.data;
+                        //console.log($scope.rates);
+                    })
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

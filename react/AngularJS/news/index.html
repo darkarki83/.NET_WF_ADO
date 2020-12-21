@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newsApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .news-block {
+            border: 3px solid black;
+            margin: 5px;
+            padding: 5px;
+        }
+        .news-block p{
+            font-style: italic;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1> News </h1>
+    
+    <div newsblock>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        const newsApp = angular.module( "newsApp" , []);
+
+        newsApp.directive( "newsblock", () => {
+            return {
+                restrict: "A",
+                templateUrl: "news_tpl.html",
+                controller: ($scope, $http) => {
+                    $http.get( '/news' ).then( res =>{
+                    $scope.news = res.data;
+                    //console.log($scope.news);
+                    })
+                }
+            }
+        });
+        /*
+        newsApp.controller( "newsController", ($scope, $http) => {
+            $http.get( '/news' ).then( res =>{
+                $scope.news = res.data;
+                console.log($scope.news);
+            });
+        });*/
+    </script>
+    
+</body>
+</html>
