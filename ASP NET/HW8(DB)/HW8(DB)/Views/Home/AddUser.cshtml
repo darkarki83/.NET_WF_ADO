@@ -1,0 +1,54 @@
+﻿@model HW8_DB_.Models.User
+
+@{
+    ViewData["Title"] = "AddUser";
+}
+
+<h1>AddUser</h1>
+
+<div id="userform">
+    <form asp-action="AddUser" asp-controller="Home" method="post">
+        <table>
+            <tr>
+                <td style="width:150px"><label asp-for="Name"></label> </td>
+                <td>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:150px"><label  asp-for="LastName"></label> </td>
+                <td>
+                    <input asp-for="LastName" />
+                    <span asp-validation-for="LastName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:150px"><label asp-for="DateOfReg"></label> </td>
+                <td>
+                    <input asp-for="DateOfReg" />
+                    <span asp-validation-for="DateOfReg"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:150px"><label asp-for="Email"></label></td>
+                <td>
+                    <input asp-for="Email" />
+                    <span asp-validation-for="Email"> </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="btn btn-dark">
+                    <input style="width:100px" type="submit" id="add" name="add" value="Add" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <hr />
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

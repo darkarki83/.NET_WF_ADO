@@ -44,6 +44,33 @@
 [mergetool "tortoisemerge"]
 	cmd = \""C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe"\" -base:"$BASE" -theirs:"$REMOTE" -mine:"$LOCAL" -merged:"$MERGED"
 
+[alias]
+ 	st = status
+	sts = status -s
+	a = !git add . && git status -s
+	aa = !git add :/ && git status -s
+
+	c = commit
+	ac = !git add . && git status -s && git commit
+	aac = !git add :/ && git status -s && git commit
+
+	cm = commit
+	acm = !git add . && git status -s && git commit
+	aacm = !git add :/ && git status -s && git commit
+
+	co = checkout
+	df = diff
+	dfc = diff --cached
+	br = branch
+	brd = branch -D
+	mg = merge
+	mgnff = merge --no-ff
+
+	purge = clean -f -d -x
+	purgeall = clean -f -d -x :/
+	hist = log --color --graph --pretty=format:\"%C(yellow)%h %C(white)%ad | %C(bold white)%s%C(auto)%d %C(blue)[%an]\" --date=format:\"%F %T\"
+
+
 ;[diff]
 ;	tool = kdiff3
 ;[difftool "kdiff3"]
@@ -61,10 +88,6 @@
 ;[mergetool "kdiff3"]
 ;	path = C:/Program Files/TortoiseHg/lib/kdiff3.exe
 
-[alias]
-	st = status
-	co = checkout
-	cm = commit
 
 [credential]
 	helper = wincred

@@ -9,6 +9,8 @@ namespace HW8_DB_.Models
     public class StoreDBContext :DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options)
         {
