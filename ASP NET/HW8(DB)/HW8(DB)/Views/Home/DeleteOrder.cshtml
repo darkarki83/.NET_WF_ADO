@@ -1,0 +1,17 @@
+﻿@model HW8_DB_.Models.Order
+
+@{
+    ViewData["Title"] = "DeleteOrder";
+}
+
+
+<div style="margin: 30px">
+    <h2>Orede number @Model.Id </h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <form asp-action="DeleteOrder">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="OrdersView">Cancel</a>
+        </form>
+    </div>
+</div>

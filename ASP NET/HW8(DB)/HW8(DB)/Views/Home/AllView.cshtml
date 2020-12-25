@@ -1,0 +1,121 @@
+﻿@model HW8_DB_.Models.StoreModel
+
+@{
+    ViewData["Title"] = "AllView";
+}
+
+<h1>AllView</h1>
+
+<div>
+    <h4>Product</h4>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> ID </th>
+            <td scope="col"> Name </td>
+            <td scope="col"> Cost </td>
+            <td scope="col"> Description </td>
+            <td scope="col"> Date </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StoreProducts)
+        {
+            {
+                <tr>
+                    <th scope="row"> @item.Id </th>
+                    <td> @item.Name </td>
+                    <td> @item.Cost </td>
+                    <td> @item.Description </td>
+                    <td> @item.Date </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+
+<div>
+    <h4>User</h4>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Last name </th>
+            <th scope="col"> Date of registry </th>
+            <th scope="col"> Email </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StoreUsers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <h4>Store</h4>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> User Fk </th>
+            <th scope="col"> ProductFk </th>
+            <th scope="col"> Count </th>
+            <th scope="col"> Date </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StoreOrders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductFk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

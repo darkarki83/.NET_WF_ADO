@@ -33,7 +33,7 @@ namespace HW8_DB_.Controllers
         // Product
         public IActionResult CreateProduct()
         {
-            return View();
+                return View();
         }
 
         [HttpPost]
@@ -55,6 +55,51 @@ namespace HW8_DB_.Controllers
         {
             return View(await _context.Products.ToListAsync());
         }
+
+        public async Task<IActionResult> EditProduct(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Products
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
+        }
+
+       [HttpPost]
+        public async Task<IActionResult> EditProduct(Product product)
+        {
+            var courseToUpdate = await _context.Products.FindAsync(product.Id);
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Product>(
+                 courseToUpdate,
+                 "",   // Prefix for form value.
+                   c => c.Name, c => c.Cost, c => c.Description, c => c.Date))
+            {
+                courseToUpdate.Name = product.Name;
+                courseToUpdate.Cost = product.Cost;
+                courseToUpdate.Description = product.Description;
+                courseToUpdate.Date = product.Date;
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ProductView));
+            }
+
+            return View();
+            
+        }
+
         /// <summary>
         /// Finish Product Controllers
         /// </summary>
@@ -88,14 +133,59 @@ namespace HW8_DB_.Controllers
             return View(await _context.Users.ToListAsync());
         }
 
-        /// <summary>
-        /// Finish User Controllers
-        /// </summary>
-        /// <returns></returns>
+        public async Task<IActionResult> EditUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //Order
+            var user = await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
 
-        public IActionResult AddOrder()
+        [HttpPost]
+        public async Task<IActionResult> EditUser(User user)
+        {
+            var courseToUpdate = await _context.Users.FindAsync(user.Id);
+
+            if(courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if(await TryUpdateModelAsync<User>(
+                courseToUpdate,
+                "",
+                c=> c.Name, c => c.LastName, c => c.Email, c => c.DateOfReg 
+                ))
+            {
+                courseToUpdate.Name = user.Name;
+                courseToUpdate.LastName = user.LastName;
+                courseToUpdate.Email = user.Email;
+                courseToUpdate.DateOfReg = user.DateOfReg;
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(UsersView));
+            }
+            return View();
+        }
+
+
+            /// <summary>
+            /// Finish User Controllers
+            /// </summary>
+            /// <returns></returns>
+
+            //Order
+
+            public IActionResult AddOrder()
         {
             return View();
         }
@@ -122,11 +212,104 @@ namespace HW8_DB_.Controllers
             return View(await _context.Orders.ToListAsync());
         }
 
+        public async Task<IActionResult> EditOrder(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders
+                .AsNoTracking()
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditOrder(Order order)
+        {
+            if(order == null)
+            {
+                return NotFound();
+            }
+
+            var courseToUpdate = await _context.Orders.FindAsync(order.Id);
+
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Order>(
+                courseToUpdate,
+                "",
+                c => c.ProductFk, c => c.UserFk, c => c.Count, c => c.Date
+                ))
+            {
+                courseToUpdate.ProductFk = order.ProductFk;
+                courseToUpdate.UserFk = order.UserFk;
+                courseToUpdate.Count = order.Count;
+                courseToUpdate.Date = order.Date;
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(OrdersView));
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteOrder(int? id)
+        {
+            var order = await _context.Orders
+               .AsNoTracking()
+               .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order != null)
+            {
+                return View("DeleteOrder", order);
+                
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteOrder")]
+        public async Task<IActionResult> DeleteRecord(int? id)
+        {
+
+            var order = await _context.Orders
+               .AsNoTracking()
+               .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order != null)
+            {
+                _context.Orders.Remove(order);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("OrdersView");
+        }
+
         /// <summary>
         /// Finish Order Controllers
         /// </summary>
         /// <returns></returns>
 
+        //All
+
+        public async Task<IActionResult> AllView()
+        {
+            StoreModel st_model = new StoreModel();
+            st_model.StoreProducts = await _context.Products.ToListAsync();
+            st_model.StoreUsers = await _context.Users.ToListAsync();
+            st_model.StoreOrders = await _context.Orders.ToListAsync();
+            return View(st_model);
+        }
 
 
         // PROVERKI (POTOM)

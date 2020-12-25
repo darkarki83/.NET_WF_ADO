@@ -19,16 +19,24 @@
             <td scope="col"> Description </td>
             <td scope="col"> Date </td>
         </tr>
-            @foreach (var prod in Model)
-            {
-                 <tr>
-                     <th scope="row"> @prod.Id </th>
-                     <td> @prod.Name </td>
-                     <td> @prod.Cost </td>
-                     <td> @prod.Description </td>
-                     <td> @prod.Date </td>
-                 </tr>
-             }
+        @foreach (var prod in Model)
+        {
+        <tr>
+            <th scope="row"> @prod.Id </th>
+            <td> @prod.Name </td>
+            <td> @prod.Cost </td>
+            <td> @prod.Description </td>
+            <td> @prod.Date </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", new { id = prod.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
 
-        </table>
+        }
+
+    </table>
+
+    
+  
 </div>
