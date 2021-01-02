@@ -1,5 +1,6 @@
 ﻿using HW8_DB_.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -295,6 +296,96 @@ namespace HW8_DB_.Controllers
             return RedirectToAction("OrdersView");
         }
 
+        public IActionResult SalesPeriod()
+        {
+            return View("Sales/SalesPeriod");
+        }
+        
+        [HttpPost]
+        [ActionName("SalesPeriod")]
+        public async Task<IActionResult> SalesPeriodOut(DateTime from, DateTime to)
+        {
+            List<Order> brandItems = new List<Order>();
+            decimal totalCost = 0;
+
+            await _context.Orders.ForEachAsync(order =>
+            {
+                if(order.Date > from && order.Date < to)
+                {
+                    brandItems.Add(order);
+                    var product = _context.Products.AsNoTracking().FirstOrDefault(o => o.Id == order.ProductFk);
+
+                    if (product != null)
+                    {
+                        totalCost += product.Cost * order.Count;
+                    }
+                }
+            });
+            ViewData["TotalCost"] = totalCost;
+
+            return View("Sales/SalesPeriodOut", brandItems.ToList());
+        }
+
+        public async Task<IActionResult> UserOrders()
+        {
+            StoreModel st_model = new StoreModel();
+            st_model.StoreProducts = await _context.Products.ToListAsync();
+            st_model.StoreUsers = await _context.Users.ToListAsync();
+            st_model.StoreOrders = await _context.Orders.ToListAsync();
+            return View("UserOrders", st_model);
+        }
+
+        public async Task<JsonResult> LoadOrder(int id)
+        {
+            var orders = _context.Orders.Where(o => o.UserFk == id).ToList();
+            List<Product> products = new List<Product>();
+            if (orders.Count > 0)
+            {
+                foreach (var item in orders)
+                {
+                    var product = _context.Products.AsNoTracking().FirstOrDefault(o => o.Id == item.ProductFk);
+                    products.Add(product);
+                }
+            }
+            List<ForJson> newP = new List<ForJson>();
+            for (int i = 0; i < orders.Count; i++)
+            {
+                newP.Add(new ForJson(orders[i].Id, products[i].Name, products[i].Cost, orders[i].Count));
+            }/*
+            StoreModel st_model = new StoreModel();
+            st_model.StoreProducts = await _context.Products.ToListAsync();
+            st_model.StoreUsers = await _context.Users.ToListAsync();
+            st_model.StoreOrders = await _context.Orders.ToListAsync();
+
+            var orders = st_model.StoreOrders.Where(o => o.UserFk == id).ToList();*/
+            return Json(new SelectList(newP, "Id", "PoductsName"));
+        }
+
+        /*[HttpPost]
+        [ActionName("SalesPeriod")]
+        public async Task<IActionResult> SalesPeriodOut(DateTime from, DateTime to)
+        {
+            List<Order> brandItems = new List<Order>();
+            decimal totalCost = 0;
+
+            await _context.Orders.ForEachAsync(order =>
+            {
+                if (order.Date > from && order.Date < to)
+                {
+                    brandItems.Add(order);
+                    var product = _context.Products.AsNoTracking().FirstOrDefault(o => o.Id == order.ProductFk);
+
+                    if (product != null)
+                    {
+                        totalCost += product.Cost * order.Count;
+                    }
+                }
+            });
+            ViewData["TotalCost"] = totalCost;
+
+            return View("Sales/SalesPeriodOut", brandItems.ToList());
+        }*/
+
         /// <summary>
         /// Finish Order Controllers
         /// </summary>
@@ -313,24 +404,36 @@ namespace HW8_DB_.Controllers
 
 
         // PROVERKI (POTOM)
-        public IActionResult CheckProduct()
+        [HttpPost]
+        public JsonResult CheckProduct()
         {
-            return View();
+            bool result = true;  /// ставить проверку
+
+            return Json(result);
         }
 
-        public IActionResult CheckUserMail()
+        [HttpPost]
+        public JsonResult CheckUserMail()
         {
-            return View();
+            bool result = true;  /// ставить проверку
+
+            return Json(result);
         }
 
-        public IActionResult UserId()
+        [HttpPost]
+        public JsonResult UserId()
         {
-            return View();
+            bool result = true;  /// ставить проверку
+
+            return Json(result);
         }
 
-        public IActionResult ProductId()
+        [HttpPost]
+        public JsonResult ProductId()
         {
-            return View();
+            bool result = true;  /// ставить проверку
+
+            return Json(result);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

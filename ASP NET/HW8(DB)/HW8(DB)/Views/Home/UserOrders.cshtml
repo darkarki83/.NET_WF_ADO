@@ -1,0 +1,71 @@
+﻿@model HW8_DB_.Models.StoreModel
+
+@{
+    ViewData["Title"] = "UserOrders";
+}
+
+
+<label class="control-label">User name </label>
+<select name="sel" id="sel" class="form-control">
+    <option selected value="-1">select item </option>
+    @foreach (var item in Model.StoreUsers)
+    {
+        <option value="@item.Id">@item.Name  @item.LastName </option>
+    }
+</select>
+<select class="form-control" id="ord">
+    <option >Select Order</option>
+</select>
+<div id="my" name="my"></div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#sel").change(function () {
+                $("#ord").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("LoadOrder")',
+                    dataType: 'json',
+                    data: { id: $("#sel").val() },
+
+                    success: function (states) {
+                        $("#ord").append('<option value="' + -1 + '">' +
+                            "Orders" + '</option>');
+
+                        $.each(states, function (i, state) {
+                            $("#ord").append('<option value="' + state.value + '">' +
+                                state.text + '</option>');
+                        });
+                    },
+                    error: function (ex) { }
+
+                });
+                return false;
+            })
+        });
+
+    </script>
+}
+    <script>
+
+        /* function onSelect(e) {
+             if ("kendoConsole" in window) {
+                 if (e.item) {
+                     var dataItem = this.dataItem(e.item);
+                    console.log("event :: select (" + dataItem.Text + " : " + dataItem.Value + ")");
+                 } else {
+                     console.log("event :: select");
+                 }
+             }
+         }
+
+         function myChange(e) {
+             $("#my").val = e;
+         }*/
+
+
+
+    </script>
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HW8_DB_.Models.Order>
+
+@{
+    ViewData["Title"] = "SalesPeriod";
+}
+
+<h1>SalesPeriod</h1>
+
+<div>
+    <h4>OrderS</h4
+    <hr />
+    <div>@Model.Count()</div>
+    @foreach (var m in Model)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @m.Id
+            </dt>
+            <dt class="col-sm-2">
+               @m.UserFk
+            </dt>
+            <dt class="col-sm-2">
+                @m.ProductFk
+            </dt>
+            <dt class="col-sm-2">
+                @m.Count
+            </dt>
+            <dt class="col-sm-2">
+                @m.Date
+            </dt>
+           
+        </dl>
+    }
+    </div>
+<div> Total cost all orders : @ViewData["TotalCost"] $</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

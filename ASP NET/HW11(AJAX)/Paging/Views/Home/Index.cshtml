@@ -1,0 +1,31 @@
+﻿@model Paging.Models.IndexViewModel
+@using Paging.Helpers
+@{
+    ViewData["Title"] = "Телефоны";
+}
+
+<br /><br />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Модель</th>
+            <th>Производитель</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Phones)
+        {
+            <tr @Html.Raw(item.Price <= 10000 ? "class=\"text-warning\"" : "")>
+                <td>@item.Model</td>
+                <td>@item.Manufacturer</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<div class="btn-group">
+    @Html.PageLinks(Model.Pages, x => Url.Action("Index", new { page = x }))
+</div>

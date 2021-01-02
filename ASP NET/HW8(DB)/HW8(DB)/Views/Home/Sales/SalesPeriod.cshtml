@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "SalesPeriod";
+}
+
+<h1>SalesPeriod</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SalesPeriod" method="post">
+            <div class="form-group">
+                <label class="control-label">Data from</label>
+                <input type="date" class="form-control" name="from" id="from" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Data to</label>
+                <input type="date" class="form-control" name="to" id="to" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
