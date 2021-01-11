@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React-JSX</title>
+</head>
+<body>
+    <h1>JSX JavaScript Extension</h1>
+    <p>
+        Babel - библиотека (средство) транскодер (~компелятор) в JS из JS-6, JSX
+    </p>
+    <strong>Замечанее!</strong> не рекоемндуется использовать библиотеку на клиетте 
+    <br />
+    Использование JSX обозначается типом "text/babel" in script 
+    <br />
+    суть JSX - использование товой разметки вместо React.createElement
+    <br />
+    Есть направление - React без JSX
+    <div id="container"></div>
+    <div id="container2">
+    </div>
+
+    <script src="scripts/react.development.js"></script>
+    <script src="scripts/react-dom.development.js"></script>
+    <script src="scripts/babel.min.js"></script>
+
+    <script type="text/babel">
+    const cont = document.getElementById( "container" )
+        if( !cont ) {
+            throw "Container not located";
+        }
+
+        class Cont extends React.Component {
+            render() {
+                return <h2> JSX works </h2>;
+            }
+        } 
+        ReactDOM.render( <Cont />, cont);
+    </script>
+
+<script type="text/babel">
+    const cont2 = document.getElementById( "container2" )
+        if( !cont2 ) {
+            throw "Container not located";
+        }
+
+        class Cont2 extends React.Component {
+            constructor( props ) {
+                super( props );
+                this.state = {
+                    num : props.num,
+                    arr : []
+                }
+                this.plusClick = this.plusClick.bind( this );
+                this.minusClick = this.minusClick.bind( this );
+            }
+            
+            componentDidMount() {  // как onload
+                this.setState( st => { 
+                    st.arr.push({id:1, txt: "txt 1"});
+                    st.arr.push({id:2, txt: "txt 2"});
+                    st.arr.push({id:3, txt: "txt 3"});
+                    st.arr.push({id:4, txt: "txt 4"});
+                    st.arr.push({id:5, txt: "txt 5"});
+                    st.arr.push({id:6, txt: "txt 6"});
+                    st.arr.push({id:7, txt: "txt 7"});
+                    return st;
+                })
+            }
+
+            plusClick() {
+                this.setState( st => { 
+                    st.num++;
+                    return st;
+                })
+            }
+            minusClick() {
+                this.setState( st => { 
+                    st.num--;
+                    return st;
+                })
+            }
+
+            render() { 
+                // Вставка JS в JSX - {} - аналог Angular - выражения
+                // <React.Fragment> - <> - без лишнего контейнера  
+                return ( <React.Fragment>
+                    <h2> num = {this.state.num} <i>Italic</i> </h2>   
+                    <button onClick={ this.plusClick }> Plus </button>
+                    <button onClick={ this.minusClick }> Minus </button>
+                    <ul>
+                       { this.state.arr.map( obj => <li key={obj.id}>{ obj.txt }</li>) } 
+                    </ul>
+                    </React.Fragment>);
+            }
+        } 
+        ReactDOM.render( <Cont2 num="38" />, cont2);
+    </script>
+
+</body>
+</html> 

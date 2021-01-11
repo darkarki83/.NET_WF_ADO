@@ -186,7 +186,7 @@ namespace HW8_DB_.Controllers
 
             //Order
 
-            public IActionResult AddOrder()
+        public IActionResult AddOrder()
         {
             return View();
         }

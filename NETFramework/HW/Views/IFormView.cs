@@ -11,8 +11,13 @@ namespace HW.Views
     public interface IFormView : IView
     {
         ListView ListViewPart { get; set; }
-        ListBox ListBoxx { get; set; }
+        ListView ListViewCart { get; set; }
+        Label LabelTotalCost { get; set; }
 
         event EventHandler LoadList;
+        event EventHandler AddToCart;
+        event EventHandler DeleteFromCart;
+        event EventHandler Order;
+
     }
 }

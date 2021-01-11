@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HW9_Jurnal_.Models;
+using HW9_Jurnal_.Models.Context;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +12,13 @@ namespace HW9_Jurnal_.Controllers
 {
     public class StudentController : Controller
     {
-        DbSet<Subject> 
+        public DbSet<Student> _context;
+
+        public StudentController(DbSet<Student> context)
+        {
+            _context = context;
+        }
+
         // GET: StudentController
         public ActionResult Index()
         {
@@ -31,10 +40,13 @@ namespace HW9_Jurnal_.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(Student student)
         {
             try
             {
+
+                await _context.AddAsync(student);
+               // await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch

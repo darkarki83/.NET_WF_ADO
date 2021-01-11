@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HW9.Models.Subject>
+
+@{
+    ViewData["Title"] = "ListSubject";
+}
+
+<h1>ListSubject</h1>
+
+<p>
+    <a asp-action="CreateSubject">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Faciltet
+            </th>
+            <th>
+                LecturerFk
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faciltet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LecturerFk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditSubject", new { id=item.Id }) |
+                @Html.ActionLink("Details", "DetailsSubject", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteSubject", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

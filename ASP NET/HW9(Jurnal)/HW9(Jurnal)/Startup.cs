@@ -58,8 +58,12 @@ namespace HW9_Jurnal_
 
             app.UseEndpoints(endpoints =>
             {
+               
                 endpoints.MapControllerRoute(
-                    name: "default",
+                    name: "Student",
+                    pattern: "{controller=Student}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "Home",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }

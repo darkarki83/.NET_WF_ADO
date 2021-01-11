@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace HW9_Jurnal_.Controllers
 {
-    public class HomeController : StudentController
+    [NonController]
+    public class HomeController : Controller
     {
         private JurnalDbContext _context;
             
@@ -28,6 +29,7 @@ namespace HW9_Jurnal_.Controllers
         {
             return View();
         }
+
 
 
 

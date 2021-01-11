@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HW9.Models.Appraisal>
+
+@{
+    ViewData["Title"] = "ListAppraisal";
+}
+
+<h1>ListAppraisal</h1>
+
+<p>
+    <a asp-action="CreateAppraisal">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentFk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectFk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectFk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAppraisal", new { id=item.Id }) |
+                @Html.ActionLink("Details", "DetailsAppraisal", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteAppraisal", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

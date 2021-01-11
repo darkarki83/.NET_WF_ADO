@@ -1,0 +1,53 @@
+body {
+
+}
+
+#container {
+    margin: 10px auto;
+    border: 2px solid greenyellow;
+    background: black;
+    color: blanchedalmond;
+    box-shadow: 5px 5px 1px indigo;
+    max-width: 70vw;
+    min-height: 50vw;
+
+    
+    position: relative;
+}
+
+#container span {
+    margin: 10px 0 0 10px;
+}
+
+#container input {
+    margin: 10px 0 0 10px;
+}
+
+#container div{
+    border: 2px solid green;
+    background: indigo;
+    height: 35vw;
+    width: 80%;
+    margin: auto;
+    overflow: auto;
+}
+
+#container div p{
+    margin: 10px;
+}
+
+#container b{
+    display: block;
+    margin: 10px;
+}
+#container textarea{
+    margin: 10px;
+    height: 15vw;
+    width: 80%;
+}
+#container button{
+    margin: 10px;
+    display: block;
+
+}
+
