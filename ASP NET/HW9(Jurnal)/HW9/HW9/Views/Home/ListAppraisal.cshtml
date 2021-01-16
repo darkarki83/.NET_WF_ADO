@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rating)
+                Rating
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentFk)
+                UserStudentFk
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SubjectFk)
+                SubjectFk
             </th>
             <th></th>
         </tr>
@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StudentFk)
+                @Html.DisplayFor(modelItem => item.UserStudentFk)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SubjectFk)

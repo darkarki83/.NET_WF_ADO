@@ -7,7 +7,7 @@
 <h1>ListSubject</h1>
 
 <p>
-    <a asp-action="CreateSubject">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -22,7 +22,7 @@
                 Faciltet
             </th>
             <th>
-                LecturerFk
+                UserLectorFk
             </th>
             <th></th>
         </tr>
@@ -40,10 +40,10 @@
                 @Html.DisplayFor(modelItem => item.Faciltet)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LecturerFk)
+                @Html.DisplayFor(modelItem => item.UserLectorFk)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditSubject", new { id=item.Id }) |
+                @Html.ActionLink("Edit", "EditSubject", new {  id=item.Id }) |
                 @Html.ActionLink("Details", "DetailsSubject", new { id=item.Id }) |
                 @Html.ActionLink("Delete", "DeleteSubject", new { id=item.Id })
             </td>

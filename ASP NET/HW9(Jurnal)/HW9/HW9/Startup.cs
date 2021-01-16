@@ -1,4 +1,5 @@
 using HW9.Models.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,13 @@ namespace HW9
             // Регистрируем контекст для доступа к нашей БД в коллекции сервисов нашего MVC-приложения
             services.AddDbContext<JurnalDbContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+           .AddCookie(options =>
+           {
+               options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Home/Login");
+               options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/Login");
+           });
+
             services.AddControllersWithViews();
         }
 
@@ -51,6 +59,7 @@ namespace HW9
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

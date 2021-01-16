@@ -10,17 +10,16 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateAppraisal" asp-controller="Home" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="CreateAppraisal">
             <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
                 <input asp-for="Rating" class="form-control" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StudentFk" class="control-label"></label>
-                @Html.DropDownList("StudentFk", new SelectList(ViewBag.Student, "Id", "Name"), new { @class = "form-control" })
-                <span asp-validation-for="StudentFk" class="text-danger"></span>
+                <label asp-for="UserStudentFk" class="control-label"></label>
+                @Html.DropDownList("UserStudentFk", new SelectList(ViewBag.Student, "Id", "Name"), new { @class = "form-control" })
+                <span asp-validation-for="UserStudentFk" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SubjectFk" class="control-label"></label>
@@ -35,7 +34,7 @@
 </div>
 
 <div>
-    <a asp-action="ListAppraisal">Back to List</a>
+    <a asp-action="IndexAppraisal">Back to List</a>
 </div>
 
 @section Scripts {

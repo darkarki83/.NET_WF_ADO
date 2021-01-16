@@ -22,15 +22,16 @@ namespace HW9.Models
         [Display(Name = "Faciltet *")]
         public string Faciltet { get; set; }
 
-        public long? LecturerFk { get; set; }
-        [ForeignKey("LecturerFk")]
-        public virtual Lecturer Lecturer { get; set; }
+        public long? UserLectorFk { get; set; }
+        [ForeignKey("UserLectorFk")]
+        public virtual User UserLector { get; set; }
+
 
         public ICollection<Appraisal> Appraisals { get; set; }
 
-        // Свойство, не связанное с БД
-
+        // Свойство, не связанное с БД  // что это
+        /*
         [NotMapped]
-        public int? IsbnIndex { get; set; }
+        public int? IsbnIndex { get; set; }*/
     }
 }

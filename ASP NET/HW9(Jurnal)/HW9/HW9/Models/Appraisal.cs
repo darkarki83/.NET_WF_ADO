@@ -12,17 +12,14 @@ namespace HW9.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-
-
         [Required(ErrorMessage = "Required field")]
         [Range(1, 100)]
-        [DataType(DataType.Currency)] //Castom
         [Display(Name = "Appraisal")]
         public int Rating { get; set; }
 
-        public long? StudentFk { get; set; }
-        [ForeignKey("StudentFk")]
-        public virtual Student Student { get; set; }
+        public long? UserStudentFk { get; set; }
+        [ForeignKey("UserStudentFk")]
+        public virtual User UserStudent { get; set; }
 
         public long? SubjectFk { get; set; }
         [ForeignKey("SubjectFk")]

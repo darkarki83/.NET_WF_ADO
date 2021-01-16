@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chat">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chat.css" />
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Chat by Angular</h1>
+    <messenger></messenger>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+
+    <script>
+        const app = angular.module('chat', []);
+
+        app.directive('messenger', () => {
+            return{
+                restrict: 'E',
+                template: '<span>Nik</span2> <input/> <div><p ng-repeat="m in messages">{{m.author}} : {{m.text}}</p></div> <b>DNS</b><textarea></textarea> <button>Send</button>',
+                controller: ($scope) =>{
+                    $scope.messages = [];
+
+                    $scope.loadMessages = () => {
+                        $scope.messages = [
+                            {author: 'Nik1', text: 'Message1'},
+                            {author: 'Nik2', text: 'Message2'},
+                            {author: 'Nik3', text: 'Message3'},
+                            {author: 'Nik4', text: 'Message4'}
+                        ];
+                    };
+                },
+                link: (scope) => { //~DidMount
+                    scope.loadMessages();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

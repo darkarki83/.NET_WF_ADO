@@ -18,23 +18,23 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
+                        @{
+                            //if (ViewData["Name"] != null && ViewData["Role"] != null)
+                            {
+                                <li class="nav-item">
+                                    <div> Hi @ViewData["Name"]</div>
+                                    <div> Your Role is @ViewData["Role"]</div>
+                                </li>
+                            }
+                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-right" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateStudent">Create Student</a>
+                            <a class="nav-link text-lowercase" asp-area="" asp-controller="Home" asp-action="ListUsers">List Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListStudent">List Student</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateLecturer">Create Lecturer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListLecturer">List Lecturer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateSubject">Create Subject</a>
+                            <a class="nav-link text-body" asp-area="" asp-controller="Home" asp-action="CreateSubject">Create Subject</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListSubject">List Subject</a>
@@ -57,9 +57,32 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - HW9 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!--<li class="nav-item">
+         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListRoles">List Roles</a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateRole">Create Role</a>
+     </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            &copy; 2021 - HW9
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="EditRole">Edit Role</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

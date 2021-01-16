@@ -1,5 +1,9 @@
-﻿using HW9.Models;
+﻿using HW9.Filters;
+using HW9.Models;
 using HW9.Models.Context;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +12,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HW9.Controllers
 {
+    [CustomActionAttribute]
     public class HomeController : Controller
     {
         private JurnalDbContext _context;
@@ -21,22 +27,277 @@ namespace HW9.Controllers
             _context = context;
         }
 
+        //[Authorize(Roles = "admin")]
+        public IActionResult About()
+        {
+            return Content("Вход только для администратора");
+        }
+
+        //[Authorize(Roles = "admin, lector, student")]
         public IActionResult Index()
         {
+            //string role = User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value;
+            //return Content($"ваша роль: {role}");
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Register()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                if (user == null)
+                {
+                    // добавляем пользователя в бд
+                    user = new User { Email = model.Email, Password = model.Password, Name = model.Name, Age = model.Age };
+                    Role userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
+                    if (userRole != null)
+                        user.Role = userRole;
+
+                    _context.Users.Add(user);
+                    await _context.SaveChangesAsync();
+
+                    await Authenticate(user); // аутентификация
+
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+            }
+            return View(model);
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _context.Users
+                    .Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                if (user != null)
+                {
+                    await Authenticate(user); // аутентификация
+
+                    //string role = user.Role.Name;
+                    //return Content($"ваша роль: {role}");
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+            }
+            return View(model);
+        }
+
+        private async Task Authenticate(User user)
+        {
+            // создаем один claim
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
+            };
+            // создаем объект ClaimsIdentity
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
+            // установка аутентификационных куки
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+
+            // ViewData["Name"] = user.Email;
+            // ViewData["Role"] = user.Role;
+        }
+
+        //Roles
+        [Authorize(Roles = "admin, lector")]
+        public async Task<IActionResult> ListRoles()
+        {
+            return View(await _context.Roles.ToListAsync());
+        }
+
+        [Authorize(Roles = "admin")]
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<IActionResult> CreateRole(Role role)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.Roles.AddAsync(role);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListRoles));
+            }
+            else
+            {
+                return View(role);
+            }
+        }
+
+        //user
+        //only for look (for me)
+        [Authorize(Roles = "admin, lector, user")]
+        public async Task<IActionResult> ListUsers()
+        {
+            return View(await _context.Users.ToListAsync());
+        }
+
+        [Authorize(Roles = "admin, lector, user")]
+        public async Task<IActionResult> DetailsUser(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(s => s.Id == id);
+
+            return View(user);
+        }
+
+        [Authorize(Roles = "admin, lector")]
+        public async Task<IActionResult> EditUser(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+                return NotFound();
+
+            return View(user);
+        }
+
+        [Authorize(Roles = "admin, lector")]
+        [HttpPost]
+        public async Task<IActionResult> EditUser(User user)
+        {
+            var courseToUpdate = await _context.Users.FindAsync(user.Id);
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<User>(
+                courseToUpdate,
+                "",
+                s => s.Email, s => s.Password, s => s.Name, s => s.Age, s => s.RoleFk
+                ))
+            {
+                courseToUpdate.Email = user.Email;
+                courseToUpdate.Password = user.Password;
+                courseToUpdate.Name = user.Name;
+                courseToUpdate.Age = user.Age;
+                courseToUpdate.RoleFk = user.RoleFk;
+
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListUsers));
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "admin, lector")]
+        public async Task<IActionResult> DeleteUser(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var user = await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (user != null)
+            {
+                return View("DeleteUser", user);
+
+            }
+            return RedirectToAction(nameof(ListUsers));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin, lector")]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteUser")]
+        public async Task<IActionResult> DeleteUse(int? id)
+        {
+
+            var user = await _context.Users
+               .AsNoTracking()
+               .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(ListUsers));
+        }
+
+        [Authorize(Roles = "admin")]
+        public IActionResult EditRole()
+        {
+            ViewBag.Names = _context.Users;
+            ViewBag.Roles = _context.Roles;
+
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public async Task<IActionResult> EditRole(long? id, long? roleFk)
+        {
+            if (id == null || roleFk == null)
+                return NotFound();
+
+            var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+                return NotFound();
+
+            var courseToUpdate = await _context.Users.FindAsync(user.Id);
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<User>(
+            courseToUpdate,
+            "",
+            s => s.RoleFk
+            ))
+            {
+                courseToUpdate.RoleFk = roleFk;
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListUsers));
+            }
+
+            return View();
+        }
+
+        /*
         //Student
         public async Task<IActionResult> ListStudent()
         {
             return View(await _context.Students.ToListAsync());
         }
 
+        [Authorize(Roles = "admin, lector, student")]
         public async Task<IActionResult> DetailsStudent(int? id)
         {
             if (id == null)
@@ -47,12 +308,15 @@ namespace HW9.Controllers
             return View(student);
         }
 
+        [Authorize(Roles = "admin, lector")]
         public IActionResult CreateStudent()
         {
             return View();   
         }
 
+
         [HttpPost]
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> CreateStudent(Student student)
         {
            if(ModelState.IsValid)
@@ -251,15 +515,17 @@ namespace HW9.Controllers
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(ListLecturer));
-        }
+        }*/
 
         // Subject
 
+        [Authorize(Roles = "admin, lector, user")]
         public async Task<IActionResult> ListSubject()
         {
             return View(await _context.Subjects.ToListAsync());
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> DetailsSubject(int? id)
         {
             if (id == null)
@@ -270,15 +536,21 @@ namespace HW9.Controllers
             return View(subject);
         }
 
+        [Authorize(Roles = "admin, lector")]
         public IActionResult CreateSubject()
         {
-            ViewBag.lecturer = _context.Lecturers;
-
-            //ViewBag.lecturer = new SelectList(_context.Lecturers, "Id", "Name");
+            List<User> users = new List<User>();
+            foreach (var item in _context.Users)
+            {
+                if(item.RoleFk == 2)
+                    users.Add(item);
+            }
+            ViewBag.lecturer = users;
 
             return View();
         }
 
+        [Authorize(Roles = "admin, lector")]
         [HttpPost]
         public async Task<IActionResult> CreateSubject(Subject subject)
         {
@@ -292,6 +564,7 @@ namespace HW9.Controllers
                 return View(subject);
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> EditSubject(int? id)
         {
             if (id == null)
@@ -301,29 +574,35 @@ namespace HW9.Controllers
             if (subject == null)
                 return NotFound();
 
-            ViewBag.lecturer = _context.Lecturers;
+            List<User> users = new List<User>();
+            foreach (var item in _context.Users)
+            {
+                if (item.RoleFk == 2)
+                    users.Add(item);
+            }
+            ViewBag.lecturer = users;
+
             return View(subject);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditSubject(Subject subject)
+        [Authorize(Roles = "admin, lector")]
+        public async Task<IActionResult> EditSubject(Subject subject, int UserLectorFk)
         {
             var courseToUpdate = await _context.Subjects.FindAsync(subject.Id);
 
             if (courseToUpdate == null)
-            {
                 return NotFound();
-            }
 
             if (await TryUpdateModelAsync<Subject>(
                 courseToUpdate,
                 "",
-                s => s.Name, s => s.Faciltet, s => s.LecturerFk
+                s => s.Name, s => s.Faciltet, s => s.UserLectorFk
                 ))
             {
                 courseToUpdate.Name = subject.Name;
                 courseToUpdate.Faciltet = subject.Faciltet;
-                courseToUpdate.LecturerFk = subject.LecturerFk;
+                courseToUpdate.UserLectorFk = UserLectorFk;
 
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(ListSubject));
@@ -331,6 +610,7 @@ namespace HW9.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> DeleteSubject(int? id)
         {
             if (id == null)
@@ -349,6 +629,7 @@ namespace HW9.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, lector")]
         [ValidateAntiForgeryToken]
         [ActionName("DeleteSubject")]
         public async Task<IActionResult> DeleteSub(int? id)
@@ -368,11 +649,13 @@ namespace HW9.Controllers
 
         /// Appraisal
         /// 
+        [Authorize(Roles = "admin, lector, user")]
         public async Task<IActionResult> ListAppraisal()
         {
             return View(await _context.Appraisals.ToListAsync());
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> DetailsAppraisal(int? id)
         {
             if (id == null)
@@ -383,15 +666,23 @@ namespace HW9.Controllers
             return View(appraisal);
         }
 
+        [Authorize(Roles = "admin, lector")]
         public IActionResult CreateAppraisal()
         {
-            ViewBag.Student = _context.Students;
-            //ViewBag.lecturer = new SelectList(_context.Lecturers, "Id", "Name");
+            List<User> users = new List<User>();
+            foreach (var item in _context.Users)
+            {
+                if (item.RoleFk == 1)
+                    users.Add(item);
+            }
+            ViewBag.Student = users;
             ViewBag.Subject = _context.Subjects;
+
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> CreateAppraisal(Appraisal appraisal)
         {
             if (ModelState.IsValid)
@@ -404,6 +695,7 @@ namespace HW9.Controllers
                 return View(appraisal);
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> EditAppraisal(int? id)
         {
             if (id == null)
@@ -413,29 +705,36 @@ namespace HW9.Controllers
             if (appraisal == null)
                 return NotFound();
 
-            ViewBag.Student = _context.Students;
+            List<User> users = new List<User>();
+            foreach (var item in _context.Users)
+            {
+                if (item.RoleFk == 1)
+                    users.Add(item);
+            }
+            ViewBag.Student = users;
             ViewBag.Subject = _context.Subjects;
+
             return View(appraisal);
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> EditAppraisal(Appraisal appraisal)
         {
             var courseToUpdate = await _context.Appraisals.FindAsync(appraisal.Id);
 
             if (courseToUpdate == null)
-            {
                 return NotFound();
-            }
+            
 
             if (await TryUpdateModelAsync<Appraisal>(
                 courseToUpdate,
                 "",
-                a => a.Rating, a => a.StudentFk, a => a.SubjectFk
+                a => a.Rating, a => a.UserStudentFk, a => a.SubjectFk
                 ))
             {
                 courseToUpdate.Rating = appraisal.Rating;
-                courseToUpdate.StudentFk = appraisal.StudentFk;
+                courseToUpdate.UserStudentFk = appraisal.UserStudentFk;
                 courseToUpdate.SubjectFk = appraisal.SubjectFk;
 
                 await _context.SaveChangesAsync();
@@ -444,6 +743,7 @@ namespace HW9.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin, lector")]
         public async Task<IActionResult> DeleteAppraisal(int? id)
         {
             if (id == null)
@@ -462,6 +762,7 @@ namespace HW9.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, lector")]
         [ValidateAntiForgeryToken]
         [ActionName("DeleteAppraisal")]
         public async Task<IActionResult> DeleteApp(int? id)
@@ -483,17 +784,6 @@ namespace HW9.Controllers
         /// </summary>
         /// <param name="MyEmail"></param>
         /// <returns></returns>
-        public async Task<JsonResult> CheckUserMail(string MyEmail)
-        {
-            var email = await _context.Students.Where(o => o.Email == MyEmail).FirstOrDefaultAsync();
-            bool result = true;
-            if (email != null)
-                result = true;  /// ставить проверку
-            else
-                result = false;  /// ставить проверку
-
-            return Json(result);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
