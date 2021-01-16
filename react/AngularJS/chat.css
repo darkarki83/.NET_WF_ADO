@@ -6,8 +6,8 @@ body {
 
 messenger {
     border: 2px solid #999;
-    background: #eee;
-    box-shadow: 5px 5px 2px #aaa;
+    background: rgb(44, 180, 51);
+    box-shadow: 5px 5px 2px rgb(184, 30, 30);
     display: block;
     margin: 10px auto;
     min-height: 50vw;

@@ -18,22 +18,55 @@
         app.directive('messenger', () => {
             return{
                 restrict: 'E',
-                template: '<span>Nik</span2> <input/> <div><p ng-repeat="m in messages">{{m.author}} : {{m.text}}</p></div> <b>DNS</b><textarea></textarea> <button>Send</button>',
-                controller: ($scope) =>{
+                template: '<span>Nik</span2> <input ng-Model ="nik"/> <div><p ng-repeat="m in messages">{{m.author}} : {{m.text}}</p></div> <b>{{ nik }}</b><textarea ng-Model="myms"></textarea> <button ng-click="sendClick()">Send</button>',
+                controller: ( $scope, $http ) =>{
                     $scope.messages = [];
+                    $scope.nik = 'art';
+                    $scope.myms = '';
+                    $scope.url = "https://chat.momentfor.fun"
 
                     $scope.loadMessages = () => {
-                        $scope.messages = [
+                      /*  $scope.messages = [
                             {author: 'Nik1', text: 'Message1'},
                             {author: 'Nik2', text: 'Message2'},
                             {author: 'Nik3', text: 'Message3'},
                             {author: 'Nik4', text: 'Message4'}
-                        ];
+                        ];*/
+
+                        // load messages from server
+                        $http.get( $scope.url )
+                        .then( res => {
+                            //console.log( res.data.data );
+                            // отоброзить в мессенженере
+                            $scope.messages = res.data.data;
+                        } )   
+                    };
+
+                    $scope.sendClick = () => {
+                        //console.log($scope.nik + ' : ' + $scope.myms);
+                        if($scope.nik.length == 3){
+                            alert( 'Enter nik' );
+                            return
+                        }
+                        if($scope.myms.length == 3){
+                            alert( 'Enter message' );
+                            return
+                        }
+
+                        $http.get( $scope.url + '?author=' + $scope.nik + '&msg=' + $scope.myms)
+                        .then( res => {
+                            //console.log( res.data.data );
+                            // отоброзить в мессенженере
+                            $scope.messages = res.data.data;
+                        } )   
+                        
                     };
                 },
                 link: (scope) => { //~DidMount
                     scope.loadMessages();
+                    setInterval(scope.loadMessages, 1000);
                 }
+
             }
         })
     </script>

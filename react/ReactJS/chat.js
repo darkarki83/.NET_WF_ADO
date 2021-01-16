@@ -14,6 +14,8 @@ class Cont extends React.Component {
         this.sendClick = this.sendClick.bind( this );
         this.updateChat = this.updateChat.bind( this );
 
+        this.onNikChanges = this.onNikChanges.bind( this );
+
         this.state = {
             arrm: [],
             nik: ''
@@ -60,6 +62,8 @@ class Cont extends React.Component {
         document.getElementsByClassName("mytext")[0].value = '';
     }
 
+    
+
     // 3.2
     updateChat(  ) {
         fetch( 'https://chat.momentfor.fun' )
@@ -83,6 +87,12 @@ class Cont extends React.Component {
             } 
             this.setState( { arrm: j.data });
         })
+
+        // обмен данными - прослушка события на документе
+        document.addEventListener(
+             'nikChange',  // event name
+             this.onNikChanges
+        );
 /*
         var notes = document.getElementsByClassName("mytext");
         console.log(notes[0].value);*/
@@ -121,6 +131,49 @@ class Cont extends React.Component {
         );
     }
 
+    // Home work 6.1
+    onNikChanges( event ) {
+        //console.log( event.detail );
+        this.state.nik = event.detail;
+    }
+
 }
 
 ReactDOM.render( e(Cont, { }, null), cont);
+
+
+/*
+    Обмен данными между компонентоми
+    
+    
+    */
+
+class Users extends React.Component {
+    constructor( props ) {
+        super( props ) ;
+        this.state = {
+            niks:  ['Art', 'ArtK', 'Krol']
+        }
+
+        this.nikClick = this.nikClick.bind( this )
+    }
+
+    nikClick( event ) {
+        // console.log(event.target.innerText);
+        // обмен данными - выбор события
+        document.dispatchEvent( // выброс события на документе
+            new CustomEvent(    // нестондартное событие
+                'nikChange',    // имя события
+                { detail: event.target.innerText} //  детали события
+            )
+        )
+    }
+
+    render() {
+        return e( React.Fragment, {}, 
+            this.state.niks.map( n => e( 'p', {key: n, onClick: this.nikClick}, n))
+            );
+    }
+}
+    
+ReactDOM.render( e(Users, { }, null), document.getElementById( "users" ));
