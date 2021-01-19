@@ -2,6 +2,7 @@
 using Chat.Models.Contaxt;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -124,6 +125,49 @@ namespace Chat.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(ListUsers));
             }
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        public IActionResult EditRole()
+        {
+            ViewBag.Names = _context.Users;
+            ViewBag.Roles = _context.Roles;
+
+            return View();
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRole(long? id, long? roleFk)
+        {
+            if (id == null || roleFk == null)
+                return NotFound();
+
+            var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+                return NotFound();
+
+            var courseToUpdate = await _context.Users.FindAsync(user.Id);
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<User>(
+            courseToUpdate,
+            "",
+            s => s.RoleFk
+            ))
+            {
+                courseToUpdate.RoleFk = roleFk;
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListUsers));
+            }
+
             return View();
         }
 

@@ -19,5 +19,26 @@ namespace HW9.Models.Context
             // Создаем БД
             Database.EnsureCreated();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            string adminRoleName = "admin";
+            string lectorRoleName = "lector";
+            string userRoleName = "user";
+
+            string adminEmail = "admin@gmail.com";
+            string adminPassword = "123456";
+            string adminName = "admin";
+
+            // добавляем роли
+            Role adminRole = new Role { Id = 3, Name = adminRoleName };
+            Role lectorRole = new Role { Id = 2, Name = lectorRoleName };
+            Role userRole = new Role { Id = 1, Name = userRoleName };
+            User adminUser = new User { Id = 1, Email = adminEmail, Password = adminPassword, Name = adminName, RoleFk = adminRole.Id };
+
+            modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, lectorRole, userRole });
+            modelBuilder.Entity<User>().HasData(new User[] { adminUser });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

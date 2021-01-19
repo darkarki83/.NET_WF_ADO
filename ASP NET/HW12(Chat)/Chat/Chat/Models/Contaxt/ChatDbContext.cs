@@ -10,7 +10,9 @@ namespace Chat.Models.Contaxt
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         public ChatDbContext(DbContextOptions<ChatDbContext> options) : base(options)
         {

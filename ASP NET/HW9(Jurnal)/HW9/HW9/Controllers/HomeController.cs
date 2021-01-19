@@ -151,7 +151,7 @@ namespace HW9.Controllers
 
         //user
         //only for look (for me)
-        [Authorize(Roles = "admin, lector, user")]
+        //[Authorize(Roles = "admin, lector, user")]
         public async Task<IActionResult> ListUsers()
         {
             return View(await _context.Users.ToListAsync());
