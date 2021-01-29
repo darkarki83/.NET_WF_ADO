@@ -9,6 +9,11 @@ namespace Chat.Models
 {
     public class Section
     {
+        public Section()
+        {
+            Themes = new List<Theme>();
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
@@ -21,6 +26,6 @@ namespace Chat.Models
         [ForeignKey("UserFk")]
         public virtual User User { get; set; }
 
-        public ICollection<Theme> Themes { get; set; }
+        public List<Theme> Themes { get; set; }
     }
 }

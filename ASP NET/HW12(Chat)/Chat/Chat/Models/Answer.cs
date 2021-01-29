@@ -13,7 +13,7 @@ namespace Chat.Models
         public long Id { get; set; }
 
         [Required(ErrorMessage = "Required field")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Post")]
         public string Post { get; set; }
 

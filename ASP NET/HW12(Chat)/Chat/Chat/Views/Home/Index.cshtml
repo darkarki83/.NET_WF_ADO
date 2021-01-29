@@ -1,5 +1,72 @@
-﻿@{
+﻿@using System.Security.Claims
+@model Chat.Models.TheChat
+
+@{
     ViewData["Title"] = "Home Page";
+
+    string role = string.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        role = string.Empty;
+        if (User.IsInRole("admin"))
+            role = "admin";
+        else if (User.IsInRole("moderator"))
+            role = "moderator";
+        else if (User.IsInRole("user"))
+            role = "user";
+        ViewData["Name"] = User.Identity.Name;
+        ViewData["Role"] = role;
+
+    }
+    else
+    {
+        ViewData["Name"] = "Guest";
+        ViewData["Role"] = null;
+    }
+
+    <!--<div>Role: //User.FindFirst(x => x.Type == ClaimTypes.Role).Value</div>-->
+    <h4>Hi @ViewData["Name"]</h4>
+    @if (ViewData["Role"] != null)
+    {
+        <h4>You are @ViewData["Role"]</h4>
+
+    }
+
+}
+
+@foreach (var item in Model.Section)
+{
+    <div class="container">
+        <div class="alert alert-dark">
+            @item.Name
+            @foreach (var theme in Model.Theme)
+            {
+                if (theme.SectionFk == item.Id)
+                {
+                    <div class="container alert alert-success">
+                        <div class="row">
+                            <div class="col-10">
+                                @theme.Name
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outlines-success">+</button>
+                            </div>
+                        </div>
+                        @foreach (var ans in Model.Answer)
+                        {
+                            @if (ans.ThemeFk == theme.Id)
+                            {
+                                <div class="alert alert-warning">
+                                    <p>@ans.Post</p>
+                                    <span class="btn btn-block">@ans.UpdateDate</span>
+                                </div>
+                            }
+                         }
+                    </div>
+                }
+             }
+        </div>
+     </div>
 }
 
 <div class="text-center">

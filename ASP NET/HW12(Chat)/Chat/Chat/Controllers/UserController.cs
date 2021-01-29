@@ -90,6 +90,7 @@ namespace Chat.Controllers
         }
 
         // GET: UserController/Edit/5
+        [Authorize(Roles = "admin, moderator")]
         public async Task<IActionResult> Edit(int? id)
         {
             var user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
@@ -102,6 +103,7 @@ namespace Chat.Controllers
 
         // POST: UserController/Edit/5
         [HttpPost]
+        [Authorize(Roles = "admin, moderator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(User user)
         {
@@ -128,17 +130,19 @@ namespace Chat.Controllers
             return View();
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         public IActionResult EditRole()
         {
             ViewBag.Names = _context.Users;
+
             ViewBag.Roles = _context.Roles;
 
             return View();
         }
 
-        [Authorize(Roles = "admin")]
+        
         [HttpPost]
+        [Authorize(Roles = "admin, moderator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditRole(long? id, long? roleFk)
         {
@@ -172,6 +176,7 @@ namespace Chat.Controllers
         }
 
         // GET: UserController/Delete/5
+        [Authorize(Roles = "admin, moderator")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -192,7 +197,7 @@ namespace Chat.Controllers
         // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[ActionName("delete")]
+        [Authorize(Roles = "admin, moderator")]
         public async Task<ActionResult> Delete(User deluser)
         {
             var user = await _context.Users
@@ -239,7 +244,8 @@ namespace Chat.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name),
+                new Claim(ClaimTypes.Role, user.Role?.Name)
             };
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,

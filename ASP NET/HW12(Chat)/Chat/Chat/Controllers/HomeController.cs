@@ -1,5 +1,6 @@
 ﻿using Chat.Models;
 using Chat.Models.Contaxt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,8 @@ namespace Chat.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var chatDb = new TheChat(_context.Sections, _context.Themes, _context.Answers);
+            return View(chatDb);
         }
 
         public IActionResult Privacy()
@@ -46,6 +48,7 @@ namespace Chat.Controllers
             return View(sections);
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult CreateSection()
         {
             List<User> users = new List<User>();
@@ -60,6 +63,7 @@ namespace Chat.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> CreateSection(Section section)
         {
             if (ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace Chat.Controllers
                 return View(section);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> EditSection(int? id)
         {
             var section = await _context.Sections.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
@@ -91,6 +96,7 @@ namespace Chat.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditSection(Section section)
         {
@@ -116,6 +122,7 @@ namespace Chat.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteSection(int? id)
         {
             if (id == null)
@@ -135,6 +142,7 @@ namespace Chat.Controllers
 
         // POST: UserController/Delete/5
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteSection(Section delSection)
         {
@@ -147,6 +155,12 @@ namespace Chat.Controllers
 
             if (section != null)
             {
+                foreach (var item in _context.Themes)
+                {
+                    if (item.SectionFk == section.Id)
+                        _context.Themes.Remove(item);
+                }  // мне не нравится
+               
                 _context.Sections.Remove(section);
                 await _context.SaveChangesAsync();
             }
@@ -190,6 +204,7 @@ namespace Chat.Controllers
                 return View(theme);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddModeratorToTheme(int? id)
         {
             var theme = await _context.Themes.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
@@ -209,6 +224,7 @@ namespace Chat.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddModeratorToTheme(long? id, long? ModeratorUser)
         {
             if (id == null || ModeratorUser == null)
@@ -240,6 +256,7 @@ namespace Chat.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin, moderator")]
         public async Task<IActionResult> EditTheme(int? id)
         {
             var theme = await _context.Themes.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
@@ -253,6 +270,7 @@ namespace Chat.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, moderator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTheme(Theme theme)
         {
@@ -278,6 +296,7 @@ namespace Chat.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin, moderator")]
         public async Task<ActionResult> DeleteTheme(int? id)
         {
             if (id == null)
@@ -296,6 +315,7 @@ namespace Chat.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, moderator")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteTheme(Theme delTheme)
         {
@@ -313,7 +333,123 @@ namespace Chat.Controllers
             }
             return RedirectToAction(nameof(ListThemes));
         }
-        
+
+        // Answer
+         public async Task<IActionResult> ListAnswers()
+        {
+            return View(await _context.Answers.ToListAsync());
+        }
+
+        public async Task<IActionResult> DetailsAnswer(int? id)
+        {
+            var answer = await _context.Answers.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
+
+            if (answer == null)
+                return NotFound();
+
+            return View(answer);
+        }
+
+        public IActionResult CreateAnswer()
+        {
+            ViewBag.ThemeFk = _context.Themes;
+            ViewBag.AuthorUser = _context.Users;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAnswer(Answer answer)
+        {
+            if (ModelState.IsValid)
+            {
+                answer.UpdateDate = DateTime.Now;
+                await _context.Answers.AddAsync(answer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListAnswers));
+            }
+            else
+                return View(answer);
+        }
+
+        public async Task<IActionResult> EditAnswer(int? id)
+        {
+            var answer = await _context.Answers.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
+
+            if (answer == null)
+                return NotFound();
+
+            ViewBag.ThemeFk = _context.Themes;
+            ViewBag.AuthorUser = _context.Users;
+
+            return View(answer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAnswer(Answer answer)
+        {
+            var courseToUpdate = await _context.Answers.FindAsync(answer.Id);
+
+            if (courseToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Answer>(
+                courseToUpdate,
+                "",
+                a => a.Post, a => a.UpdateDate, a => a.AuthorUser, a => a.ThemeFk
+                ))
+            {
+                courseToUpdate.Post = answer.Post;
+                courseToUpdate.UpdateDate = DateTime.Now;
+                courseToUpdate.AuthorUser = answer.AuthorUser;
+                courseToUpdate.ThemeFk = answer.ThemeFk;
+
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ListAnswers));
+            }
+            return View();
+        }
+
+        public async Task<ActionResult> DeleteAnswer(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var answer = await _context.Answers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (answer != null)
+            {
+                return View("DeleteAnswer", answer);
+
+            }
+            return RedirectToAction(nameof(ListAnswers));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteAnswer(Answer delAnswer)
+        {
+            ///  add cascade delite
+            ///
+            ///
+            var answer = await _context.Answers
+               .AsNoTracking()
+               .FirstOrDefaultAsync(t => t.Id == delAnswer.Id);
+
+            if (answer != null)
+            {
+                _context.Answers.Remove(answer);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(ListAnswers));
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
