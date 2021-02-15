@@ -18,23 +18,46 @@ namespace HW.Presenters
         {
             Model = model;
             View = view;
-            View.LoadList += SeeModel;
+
+            // Первичная загрузка окна => primary load window
+            View.LoadList += LoadList;
+
+            // click to button AddToCart
             View.AddToCart += AddToCart;
+
+            // click to button DeleteFromCart
             View.DeleteFromCart += DeleteFromCart;
+
+
             View.Order += AddOrder;
         }
-
-        public  void SeeModel(object sender, EventArgs e)
+          
+        // Первичная загрузка окна => primary load window
+        public void LoadList(object sender, EventArgs e)
         {
-                foreach(var item in Model.Context.Parts)
+            
+            foreach (var item in Model.Context.Parts)
                 {
                     ListViewItem listItem = new ListViewItem();
                     listItem.Text = item.Id.ToString();
 
                     listItem.SubItems.Add(item.Name);
 
-                    listItem.SubItems.Add(item.ManufacturerFk.ToString());
-                    listItem.SubItems.Add(item.Cost.ToString());
+                //не работает и у всех трех одна ошибка открыт поток
+                /*foreach (var manufacturer in Model.Context.Manufacturers)
+                {
+                    if(manufacturer.Id == item.ManufacturerFk)
+                    {
+                        listItem.SubItems.Add(manufacturer.Name);
+                    }
+                }*/
+                //var manufacturers = Model.Context.Manufacturers.AsNoTracking().SingleOrDefault(u => u.Id == item.ManufacturerFk);
+
+                //var manufacturers = Model.Context.Manufacturers.Find(item.ManufacturerFk);
+
+                listItem.SubItems.Add(item.ManufacturerFk.ToString());
+
+                listItem.SubItems.Add(item.Cost.ToString());
                     View.ListViewPart.Items.Add(listItem);
                 }
         }
@@ -43,6 +66,7 @@ namespace HW.Presenters
         public void AddToCart(object sender, EventArgs e)
         {
             bool flag = false;
+
             if(View.ListViewPart.CanSelect == true)
             {
                 ListViewItem listItem = new ListViewItem();

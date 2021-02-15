@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace HW.Model
 {
+    // Class MyModel Model this application
+    /*
+     * override Context  
+     * constructor (dependency injection) 
+     */
     public class MyModel : IModel
     {
         private MyStoreContext _context;

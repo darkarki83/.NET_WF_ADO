@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace HW.Model
 {
+    // IModel this is MyModel interface
     public interface IModel
     {
+        // our DB 
         MyStoreContext Context { get; set; }
     }
 }

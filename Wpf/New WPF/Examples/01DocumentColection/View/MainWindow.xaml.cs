@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using DocumentColection.Source;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,20 @@ namespace DocumentColection.View
         private void CreateDocument(object sender, RoutedEventArgs e)
         {
 
+            var document = new Document1(); // create document(window)
+
+            document.Owner = this;          // get Owner (.net needed)
+
+            document.Show();
+
+            (Application.Current as App).Documents.Add(document);
+        }
+
+        private void UpdateDocument(object sender, RoutedEventArgs e)
+        {
+            foreach (Document1 doc in ((App)Application.Current).Documents)
+                // Обновляем содержимое всех окно
+                doc.SetContent($"Updated at {DateTime.Now.ToLongTimeString()}");
         }
     }
 }
