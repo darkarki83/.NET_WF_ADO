@@ -35,6 +35,7 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.manufacture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.deleteButton = new System.Windows.Forms.Button();
             this.listViewCart = new System.Windows.Forms.ListView();
             this.namePart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,14 +76,14 @@
             // addButton
             // 
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addButton.Location = new System.Drawing.Point(721, 64);
+            this.addButton.Location = new System.Drawing.Point(731, 64);
             this.addButton.Margin = new System.Windows.Forms.Padding(5);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(125, 42);
-            this.addButton.TabIndex = 1;
+            this.addButton.TabIndex = 3;
             this.addButton.Text = "Add to cart";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.Add);
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // listViewParts
             // 
@@ -90,18 +91,20 @@
             this.id,
             this.name,
             this.manufacture,
-            this.cost});
+            this.cost,
+            this.count});
             this.listViewParts.FullRowSelect = true;
             this.listViewParts.GridLines = true;
             this.listViewParts.HideSelection = false;
             this.listViewParts.Location = new System.Drawing.Point(21, 64);
             this.listViewParts.MultiSelect = false;
             this.listViewParts.Name = "listViewParts";
-            this.listViewParts.Size = new System.Drawing.Size(680, 486);
+            this.listViewParts.Size = new System.Drawing.Size(692, 486);
             this.listViewParts.TabIndex = 2;
             this.listViewParts.UseCompatibleStateImageBehavior = false;
             this.listViewParts.View = System.Windows.Forms.View.Details;
             this.listViewParts.SelectedIndexChanged += new System.EventHandler(this.listViewParts_SelectedIndexChanged);
+            this.listViewParts.DoubleClick += new System.EventHandler(this.AddButton_Click);
             // 
             // id
             // 
@@ -111,29 +114,34 @@
             // name
             // 
             this.name.Text = "Name";
-            this.name.Width = 440;
+            this.name.Width = 326;
             // 
             // manufacture
             // 
             this.manufacture.Text = "Manufacture";
-            this.manufacture.Width = 91;
+            this.manufacture.Width = 130;
             // 
             // cost
             // 
             this.cost.Text = "Cost";
-            this.cost.Width = 81;
+            this.cost.Width = 110;
+            // 
+            // count
+            // 
+            this.count.Text = "Count";
+            this.count.Width = 80;
             // 
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteButton.Location = new System.Drawing.Point(721, 129);
+            this.deleteButton.Location = new System.Drawing.Point(731, 133);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(5);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(125, 42);
-            this.deleteButton.TabIndex = 3;
+            this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Delete from cart";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // listViewCart
             // 
@@ -149,15 +157,16 @@
             this.listViewCart.Location = new System.Drawing.Point(875, 64);
             this.listViewCart.Name = "listViewCart";
             this.listViewCart.Size = new System.Drawing.Size(627, 381);
-            this.listViewCart.TabIndex = 4;
+            this.listViewCart.TabIndex = 6;
             this.listViewCart.UseCompatibleStateImageBehavior = false;
             this.listViewCart.View = System.Windows.Forms.View.Details;
             this.listViewCart.SelectedIndexChanged += new System.EventHandler(this.listViewCart_SelectedIndexChanged);
+            this.listViewCart.DoubleClick += new System.EventHandler(this.DeleteButton_Click);
             // 
             // namePart
             // 
             this.namePart.Text = "Name";
-            this.namePart.Width = 450;
+            this.namePart.Width = 350;
             // 
             // costPart
             // 
@@ -170,8 +179,8 @@
             // 
             // idPart
             // 
-            this.idPart.Text = "";
-            this.idPart.Width = 10;
+            this.idPart.Text = "ID";
+            this.idPart.Width = 110;
             // 
             // label
             // 
@@ -179,7 +188,7 @@
             this.label.Location = new System.Drawing.Point(1232, 470);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(98, 20);
-            this.label.TabIndex = 5;
+            this.label.TabIndex = 7;
             this.label.Text = "Total cost :";
             // 
             // labelTotalCost
@@ -188,7 +197,7 @@
             this.labelTotalCost.Location = new System.Drawing.Point(1395, 470);
             this.labelTotalCost.Name = "labelTotalCost";
             this.labelTotalCost.Size = new System.Drawing.Size(19, 20);
-            this.labelTotalCost.TabIndex = 6;
+            this.labelTotalCost.TabIndex = 8;
             this.labelTotalCost.Text = "0";
             // 
             // labelDol
@@ -197,7 +206,7 @@
             this.labelDol.Location = new System.Drawing.Point(1483, 470);
             this.labelDol.Name = "labelDol";
             this.labelDol.Size = new System.Drawing.Size(19, 20);
-            this.labelDol.TabIndex = 7;
+            this.labelDol.TabIndex = 9;
             this.labelDol.Text = "$";
             // 
             // buttonOrder
@@ -207,7 +216,7 @@
             this.buttonOrder.Margin = new System.Windows.Forms.Padding(5);
             this.buttonOrder.Name = "buttonOrder";
             this.buttonOrder.Size = new System.Drawing.Size(125, 42);
-            this.buttonOrder.TabIndex = 8;
+            this.buttonOrder.TabIndex = 5;
             this.buttonOrder.Text = "To order";
             this.buttonOrder.UseVisualStyleBackColor = true;
             this.buttonOrder.Click += new System.EventHandler(this.buttonOrder_Click);
@@ -222,7 +231,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1543, 24);
-            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // addToCartToolStripMenuItem
@@ -244,7 +253,7 @@
             this.addToCartToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.addToCartToolStripMenu.Size = new System.Drawing.Size(201, 22);
             this.addToCartToolStripMenu.Text = "&Add to cart";
-            this.addToCartToolStripMenu.Click += new System.EventHandler(this.Add);
+            this.addToCartToolStripMenu.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // deleteFromCartToolStripMenu
             // 
@@ -252,7 +261,7 @@
             this.deleteFromCartToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.deleteFromCartToolStripMenu.Size = new System.Drawing.Size(201, 22);
             this.deleteFromCartToolStripMenu.Text = "&Delete from cart";
-            this.deleteFromCartToolStripMenu.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteFromCartToolStripMenu.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // toOrderToolStripMenuItem
             // 
@@ -358,7 +367,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1543, 25);
-            this.toolStrip1.TabIndex = 10;
+            this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButtonAdd
@@ -367,9 +376,9 @@
             this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButtonAdd.Text = "Add &sto cart";
-            this.toolStripButtonAdd.Click += new System.EventHandler(this.Add);
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(70, 22);
+            this.toolStripButtonAdd.Text = "Add &to cart";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // toolStripButtonDelete
             // 
@@ -379,7 +388,7 @@
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(96, 22);
             this.toolStripButtonDelete.Text = "&Delete from cart";
-            this.toolStripButtonDelete.Click += new System.EventHandler(this.deleteButton_Click);
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // toolStripButtonCopy
             // 
@@ -481,6 +490,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOrder;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonExit;
+        private System.Windows.Forms.ColumnHeader count;
     }
 }
 

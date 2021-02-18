@@ -3,12 +3,16 @@ package com.artk.lifecycle;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "artemk";
+
+    int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,4 +58,9 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onPause");
     }
 
+    public void clickCount(View view) {
+        Toast.makeText(MainActivity.this, count + "" , Toast.LENGTH_SHORT);
+
+        count++;
+    }
 }

@@ -23,7 +23,7 @@ namespace HW.Model
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        public DataType? OrderData { get; set; }
+        public DateTime? OrderData { get; set; }
 
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
@@ -34,6 +34,6 @@ namespace HW.Model
 
          // Колекция разных частей заказа 
           
-        public ICollection<PartsInOrder> PartsInOrders { get; set; }
+        public ICollection<Part> Parts { get; set; }
     }
 }

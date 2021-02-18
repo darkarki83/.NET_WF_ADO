@@ -17,6 +17,7 @@ namespace HW.Model
         private MyStoreContext _context;
 
         public MyStoreContext Context { get => _context; set => _context = value; }
+        public Order TempOrder { get; set; }
         
         public MyModel(MyStoreContext context)
         {

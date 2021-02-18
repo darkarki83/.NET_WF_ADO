@@ -18,7 +18,9 @@ namespace HW.Presenters
         {
             Model = model;
             View = view;
+
             View.Order += ConfirmOrder;
+
             foreach (ListViewItem item in listView.Items)
             {
                 ListViewItem listView1 = new ListViewItem();
@@ -29,7 +31,7 @@ namespace HW.Presenters
                 View.ListViewOrder.Items.Add(listView1);
             }
 
-            foreach (var item in Model.Context.Clients)
+            /*foreach (var item in Model.Context.Clients)
             {
                 ListViewItem listView1 = new ListViewItem();
                 listView1.Text = item.Id.ToString();
@@ -54,7 +56,7 @@ namespace HW.Presenters
                 listView1.SubItems.Add(item.Count.ToString());
                 listView1.SubItems.Add(item.TotalCost.ToString());
                 View.ListViewOrder.Items.Add(listView1);
-            }
+            }*/
 
 
 

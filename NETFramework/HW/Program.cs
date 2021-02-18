@@ -21,7 +21,6 @@ namespace HW
             Application.SetCompatibleTextRenderingDefault(false);
             Presenter presenter = new Presenter(new MyModel(new MyStoreContext()), new MainForm());
             Application.Run((Form)presenter.View);
-            Console.WriteLine("wwwww");
         }
     }
 }

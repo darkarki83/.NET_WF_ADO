@@ -32,7 +32,7 @@ namespace HW.Model
         public decimal Cost { get; set; }
 
         [Required]
-        public bool Status { get; set; }
+        public int Count { get; set; }
 
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
