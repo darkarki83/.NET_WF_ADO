@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Auto Complite</string>
+    
+    <string-array name="array1">
+        <item>aboart</item>
+        <item>abase </item>
+        <item>abbess </item>
+        <item>abbot </item>
+        <item>abdomen </item>
+        <item>abdominal  </item>
+        <item>abed</item>
+        <item>abet  </item>
+        <item>abhorrence  </item>
+        <item>penaple</item>
+        <item>cat</item>
+        <item>dog</item>
+        <item>banana</item>
+    </string-array>
+</resources>

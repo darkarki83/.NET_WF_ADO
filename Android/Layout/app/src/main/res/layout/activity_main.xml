@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <!-- <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Top" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Top" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="Top" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="Center" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Center" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="Center" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Bottom" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Bottom" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Bottom" />
+   -->
+
+    <!--
+
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_centerInParent="true"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+
+    -->
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Bottom1" />
+    <Button
+        android:layout_below="@id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/button1"
+        android:layout_alignRight="@id/button1"
+
+        android:text="2" />
+    <Button
+        android:layout_above="@id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/button1"
+        android:layout_alignRight="@id/button1"
+
+        android:text="3" />
+    <Button
+        android:layout_toRightOf="@id/button1"
+        android:layout_alignBottom="@id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="4" />
+    <Button
+        android:layout_toLeftOf="@id/button1"
+        android:layout_alignBottom="@id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="5" />
+</RelativeLayout>
+
+    <!--
+
+    android:layout_above="@+id/view_id"
+    android:layout_below="@+id/view_id"
+    android:layout_alignTop="@+id/view_id"
+    android:layout_alignBottom="@+id/view_id"
+    android:layout_alignLeft="@+id/view_id"
+    android:layout_alignRight="@+id/view_id"
+    android:layout_toLeftOf="@+id/view_id"
+    android:layout_toRightOf="@+id/view_id"
+    ПРАКТИКА (проверка свойств)
+
+
+    -->

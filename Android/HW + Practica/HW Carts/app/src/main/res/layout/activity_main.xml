@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:textSize="25dp">
+
+        <ImageButton
+            android:id="@+id/bigPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fotosecond" />
+
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bigPicture"
+            android:textSize="15dp"
+            android:layout_margin="15dp"
+            android:text="Androidinsider.ru" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bigPicture"
+            android:layout_alignParentRight="true"
+            android:paddingRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/love" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/link"
+            android:layout_margin="15dp"
+            android:textSize="15dp"
+            android:text="Nexus 5 оновить до Android Nougat complex layouts with a flat view hierarchy"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_margin="15dp"
+            android:textSize="15dp"
+            android:text="And also allows you to position and size widgets in a very flexible way.We've introduced a new Dark Mode for a better coding experience." />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="05.09.XUUX, 12:40"
+            android:textColor="@color/gray" />
+        <TextView
+            android:id="@+id/Buttonlink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/date"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginBottom="10dp"
+            android:autoLink="web"
+            android:textColor="@color/purple_500"
+            android:text="ПОДРОБНЕЕ" />
+
+        <!--   first 1
+          <ImageButton
+               android:id="@+id/bigPicture"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentTop="true"
+               android:adjustViewBounds="true"
+               android:padding="0dp"
+               android:scaleType="fitCenter"
+               android:src="@drawable/fotofirst" />
+
+           <TextView
+               android:id="@+id/link"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentTop="true"
+               android:layout_margin="5dp"
+               android:layout_toRightOf="@id/bigPicture"
+               android:text="Androidinsider.ru" />
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="50dp"
+               android:layout_toRightOf="@id/link"
+               android:layout_alignParentRight="true"
+               android:src="@drawable/love" />
+           <TextView
+               android:id="@+id/title"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/link"
+               android:layout_margin="5dp"
+               android:layout_toRightOf="@id/bigPicture"
+               android:textStyle="bold"
+               android:text="Nexus 5 оновить до Android Nougat" />
+           <TextView
+               android:id="@+id/text"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/title"
+               android:layout_margin="5dp"
+               android:layout_toRightOf="@id/bigPicture"
+               android:text="complex layouts with a flat view hierarchy, and also allows you to position and size widgets in a very flexible way." />
+           <TextView
+               android:id="@+id/date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/text"
+               android:textColor="@color/gray"
+               android:layout_marginLeft="5dp"
+               android:layout_marginTop="0dp"
+               android:layout_marginBottom="15dp"
+               android:layout_toRightOf="@id/bigPicture"
+               android:text="25.08.2016 12:00" />
+           <TextView
+               android:id="@+id/Buttonlink"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/date"
+               android:layout_toRightOf="@id/bigPicture"
+               android:layout_marginLeft="60dp"
+               android:layout_marginTop="20dp"
+               android:autoLink="web"
+               android:textColor="@color/purple_500"
+               android:text="ПОДРОБНЕЕ" />   -->
+
+        <!-- <ImageViews
+               android:id="@+id/avatar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:background="@drawable/enot" />
+
+           <TextView
+               android:id="@+id/nick"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignTop="@id/avatar"
+               android:layout_margin="5dp"
+               android:layout_toRightOf="@id/avatar"
+               android:text="Эльдар Енотов" />
+
+           <TextView
+               android:id="@+id/twitter"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/nick"
+               android:layout_alignLeft="@id/nick"
+               android:text="\@enotov" />
+
+           <ImageButton
+               android:id="@+id/bigPicture"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/avatar"
+               android:adjustViewBounds="true"
+               android:padding="0dp"
+               android:scaleType="fitCenter"
+               android:src="@drawable/rain" />
+
+           <TextView
+               android:id="@+id/likes"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/bigPicture"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="0dp"
+               android:layout_marginBottom="10dp"
+               android:text="308" />
+
+           <ImageView
+               android:id="@+id/likesPicture"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/bigPicture"
+               android:layout_marginLeft="5dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="10dp"
+               android:layout_toRightOf="@id/likes"
+               android:background="@drawable/love" />
+
+           <TextView
+               android:id="@+id/comments"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/bigPicture"
+               android:layout_margin="10dp"
+               android:layout_toRightOf="@id/likesPicture"
+               android:text="3" />
+
+           <ImageView
+               android:id="@+id/commentsPicture"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/bigPicture"
+               android:layout_marginLeft="0dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="10dp"
+               android:layout_toRightOf="@id/comments"
+               android:background="@drawable/comments" />
+
+           <TextView
+               android:id="@+id/date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/likes"
+               android:layout_marginLeft="10dp"
+               android:layout_marginTop="0dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="10dp"
+               android:text="27 mar 2021 18:20" />-->
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>

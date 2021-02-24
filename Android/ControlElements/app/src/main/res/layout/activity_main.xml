@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--    LINK
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="https://t.me/trance_mus"
+        android:textColorHighlight="#01000000"
+        android:textColorLink="#F00"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:autoLink="email"
+        android:linksClickable="true"
+        android:text="sunmeatrich@gmail.com"
+        android:textColorLink="#FA0"
+        android:textSize="30sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:autoLink="phone"
+        android:linksClickable="true"
+        android:text="0635500055"
+        android:textColorLink="#0F0"
+        android:textSize="30sp" />
+
+        -->
+
+    <!-- Красивый TextBox
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Label">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    -->
+
+    <!-- Отслеживание нажатия клавиатуры
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="Enter your password and see the magic!!"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/passwordHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password"
+            android:background="#ffd33a26"
+            android:padding="5dp"
+            android:text="* Not Entered"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    -->
+
+    <!-- Красивый TextBox
+    <com.tomlonghurst.expandablehinttext.ExpandableHintText
+        android:layout_marginTop="32dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Tom"
+        android:textColor="@color/purple_500"
+        android:hint="First Name"
+        app:textBoxColor="@android:color/white"
+        app:floatingLabelColor="@android:color/white"
+        app:imageColor="@color/teal_200"
+        app:image="@drawable/ic_baseline_sentiment_very_satisfied_24px"
+        />
+
+        -->
+    <!-- Рычажок
+        <Switch
+            android:id="@+id/switch_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:showText="true"
+            android:textOn="On"
+            android:textOff="Off" />
+    -->
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RED" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GREEN" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BLUE" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YELLOW" />
+    </RadioGroup>
+</LinearLayout>

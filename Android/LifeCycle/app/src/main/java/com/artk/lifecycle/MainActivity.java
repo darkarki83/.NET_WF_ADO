@@ -1,11 +1,13 @@
 package com.artk.lifecycle;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,12 +16,33 @@ public class MainActivity extends AppCompatActivity {
 
     int count = 1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Log.i(TAG, "onCreate");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) { // для запоминания
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState");
+
+        outState.putInt("click",  count);
+
+
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "onRestoreInstanceState");
+
+        count = savedInstanceState.getInt("click");
     }
 
     @Override
@@ -59,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickCount(View view) {
-        Toast.makeText(MainActivity.this, count + "" , Toast.LENGTH_SHORT);
-
-        count++;
+        // Intent class намеренья для системы
+        // намеринь перейти на второе актиити
+        Intent i = new Intent(this, SecondActivity.class);
+        startActivity(i);
     }
 }
