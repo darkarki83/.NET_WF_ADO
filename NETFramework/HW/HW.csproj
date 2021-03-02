@@ -70,6 +70,7 @@
     <Compile Include="Model\Tables\Part.cs" />
     <Compile Include="Model\Tables\Client.cs" />
     <Compile Include="Model\Tables\Order.cs" />
+    <Compile Include="Model\Tables\PartCountHave.cs" />
     <Compile Include="Model\Tables\PartsInOrder.cs" />
     <Compile Include="Presenters\UserPresenter.cs" />
     <Compile Include="Views\IUserFormView.cs" />

@@ -29,7 +29,7 @@ namespace HW.Model
         public long? OrderFk { get; set; }
         [ForeignKey("OrderFk")]
         public virtual Order Order { get; set; }   // Навигационное свойство
-        
+
         [Required]
         public int Count { get; set; }
 

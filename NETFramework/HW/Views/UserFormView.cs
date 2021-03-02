@@ -15,7 +15,11 @@ namespace HW.Views
         public event EventHandler Order;
         public TextBox  TName {get => textBoxName; set => textBoxName = value;}
         public TextBox  TDdress {get => textBoxAddress; set => textBoxAddress = value;}
- 
+
+        public TextBox Cost { get => textBoxCost; set => textBoxCost = value; }
+        public TextBox Bonus { get => textBoxBonus; set => textBoxBonus = value; }
+        public TextBox TotalCost { get => textBoxTotalCost; set => textBoxTotalCost = value; }
+
         public ListView ListViewOrder { get => listViewOrder; set => listViewOrder = value; }
         
         

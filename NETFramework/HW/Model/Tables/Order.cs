@@ -32,8 +32,8 @@ namespace HW.Model
         [ForeignKey("ClientFk")]
         public virtual Client Client { get; set; }
 
-         // Колекция разных частей заказа 
-          
-        public ICollection<Part> Parts { get; set; }
+        // Колекция разных частей заказа 
+
+        public ICollection<PartsInOrder> PartsInOrders { get; set; }
     }
 }

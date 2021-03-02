@@ -30,17 +30,23 @@ namespace HW.Views
         private void InitializeComponent()
         {
             this.listViewOrder = new System.Windows.Forms.ListView();
-            this.labelYourOrder = new System.Windows.Forms.Label();
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnCost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelYourOrder = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelAdrress = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelCost = new System.Windows.Forms.Label();
+            this.labelBonus = new System.Windows.Forms.Label();
+            this.labelTotalCost = new System.Windows.Forms.Label();
+            this.textBoxCost = new System.Windows.Forms.TextBox();
+            this.textBoxBonus = new System.Windows.Forms.TextBox();
+            this.textBoxTotalCost = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listViewOrder
@@ -53,19 +59,10 @@ namespace HW.Views
             this.listViewOrder.HideSelection = false;
             this.listViewOrder.Location = new System.Drawing.Point(399, 52);
             this.listViewOrder.Name = "listViewOrder";
-            this.listViewOrder.Size = new System.Drawing.Size(389, 386);
+            this.listViewOrder.Size = new System.Drawing.Size(389, 219);
             this.listViewOrder.TabIndex = 6;
             this.listViewOrder.UseCompatibleStateImageBehavior = false;
             this.listViewOrder.View = System.Windows.Forms.View.Details;
-            // 
-            // labelYourOrder
-            // 
-            this.labelYourOrder.AutoSize = true;
-            this.labelYourOrder.Location = new System.Drawing.Point(399, 13);
-            this.labelYourOrder.Name = "labelYourOrder";
-            this.labelYourOrder.Size = new System.Drawing.Size(56, 13);
-            this.labelYourOrder.TabIndex = 5;
-            this.labelYourOrder.Text = "Your order";
             // 
             // columnName
             // 
@@ -82,6 +79,15 @@ namespace HW.Views
             // columnId
             // 
             this.columnId.Text = "Id";
+            // 
+            // labelYourOrder
+            // 
+            this.labelYourOrder.AutoSize = true;
+            this.labelYourOrder.Location = new System.Drawing.Point(399, 13);
+            this.labelYourOrder.Name = "labelYourOrder";
+            this.labelYourOrder.Size = new System.Drawing.Size(56, 13);
+            this.labelYourOrder.TabIndex = 5;
+            this.labelYourOrder.Text = "Your order";
             // 
             // labelName
             // 
@@ -134,6 +140,7 @@ namespace HW.Views
             // 
             // buttonCancel
             // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCancel.Location = new System.Drawing.Point(165, 271);
             this.buttonCancel.Name = "buttonCancel";
@@ -143,12 +150,75 @@ namespace HW.Views
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // labelCost
+            // 
+            this.labelCost.AutoSize = true;
+            this.labelCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCost.Location = new System.Drawing.Point(545, 310);
+            this.labelCost.Name = "labelCost";
+            this.labelCost.Size = new System.Drawing.Size(54, 20);
+            this.labelCost.TabIndex = 8;
+            this.labelCost.Text = "Cost : ";
+            // 
+            // labelBonus
+            // 
+            this.labelBonus.AutoSize = true;
+            this.labelBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBonus.Location = new System.Drawing.Point(545, 355);
+            this.labelBonus.Name = "labelBonus";
+            this.labelBonus.Size = new System.Drawing.Size(67, 20);
+            this.labelBonus.TabIndex = 9;
+            this.labelBonus.Text = "Bonus : ";
+            // 
+            // labelTotalCost
+            // 
+            this.labelTotalCost.AutoSize = true;
+            this.labelTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTotalCost.Location = new System.Drawing.Point(545, 401);
+            this.labelTotalCost.Name = "labelTotalCost";
+            this.labelTotalCost.Size = new System.Drawing.Size(89, 20);
+            this.labelTotalCost.TabIndex = 10;
+            this.labelTotalCost.Text = "TotalCost : ";
+            // 
+            // textBoxCost
+            // 
+            this.textBoxCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCost.Location = new System.Drawing.Point(658, 310);
+            this.textBoxCost.Name = "textBoxCost";
+            this.textBoxCost.ReadOnly = true;
+            this.textBoxCost.Size = new System.Drawing.Size(130, 26);
+            this.textBoxCost.TabIndex = 11;
+            // 
+            // textBoxBonus
+            // 
+            this.textBoxBonus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxBonus.Location = new System.Drawing.Point(658, 355);
+            this.textBoxBonus.Name = "textBoxBonus";
+            this.textBoxBonus.ReadOnly = true;
+            this.textBoxBonus.Size = new System.Drawing.Size(130, 26);
+            this.textBoxBonus.TabIndex = 12;
+            // 
+            // textBoxTotalCost
+            // 
+            this.textBoxTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTotalCost.Location = new System.Drawing.Point(658, 401);
+            this.textBoxTotalCost.Name = "textBoxTotalCost";
+            this.textBoxTotalCost.ReadOnly = true;
+            this.textBoxTotalCost.Size = new System.Drawing.Size(130, 26);
+            this.textBoxTotalCost.TabIndex = 13;
+            // 
             // UserFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxTotalCost);
+            this.Controls.Add(this.textBoxBonus);
+            this.Controls.Add(this.textBoxCost);
+            this.Controls.Add(this.labelTotalCost);
+            this.Controls.Add(this.labelBonus);
+            this.Controls.Add(this.labelCost);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.textBoxAddress);
@@ -180,5 +250,11 @@ namespace HW.Views
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label labelCost;
+        private System.Windows.Forms.Label labelBonus;
+        private System.Windows.Forms.Label labelTotalCost;
+        private System.Windows.Forms.TextBox textBoxCost;
+        private System.Windows.Forms.TextBox textBoxBonus;
+        private System.Windows.Forms.TextBox textBoxTotalCost;
     }
 }

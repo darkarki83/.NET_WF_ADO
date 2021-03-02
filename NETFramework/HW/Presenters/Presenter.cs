@@ -37,6 +37,7 @@ namespace HW.Presenters
             Model.Context.Parts.Load();
             Model.Context.Orders.Load();
             Model.Context.PartsInOrders.Load();
+            Model.Context.PartsCountHave.Load();
             Model.Context.Clients.Load();
             Model.Context.Manufacturers.Load();
         }
@@ -54,7 +55,10 @@ namespace HW.Presenters
                 listItem.SubItems.Add(manufacturers.Name);
 
                 listItem.SubItems.Add(item.Cost.ToString());
-                listItem.SubItems.Add(item.Count.ToString());
+
+                /* плохо  1 in 1 */
+                var counts = await Model.Context.PartsCountHave.FindAsync(item.Id);
+                listItem.SubItems.Add(counts.Count.ToString());
 
                 View.ListViewPart.Items.Add(listItem);
             }
@@ -91,10 +95,10 @@ namespace HW.Presenters
 
         public void AddToCart(object sender, EventArgs e)
         {
-            // is add this time first time 
+            // is add this item first time 
             bool flag = false;                                                              
 
-            // count Elements in ListViewPart
+            // Count Elements in ListViewPart (есть ли товар на складе)
             int countLeft = int.Parse(View.ListViewPart.SelectedItems[0].SubItems[4].Text); 
 
             if (countLeft > 0)
@@ -106,7 +110,7 @@ namespace HW.Presenters
                     // деталь в ListView ListViewCart
                     foreach (ListViewItem item in View.ListViewCart.Items)
                     {
-                        // есть
+                        // сравнить ID
                         if (item.SubItems[3].Text == View.ListViewPart.SelectedItems[0].SubItems[0].Text)  // есть
                         {
                             // add +1 to count in order
@@ -118,7 +122,7 @@ namespace HW.Presenters
                     }
                     if (!flag)
                     {
-                        // if added first time this parts
+                        // if added first time this parts  function AddNewPart описана ниже
                         AddNewPart(View.ListViewPart.SelectedItems[0]);
                     }
 
@@ -134,11 +138,11 @@ namespace HW.Presenters
         {
             ListViewItem listItem = new ListViewItem();
 
-            listItem.Text = View.ListViewPart.SelectedItems[0].SubItems[1].Text;
-            listItem.SubItems.Add(View.ListViewPart.SelectedItems[0].SubItems[3]);
-            listItem.SubItems.Add(1.ToString());
-            listItem.SubItems.Add(View.ListViewPart.SelectedItems[0].SubItems[0].Text);
-            View.ListViewCart.Items.Add(listItem);
+            listItem.Text = View.ListViewPart.SelectedItems[0].SubItems[1].Text;        // 1) name 
+            listItem.SubItems.Add(View.ListViewPart.SelectedItems[0].SubItems[3]);      // 2) cost
+            listItem.SubItems.Add(1.ToString());                                        // 3) count = 1 первое добовление
+            listItem.SubItems.Add(View.ListViewPart.SelectedItems[0].SubItems[0].Text); // 4) Id part
+            View.ListViewCart.Items.Add(listItem);                                      // add to ListViewCart
         }
 
         public void DeleteFromCart(object sender, EventArgs e)
@@ -184,7 +188,7 @@ namespace HW.Presenters
 
 
             var UserPresenter = new UserPresenter(this.Model, new UserFormView(), View.ListViewCart);
-            ((Form)UserPresenter.View).ShowDialog();
+            ((Form)UserPresenter.View).ShowDialog(); 
         }
     }
 }

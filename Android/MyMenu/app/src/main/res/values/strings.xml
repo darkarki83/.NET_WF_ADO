@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Menu</string>
+
+    <string name="item_1">File</string>
+    <string name="item_2">Edit</string>
+    <string name="item_3">View</string>
+    <string name="item_4">Navigate</string>
+    <string name="item_5">Code</string>
+</resources>

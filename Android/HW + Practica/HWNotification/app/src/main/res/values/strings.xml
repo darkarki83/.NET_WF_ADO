@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HWNotification</string>
+    <string name="appImage">Images</string>
+    <string name="flashLightOn">No work</string>
+    <string name="close">Bay bay</string>
+    <string name="title">Title</string>
+    <string name="alltext">This is my text to the notification</string>
+</resources>

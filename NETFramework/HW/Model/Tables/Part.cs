@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HW.Model.Tables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,15 +32,11 @@ namespace HW.Model
         [Range(1, 7999)]
         public decimal Cost { get; set; }
 
-        [Required]
-        public int Count { get; set; }
-
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         public long? ManufacturerFk { get; set; }
         [ForeignKey("ManufacturerFk")]
         public virtual Manufacturer Manufacturer { get; set; }   // Навигационное свойство
-    
     }
 }
