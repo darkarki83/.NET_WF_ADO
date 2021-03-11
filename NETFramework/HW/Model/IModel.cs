@@ -12,6 +12,6 @@ namespace HW.Model
         // our DB 
         MyStoreContext Context { get; set; }
 
-        Order TempOrder { get; set; }
+        decimal Totalcost { get; set; }
     }
 }

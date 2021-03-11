@@ -27,6 +27,7 @@ namespace HW.Model
         public DbSet<PartCountHave> PartsCountHave { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<PartsInOrder> PartsInOrders { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

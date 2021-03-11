@@ -108,6 +108,13 @@ namespace HW.Model
             foreach (var partCountHave in partsCountHave)
                 context.PartsCountHave.Add(partCountHave);
 
+            var admins = new Admin[]
+           {
+                new Admin { Id = 1, Login = "admin", Password = "admin",  Name = "Boss" }
+           };
+            foreach (var admin in admins)
+                context.Admins.Add(admin);
+
             var orders = new Order[]
             { 
                 new Order { Id = 1, OrderData = null, ClientFk = clients[0].Id },

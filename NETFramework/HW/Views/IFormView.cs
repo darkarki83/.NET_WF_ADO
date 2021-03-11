@@ -14,10 +14,18 @@ namespace HW.Views
         ListView ListViewCart { get; set; }
         Label LabelTotalCost { get; set; }
 
+        ListView ListViewOrder { get; set; }
+        ListView ListViewPartsInOrder { get; set; }
+
         event EventHandler LoadList;
         event EventHandler AddToCart;
         event EventHandler DeleteFromCart;
         event EventHandler Order;
 
+        event EventHandler SearchOrder;
+        event EventHandler LoginAdmin;
+
+        void EnabledDisAdd(bool status);
+        void EnabledDisOrder(bool status);
     }
 }

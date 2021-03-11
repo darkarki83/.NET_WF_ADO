@@ -13,39 +13,52 @@ namespace HW.Views
     public partial class UserFormView : Form, IUserFormView
     {
         public event EventHandler Order;
-        public TextBox  TName {get => textBoxName; set => textBoxName = value;}
-        public TextBox  TDdress {get => textBoxAddress; set => textBoxAddress = value;}
+        public event EventHandler SelectedIndexChanged;
 
+        public ListView ListViewOrder { get => listViewOrder; set => listViewOrder = value; }
+        public ComboBox ComboClient { get => comboBoxClient; set => comboBoxClient = value; }
+
+        public TextBox  TDdress {get => textBoxAddress; set => textBoxAddress = value;}
         public TextBox Cost { get => textBoxCost; set => textBoxCost = value; }
         public TextBox Bonus { get => textBoxBonus; set => textBoxBonus = value; }
         public TextBox TotalCost { get => textBoxTotalCost; set => textBoxTotalCost = value; }
-
-        public ListView ListViewOrder { get => listViewOrder; set => listViewOrder = value; }
-        
         
         public UserFormView()
         {
             InitializeComponent();
-            buttonConfirm.Enabled = false;
+            ButtonStatus();
+        }
+
+        private void comboBoxClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ButtonStatus();
+            SelectedIndexChanged(sender, EventArgs.Empty);  // SelectedIndexChanged => to change the Bonus
+        }
+
+        private void textBoxDress_TextChanged(object sender, EventArgs e)
+        {
+            ButtonStatus();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             Order(sender, EventArgs.Empty);
-        }
-
-        private void textBoxName_TextChanged(object sender, EventArgs e)
-        {
-            if(textBoxName.TextLength > 3 && textBoxAddress.TextLength > 3)
-                buttonConfirm.Enabled = true;
-            else
-                buttonConfirm.Enabled = false;
-
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        private void ButtonStatus()
+        {
+            if (TDdress.TextLength > 3 && ComboClient.SelectedIndex != -1)
+                buttonConfirm.Enabled = true;
+            else
+                buttonConfirm.Enabled = false;
+
+        }
+
     }
 }

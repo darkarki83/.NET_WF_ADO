@@ -19,6 +19,12 @@ namespace HW
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            /*
+            var adminPresenter = new AdminPresenter(new MyModel(new MyStoreContext()), new AdminForm());
+            Application.Run((Form)adminPresenter.View);*/
+
+            
             Presenter presenter = new Presenter(new MyModel(new MyStoreContext()), new MainForm());
             Application.Run((Form)presenter.View);
         }

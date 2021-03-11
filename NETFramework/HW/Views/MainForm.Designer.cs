@@ -59,9 +59,7 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logInToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.myOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
@@ -69,6 +67,15 @@
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOrder = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonExit = new System.Windows.Forms.ToolStripButton();
+            this.listViewOrder = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewPartInOrder = new System.Windows.Forms.ListView();
+            this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnPartFk = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnOrderFk = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCountP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -317,8 +324,7 @@
             // adminPanelToolStripMenuItem
             // 
             this.adminPanelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem,
-            this.registrationToolStripMenuItem});
+            this.loginToolStripMenuItem});
             this.adminPanelToolStripMenuItem.Name = "adminPanelToolStripMenuItem";
             this.adminPanelToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.adminPanelToolStripMenuItem.Text = "&Admin panel";
@@ -326,35 +332,24 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.loginToolStripMenuItem.Text = "&Log in";
-            // 
-            // registrationToolStripMenuItem
-            // 
-            this.registrationToolStripMenuItem.Name = "registrationToolStripMenuItem";
-            this.registrationToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.registrationToolStripMenuItem.Text = "&Registration";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // orderPanelToolStripMenuItem
             // 
             this.orderPanelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logInToolStripMenuItem1,
             this.myOrderToolStripMenuItem});
             this.orderPanelToolStripMenuItem.Name = "orderPanelToolStripMenuItem";
             this.orderPanelToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.orderPanelToolStripMenuItem.Text = "Order panel";
-            // 
-            // logInToolStripMenuItem1
-            // 
-            this.logInToolStripMenuItem1.Name = "logInToolStripMenuItem1";
-            this.logInToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
-            this.logInToolStripMenuItem1.Text = "&Log in";
+            this.orderPanelToolStripMenuItem.Text = "&Order panel";
             // 
             // myOrderToolStripMenuItem
             // 
             this.myOrderToolStripMenuItem.Name = "myOrderToolStripMenuItem";
             this.myOrderToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.myOrderToolStripMenuItem.Text = "&My order";
+            this.myOrderToolStripMenuItem.Click += new System.EventHandler(this.myOrderToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -418,11 +413,83 @@
             this.toolStripButtonExit.Text = "&Exit";
             this.toolStripButtonExit.Click += new System.EventHandler(this.Exit);
             // 
+            // listViewOrder
+            // 
+            this.listViewOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewOrder.FullRowSelect = true;
+            this.listViewOrder.GridLines = true;
+            this.listViewOrder.HideSelection = false;
+            this.listViewOrder.Location = new System.Drawing.Point(32, 658);
+            this.listViewOrder.MultiSelect = false;
+            this.listViewOrder.Name = "listViewOrder";
+            this.listViewOrder.Size = new System.Drawing.Size(540, 355);
+            this.listViewOrder.TabIndex = 10;
+            this.listViewOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewOrder.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 40;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Date";
+            this.columnHeader2.Width = 326;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "User Fk";
+            this.columnHeader3.Width = 130;
+            // 
+            // listViewPartInOrder
+            // 
+            this.listViewPartInOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnID,
+            this.columnPartFk,
+            this.columnOrderFk,
+            this.columnCountP});
+            this.listViewPartInOrder.FullRowSelect = true;
+            this.listViewPartInOrder.GridLines = true;
+            this.listViewPartInOrder.HideSelection = false;
+            this.listViewPartInOrder.Location = new System.Drawing.Point(616, 658);
+            this.listViewPartInOrder.MultiSelect = false;
+            this.listViewPartInOrder.Name = "listViewPartInOrder";
+            this.listViewPartInOrder.Size = new System.Drawing.Size(509, 355);
+            this.listViewPartInOrder.TabIndex = 11;
+            this.listViewPartInOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewPartInOrder.View = System.Windows.Forms.View.Details;
+            // 
+            // columnID
+            // 
+            this.columnID.Text = "ID";
+            this.columnID.Width = 126;
+            // 
+            // columnPartFk
+            // 
+            this.columnPartFk.Text = "PartFk";
+            this.columnPartFk.Width = 129;
+            // 
+            // columnOrderFk
+            // 
+            this.columnOrderFk.Text = "OrderFk";
+            this.columnOrderFk.Width = 145;
+            // 
+            // columnCountP
+            // 
+            this.columnCountP.Text = "Count";
+            this.columnCountP.Width = 93;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1543, 588);
+            this.ClientSize = new System.Drawing.Size(1543, 595);
+            this.Controls.Add(this.listViewPartInOrder);
+            this.Controls.Add(this.listViewOrder);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.buttonOrder);
             this.Controls.Add(this.labelDol);
@@ -439,7 +506,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "MyStore 1.01";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -480,9 +547,7 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminPanelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderPanelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logInToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem myOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
@@ -491,6 +556,15 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonExit;
         private System.Windows.Forms.ColumnHeader count;
+        private System.Windows.Forms.ListView listViewOrder;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ListView listViewPartInOrder;
+        private System.Windows.Forms.ColumnHeader columnID;
+        private System.Windows.Forms.ColumnHeader columnPartFk;
+        private System.Windows.Forms.ColumnHeader columnOrderFk;
+        private System.Windows.Forms.ColumnHeader columnCountP;
     }
 }
 

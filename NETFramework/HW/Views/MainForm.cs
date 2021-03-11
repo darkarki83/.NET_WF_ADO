@@ -19,6 +19,10 @@ namespace HW.Views
         public event EventHandler DeleteFromCart;
         public event EventHandler Order;
 
+        public event EventHandler SearchOrder;
+        public event EventHandler LoginAdmin;
+
+
         // constructor
         public MainForm()
         {
@@ -34,6 +38,9 @@ namespace HW.Views
         public ListView ListViewCart { get => listViewCart; set => listViewCart = value; }
         public Label LabelTotalCost { get => labelTotalCost; set => labelTotalCost = value; }
 
+        public ListView ListViewOrder { get => listViewOrder; set => listViewOrder = value; }
+        public ListView ListViewPartsInOrder { get => listViewPartInOrder; set => listViewPartInOrder = value; }
+
         // Load MainForm => open Event LoadList
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -44,7 +51,6 @@ namespace HW.Views
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddToCart(sender, EventArgs.Empty);
-            EnabledDisOrder(true);
         }
 
         // Delete Button click
@@ -82,7 +88,7 @@ namespace HW.Views
         }
 
         // functions Enabled/Disabled button
-        private void EnabledDisAdd(bool status)
+        public void EnabledDisAdd(bool status)
         {
             addButton.Enabled = status;
             toolStripButtonAdd.Enabled = status;
@@ -96,11 +102,21 @@ namespace HW.Views
             deleteFromCartToolStripMenu.Enabled = status;
         }
 
-        private void EnabledDisOrder(bool status)
+        public void EnabledDisOrder(bool status)
         {
             buttonOrder.Enabled = status;
             toOrderToolStripMenuItem.Enabled = status;
             toolStripButtonOrder.Enabled = status;
+        }
+
+        private void myOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchOrder(sender, EventArgs.Empty);
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginAdmin(sender, EventArgs.Empty);
         }
     }
 }

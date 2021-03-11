@@ -10,15 +10,15 @@ namespace HW.Views
 {
     public interface IUserFormView : IView
     {
-        ListView ListViewOrder { get; set; }
-        TextBox TName { get; set; }
-        TextBox TDdress { get; set; }
+        event EventHandler Order;
+        event EventHandler SelectedIndexChanged;
 
+        ListView ListViewOrder { get; set; }
+        ComboBox ComboClient { get; set; }
+
+        TextBox TDdress { get; set; }
         TextBox Cost { get; set; }
         TextBox Bonus { get; set; }
         TextBox TotalCost { get; set; }
-
-        event EventHandler Order;
-
     }
 }

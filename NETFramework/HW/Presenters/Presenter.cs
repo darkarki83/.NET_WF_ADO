@@ -29,9 +29,11 @@ namespace HW.Presenters
             // click to button DeleteFromCart
             View.DeleteFromCart += DeleteFromCart;
 
-
+            // click to button AddOrder
             View.Order += AddOrder;
 
+            View.SearchOrder += SearchOrder;
+            View.LoginAdmin += LoginAdmin;
             // Подгружаем из БД не только сами объекты, но и
             // вложенные коллекции дочерних для них объектов
             Model.Context.Parts.Load();
@@ -40,58 +42,36 @@ namespace HW.Presenters
             Model.Context.PartsCountHave.Load();
             Model.Context.Clients.Load();
             Model.Context.Manufacturers.Load();
+            Model.Context.Admins.Load();
         }
 
         // Первичная загрузка окна => primary load window async
         public async void LoadList(object sender, EventArgs e)
         {
-            foreach (var item in Model.Context.Parts)
+            await LoadlistViewPart();
+
+            /*    Убрать в релизи)   *//*
+            foreach (var item in Model.Context.Orders)  // для проверки
             {
                 ListViewItem listItem = new ListViewItem();
                 listItem.Text = item.Id.ToString();        // Убрать в релизе
-                listItem.SubItems.Add(item.Name);
+                listItem.SubItems.Add(item.OrderData.ToString());
 
-                var manufacturers = await Model.Context.Manufacturers.FindAsync(item.ManufacturerFk);
-                listItem.SubItems.Add(manufacturers.Name);
-
-                listItem.SubItems.Add(item.Cost.ToString());
-
-                /* плохо  1 in 1 */
-                var counts = await Model.Context.PartsCountHave.FindAsync(item.Id);
-                listItem.SubItems.Add(counts.Count.ToString());
-
-                View.ListViewPart.Items.Add(listItem);
+                listItem.SubItems.Add(item.Client.Name.ToString());
+                View.ListViewOrder.Items.Add(listItem);
             }
-        }
 
-        /*static async Task WaitAndApologizeAsync()  // примеры как добавить manufacturer по ManufacturerFk
-        {
-            foreach (var item in Model.Context.Parts)
+            foreach (var item in Model.Context.PartsInOrders)  // для проверки
             {
                 ListViewItem listItem = new ListViewItem();
-                listItem.Text = item.Id.ToString();
+                listItem.Text = item.Id.ToString();        // Убрать в релизе
+                listItem.SubItems.Add(item.Part.Name.ToString());
+                listItem.SubItems.Add(item.OrderFk.ToString());
+                listItem.SubItems.Add(item.Count.ToString());
 
-                listItem.SubItems.Add(item.Name);
-
-                //не работает и у всех трех одна ошибка открыт поток
-                foreach (var manufacturer in Model.Context.Manufacturers)
-                {
-                    if(manufacturer.Id == item.ManufacturerFk)
-                    {
-                        listItem.SubItems.Add(manufacturer.Name);
-                    }
-                }
-
-                var manufacturers = Model.Context.Manufacturers.AsNoTracking().SingleOrDefault(u => u.Id == item.ManufacturerFk);
-        
-                var manufacturers = Model.Context.Manufacturers.Find(item.ManufacturerFk);
-
-                listItem.SubItems.Add(manufacturers.Name);
-
-                listItem.SubItems.Add(item.Cost.ToString());
-                View.ListViewPart.Items.Add(listItem);
-            }
-        }*/
+                View.ListViewPartsInOrder.Items.Add(listItem);
+            }*/
+        }
 
         public void AddToCart(object sender, EventArgs e)
         {
@@ -131,6 +111,7 @@ namespace HW.Presenters
                     // add ((count = count - 1)) in ListViewPart.SelectedItems[0]
                     View.ListViewPart.SelectedItems[0].SubItems[4].Text = (countLeft - 1).ToString();
                 }
+                View.EnabledDisOrder(true);
             }
         }
 
@@ -167,28 +148,93 @@ namespace HW.Presenters
                 View.ListViewCart.Items.Remove(View.ListViewCart.SelectedItems[0]);
                 // delete From Total Cost 
                 View.LabelTotalCost.Text = (Decimal.Parse(View.LabelTotalCost.Text) - (num * dec)).ToString();
+
+                if(View.ListViewCart.Items.Count == 0)
+                    View.EnabledDisOrder(false);
             }
         }
 
         public void AddOrder(object sender, EventArgs e)
         {
-            Model.TempOrder = new Order();
-
-            Model.TempOrder.OrderData = DateTime.Now;
-
-            /* List<ClientOrder> clientOrder = new List<ClientOrder>();*/
-            /*foreach (ListViewItem item in View.ListViewCart.Items)
-             {
-                Model.TempOrder.Parts.Add(item.)
-                 clientOrder.Add(item);
-             } 
-
-            Model.TempOrder.Parts.Add()*/
-
-
+            Model.Totalcost = Decimal.Parse(View.LabelTotalCost.Text);
 
             var UserPresenter = new UserPresenter(this.Model, new UserFormView(), View.ListViewCart);
-            ((Form)UserPresenter.View).ShowDialog(); 
+            if(((Form)UserPresenter.View).ShowDialog() == DialogResult.OK)
+            {
+                View.ListViewCart.Items.Clear();
+                View.LabelTotalCost.Text = "0";
+                View.EnabledDisOrder(false);
+            }
         }
+
+        public void SearchOrder(object sender, EventArgs e)
+        {
+            var searchPresenter = new SearchPresenter(this.Model, new SearchForm());
+            ((Form)searchPresenter.View).ShowDialog();
+        }
+
+        public async void LoginAdmin(object sender, EventArgs e)
+        {
+            /****************************************/
+            var loginPresenter = new LoginPresenter(this.Model, new loginForm());
+            if (((Form)loginPresenter.View).ShowDialog() == DialogResult.OK)
+            {
+                var adminPresenter = new AdminPresenter(this.Model, new AdminForm());
+                ((Form)adminPresenter.View).ShowDialog();
+                View.ListViewPart.Items.Clear();
+                await LoadlistViewPart();
+            }
+        }
+
+        public async Task LoadlistViewPart()
+        {
+            foreach (var item in Model.Context.Parts)
+            {
+                ListViewItem listItem = new ListViewItem();
+                listItem.Text = item.Id.ToString();        // Убрать в релизе
+                listItem.SubItems.Add(item.Name);
+
+                var manufacturers = await Model.Context.Manufacturers.FindAsync(item.ManufacturerFk);
+                listItem.SubItems.Add(manufacturers.Name);
+
+                listItem.SubItems.Add(item.Cost.ToString());
+
+                /*  1 in 1 */
+                var counts = await Model.Context.PartsCountHave.FindAsync(item.Id);
+                listItem.SubItems.Add(counts.Count.ToString());
+
+                View.ListViewPart.Items.Add(listItem);
+            }
+        }
+
+        /*static async Task WaitAndApologizeAsync()  // примеры как добавить manufacturer по ManufacturerFk
+        {
+            foreach (var item in Model.Context.Parts)
+            {
+                ListViewItem listItem = new ListViewItem();
+                listItem.Text = item.Id.ToString();
+
+                listItem.SubItems.Add(item.Name);
+
+                //не работает и у всех трех одна ошибка открыт поток
+                foreach (var manufacturer in Model.Context.Manufacturers)
+                {
+                    if (manufacturer.Id == item.ManufacturerFk)
+                    {
+                        listItem.SubItems.Add(manufacturer.Name);
+                    }
+                }
+
+                var manufacturers = Model.Context.Manufacturers.AsNoTracking().SingleOrDefault(u => u.Id == item.ManufacturerFk);
+
+                var manufacturers = Model.Context.Manufacturers.Find(item.ManufacturerFk);
+
+                listItem.SubItems.Add(manufacturers.Name);
+
+                listItem.SubItems.Add(item.Cost.ToString());
+                View.ListViewPart.Items.Add(listItem);
+            }
+        }*/
+       
     }
 }
