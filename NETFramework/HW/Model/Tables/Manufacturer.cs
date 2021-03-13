@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HW.Model
+namespace HW.Model.Tables
 {
     // Class Manufacturer table in database MyStore 
     /* Table : Manufacturer

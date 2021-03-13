@@ -17,6 +17,12 @@ namespace HW
         [STAThread]
         static void Main()
         {
+            
+
+            if (System.Diagnostics.Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName).Length > 1)
+                return;
+                /// Код программы
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

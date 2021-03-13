@@ -1,5 +1,6 @@
 ﻿using HW.Common;
 using HW.Model;
+using HW.Model.Tables;
 using HW.Views;
 using System;
 using System.Collections.Generic;

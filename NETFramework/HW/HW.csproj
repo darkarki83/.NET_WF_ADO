@@ -62,8 +62,6 @@
     <Compile Include="Common\BasePresenter.cs" />
     <Compile Include="Common\IPresenter.cs" />
     <Compile Include="Common\IView.cs" />
-    <Compile Include="Model\FactoryMethod\ClientOrder.cs" />
-    <Compile Include="Model\FactoryMethod\FactoryMethod.cs" />
     <Compile Include="Model\Tables\Admin.cs" />
     <Compile Include="Model\Tables\Manufacturer.cs" />
     <Compile Include="Model\Context\MyStoreContext.cs" />
@@ -141,6 +139,7 @@
     <EmbeddedResource Include="Views\UserFormView.resx">
       <DependentUpon>UserFormView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DBDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -22,7 +22,6 @@ namespace HW.Views
         public event EventHandler SearchOrder;
         public event EventHandler LoginAdmin;
 
-
         // constructor
         public MainForm()
         {

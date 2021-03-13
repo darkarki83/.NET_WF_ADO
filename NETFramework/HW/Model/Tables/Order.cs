@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HW.Model
+namespace HW.Model.Tables
 {
     // Class Order table in database MyStore 
     /*
