@@ -115,16 +115,19 @@ namespace HW.Model
             foreach (var admin in admins)
                 context.Admins.Add(admin);
 
+            DateTime date = new DateTime(2000, 3, 3);
+
             var orders = new Order[]
             { 
-                new Order { Id = 1, OrderData = null, ClientFk = clients[0].Id },
-                new Order { Id = 2, OrderData = null, ClientFk = clients[1].Id },
-                new Order { Id = 3, OrderData = null, ClientFk = clients[1].Id },
-                new Order { Id = 4, OrderData = null, ClientFk = clients[2].Id },
-                new Order { Id = 5, OrderData = null, ClientFk = clients[3].Id },
-                new Order { Id = 6, OrderData = null, ClientFk = clients[4].Id },
-                new Order { Id = 7, OrderData = null, ClientFk = clients[4].Id },
-                new Order { Id = 8, OrderData = null, ClientFk = clients[0].Id}
+                new Order { Id = 1, OrderData = date, ClientFk = clients[0].Id },
+
+                new Order { Id = 2, OrderData = DateTime.Now, ClientFk = clients[1].Id },
+                new Order { Id = 3, OrderData = DateTime.Now, ClientFk = clients[1].Id },
+                new Order { Id = 4, OrderData = DateTime.Now.AddDays(-1), ClientFk = clients[2].Id },
+                new Order { Id = 5, OrderData = DateTime.Now.AddDays(-2), ClientFk = clients[3].Id },
+                new Order { Id = 6, OrderData = DateTime.Now.AddDays(-41), ClientFk = clients[4].Id },
+                new Order { Id = 7, OrderData = DateTime.Now.AddDays(-3), ClientFk = clients[4].Id },
+                new Order { Id = 8, OrderData = DateTime.Now.AddDays(-4), ClientFk = clients[0].Id}
             };
             foreach (var order in orders)
                 context.Orders.Add(order);

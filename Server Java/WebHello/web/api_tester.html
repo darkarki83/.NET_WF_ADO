@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>API tester</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <button onclick="getClick()">GET</button>
+            <button onclick="postClick()">POST</button>
+            <button onclick="putClick()">PUT</button>
+            <button onclick="deleteClick()">DELETE</button>
+            <button onclick="headClick()">HEAD</button>
+            
+            <p id="out1"></p>
+        </div>
+        
+        
+        <script>
+            const apiUrl = "api";
+            function getClick() {
+                
+                fetch(apiUrl + "?x=120&y=200")
+                        .then( response => response.text())
+                        .then( show )
+                
+            };
+            
+            function postClick() {
+                
+                fetch(apiUrl + "?x=300&z=5555", {
+                        method: 'POST',
+                        body: "x=120&y=200",
+                        headers: {
+                            'Content-Type' : 'application/x-www-form-urlencoded'
+                        }
+                
+            })
+                .then( response => response.text())
+                .then( show )
+                
+            };
+            
+             function putClick() {
+                
+                fetch(apiUrl + "?x=11111111&z=222222222", {
+                    method: 'PUT',
+                    body: "12345",
+                        headers: {
+                            // 'Content-Type': 'application/x-www-form-urlencoded'
+                            'Content-Type': 'text/plain'
+                        }
+                })
+                .then( response => response.text())
+                .then( show )
+                
+            };
+            
+            function deleteClick() {
+                
+                fetch(apiUrl + "?x=del&y=deldel", {
+                    method: 'DELETE'
+                })
+                .then( response => response.text())
+                .then( show )
+                
+            };
+            
+            function headClick() {
+                
+                fetch(apiUrl + "?x=head&y=head")
+                .then( response => response.text())
+                .then( show )
+                
+            };
+            
+            function show(txt) {
+                const out = document.getElementById("out1");
+                if(!out)
+                    throw "No Out element";
+                
+                out.innerText= txt;
+                
+            }
+            
+            
+        </script>
+    </body>
+</html>

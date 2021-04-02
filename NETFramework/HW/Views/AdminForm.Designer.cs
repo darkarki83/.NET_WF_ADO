@@ -332,6 +332,11 @@ namespace HW.Views
             // numericCount
             // 
             this.numericCount.Location = new System.Drawing.Point(139, 73);
+            this.numericCount.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numericCount.Name = "numericCount";
             this.numericCount.Size = new System.Drawing.Size(120, 20);
             this.numericCount.TabIndex = 3;

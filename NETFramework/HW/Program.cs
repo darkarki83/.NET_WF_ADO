@@ -16,7 +16,7 @@ namespace HW
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
             
 
             if (System.Diagnostics.Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName).Length > 1)

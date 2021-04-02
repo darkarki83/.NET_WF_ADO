@@ -1,6 +1,10 @@
 
 package hello;
 
+import Database.DBDemo;
+import Database.DBHW;
+import files.DirDemo;
+import files.FileDemo;
 import java.util.ArrayList;
 
 public class Hello {
@@ -8,7 +12,35 @@ public class Hello {
     /**
      * @param args the command line arguments
      */
+     public static void main4(String[] args) {
+        // work with DB
+        new DBHW().Show();
+    }
+    
     public static void main(String[] args) {
+        // work with DB
+        new DBDemo().Show();      
+    }
+    
+    public static void main3(String[] args) {
+        try {
+            
+            new FileDemo().Show();
+        }catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+    }
+    
+    public static void main2(String[] args) {
+        
+        DirDemo dem = new DirDemo();
+        dem.ShowDir();
+        
+    }
+    
+    
+    public static void main1(String[] args) {
         //System.out.println("Hello, world");
         
         /*int[] array = new int[20];

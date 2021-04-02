@@ -487,7 +487,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1543, 595);
+            this.ClientSize = new System.Drawing.Size(1543, 593);
             this.Controls.Add(this.listViewPartInOrder);
             this.Controls.Add(this.listViewOrder);
             this.Controls.Add(this.toolStrip1);
