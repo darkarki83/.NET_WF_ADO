@@ -1,12 +1,16 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import utilits.Db;
 import utilits.Hasher;
 
@@ -47,7 +51,35 @@ public class AuthServlet extends HttpServlet {
                 String passSalt = res.getString("pass_salt");
                 
                 if(passHash.equals(Hasher.md5(pass + passSalt))) {
-                   massage = "Hi " + login;
+                    
+                    massage = "Hi " + login;
+                   
+                    HttpSession session = req.getSession();
+                    session.setAttribute("authUserId", res.getInt("id"));
+                    session.setAttribute("name", res.getString("name"));
+                   
+                    /*   update last_visit                     */
+                    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = new Date(System.currentTimeMillis());
+                    System.out.println(formatter.format(date));
+
+                    try {
+                        Db.getConnection()
+                            .createStatement()
+                            .executeUpdate(
+                             String.format(
+                                "UPDATE Users SET moment_last_visit = '%s' WHERE id=%d",
+                               formatter.format(date),
+                               res.getInt("id")
+                                     
+                        ));
+                    } 
+                    catch( Exception ex ) {
+                        System.out.println( ex.getMessage() ) ;
+                    }
+                    /*  finsh block             */
+                    resp.sendRedirect("./");
+                    return;
                 }
                 else {
                     massage = "Wrong password";
