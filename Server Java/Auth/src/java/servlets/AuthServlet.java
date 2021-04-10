@@ -25,79 +25,73 @@ public class AuthServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("authorization.jsp").forward(req, resp);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        // Принимаем параметры
         String login = req.getParameter("login");
         String pass = req.getParameter("pass");
-        
+
+        // сообщение для отображения
         String massage = null;
-        
-        //String hashPass = (Hasher.md5(pass + Hasher.md5(login)));
-        
-        //massage = login + " " + pass;
-        //System.out.println(hashPass);
-        
-        String n = null;
-        try{
+
+        // Д.З. Составить код для проверки авторизации
+        try {
             ResultSet res = Db.getConnection()
-               .createStatement()
-               .executeQuery("SELECT * FROM Users WHERE nik LIKE '" + login + "' " );
-            
-            
-            if(res.next()) {
+                    .createStatement()
+                    .executeQuery("SELECT * FROM Users WHERE nik LIKE '"
+                            + login + "' ");
+
+            if (res.next()) {
+                // Есть запись с таким nik
                 String passHash = res.getString("pass_hash");
                 String passSalt = res.getString("pass_salt");
-                
-                if(passHash.equals(Hasher.md5(pass + passSalt))) {
-                    
+
+                if (passHash.equals(Hasher.md5(pass + passSalt))) {
+                    // Авторизация подтверждена
                     massage = "Hi " + login;
-                   
+                    // Механизм сессий позволяет сохранить данные об авторизации
                     HttpSession session = req.getSession();
                     session.setAttribute("authUserId", res.getInt("id"));
                     session.setAttribute("name", res.getString("name"));
-                   
+
                     /*   update last_visit                     */
-                    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     Date date = new Date(System.currentTimeMillis());
                     System.out.println(formatter.format(date));
 
                     try {
                         Db.getConnection()
-                            .createStatement()
-                            .executeUpdate(
-                             String.format(
-                                "UPDATE Users SET moment_last_visit = '%s' WHERE id=%d",
-                               formatter.format(date),
-                               res.getInt("id")
-                                     
-                        ));
-                    } 
-                    catch( Exception ex ) {
-                        System.out.println( ex.getMessage() ) ;
+                                .createStatement()
+                                .executeUpdate(
+                                        String.format(
+                                                "UPDATE Users SET moment_last_visit = '%s' WHERE id=%d",
+                                                formatter.format(date),
+                                                res.getInt("id")
+                                        ));
+                    } catch (InstantiationException | SQLException ex) {
+                        System.out.println(ex.getMessage());
                     }
                     /*  finsh block             */
                     resp.sendRedirect("./");
                     return;
-                }
-                else {
+                } else {
+                    // Неправильный пароль
                     massage = "Wrong password";
                 }
-            }
-            else {
+            } else {
+                // Неправильный логин (ник)
                 massage = "Wrong login";
             }
             //System.out.println(n);
-        }
-        catch( Exception ex){
-            System.out.println( ex.getMessage() ) ;
+        } catch (IOException | InstantiationException | SQLException ex) {
+            System.out.println(ex.getMessage());
             massage = "ошибка смотри лог сервера";
         }
-       
+
+        // return View
         req.setAttribute("authMassage", massage);
         req.getRequestDispatcher("authorization.jsp").forward(req, resp);
     }
 
-    
 }

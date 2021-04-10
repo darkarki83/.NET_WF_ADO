@@ -4,19 +4,20 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import utilits.Db;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author artem
  */
-@WebFilter("/*")
-public class Starter implements Filter {
+@WebFilter( "/admin" )
+public class AdminFilter implements Filter {
 
     FilterConfig filterConfig;
     
@@ -27,27 +28,26 @@ public class Starter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        // only look
-        System.out.println("Filter Works");
         
-        // Проверяем возможность подключения к БД
-        try {
-            Db.getConnection();
-        } catch (InstantiationException ex) {
-            
-            System.out.println(ex.getMessage());
-            // нет подключения - переход в "статический" режим
-            request
-                    .getRequestDispatcher("index.html")
-                   .forward(request, response);
+        HttpServletRequest req = (HttpServletRequest)request;     
+        HttpServletResponse resp = (HttpServletResponse)response;
+        
+        HttpSession session = req.getSession();
+
+        if (session.getAttribute("authUserId") == null) {
+
+            resp.sendRedirect(req.getContextPath() + "/auth");
             return;
         }
+
+        String uid = session.getAttribute("authUserId").toString();
+        orm.User user = utilits.UserUtil.getById(uid);
         
-        request.setCharacterEncoding( "UTF8" ); 
-        response.setCharacterEncoding( "UTF8" ); 
-        
-        request.setAttribute("fromstarter", "Hello0");
-        
+        if (user == null || user.getRoleFk() != 1) {
+            resp.sendRedirect(req.getContextPath() + "/auth");
+            return;
+        }
+    
         chain.doFilter(request, response);
     }
 

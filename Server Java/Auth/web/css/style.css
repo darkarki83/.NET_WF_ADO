@@ -1,0 +1,14 @@
+
+.role-hidden {
+    display: none;
+}
+.role-visible {
+    display: inline-block;
+}
+
+.form-hidden {
+    display: none;
+}
+.form-visible {
+    display: inline-block;
+}

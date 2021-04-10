@@ -129,14 +129,15 @@ public class RegServlet extends HttpServlet {
                     .createStatement()
                     .executeUpdate(
                             String.format(
-                                    "INSERT INTO Users(name,nik,pass_hash,pass_salt,email,avatar)"
+                                    "INSERT INTO Users(name,nik,pass_hash,pass_salt,email,id_role,avatar)"
                                             + " VALUES("
-                                            + " '%s', '%s', '%s', '%s', '%s', %s)",
+                                            + " '%s', '%s', '%s', '%s', '%s', %d, %s)",
                             name,
                             usernik,
                             hash,
                             salt,
                             useremail,
+                            3,
                             (savedName == null) ? "null" : "'" + savedName + "." + savedExt  + "'"
                             ));
             massage = String.format("Регистрация %s (aka %s) прошла успешна", name, usernik);

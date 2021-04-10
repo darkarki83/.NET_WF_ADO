@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.File;
-import static java.io.FileDescriptor.in;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -19,6 +18,8 @@ import javax.servlet.http.Part;
  * @author artem
  */
 public class LoadServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
