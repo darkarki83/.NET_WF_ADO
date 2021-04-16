@@ -1,0 +1,41 @@
+﻿@model Chat.Models.Answer
+
+@{
+    ViewData["Title"] = "EditAnswer";
+}
+
+<h1>EditAnswer</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAnswer">
+            <div class="form-group">
+                <label asp-for="Post" class="control-label"></label>
+                <textarea asp-for="Post" class="form-control"></textarea>
+                <span asp-validation-for="Post" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorUser" class="control-label"></label>
+                @Html.DropDownList("AuthorUser", new SelectList(ViewBag.AuthorUser, "Id", "Name"), new { @class = "form-control" })
+                <span asp-validation-for="AuthorUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThemeFk" class="control-label"></label>
+                @Html.DropDownList("ThemeFk", new SelectList(ViewBag.ThemeFk, "Id", "Name"), new { @class = "form-control" })
+                <span asp-validation-for="ThemeFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListAnswers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

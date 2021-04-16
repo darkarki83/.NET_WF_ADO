@@ -10,12 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Authorization</title>
-           <style>
-            .form-span {
-                display: inline-block;
-                width: 100px;
-            }
-        </style>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
         <h1>Authorization</h1>

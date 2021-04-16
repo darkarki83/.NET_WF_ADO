@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Chat.Models.Theme>
+
+@{
+    ViewData["Title"] = "ListThemes";
+}
+
+<h1>ListThemes</h1>
+
+<p>
+    <a asp-action="CreateTheme">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOpen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeratorUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SectionFk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOpen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeratorUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionFk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditTheme", new { id = item.Id }) |
+                @Html.ActionLink("Details", "DetailsTheme", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteTheme", new { id = item.Id }) |
+                @Html.ActionLink("Add Moderator", "AddModeratorToTheme", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

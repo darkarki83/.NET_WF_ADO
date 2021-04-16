@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Chat.Models.Answer>
+
+@{
+    ViewData["Title"] = "ListAnswers";
+}
+
+<h1>ListAnswers</h1>
+
+<p>
+    <a asp-action="CreateAnswer">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Post)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThemeFk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThemeFk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAnswer", new { id=item.Id }) |
+                @Html.ActionLink("Details", "DetailsAnswer", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteAnswer", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

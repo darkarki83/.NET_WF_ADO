@@ -1,0 +1,61 @@
+﻿@using System.Security.Claims
+@model Chat.Models.TheChat
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <div class="container-fluid shok" style="color: saddlebrown; text-align: center; margin-top: 60px">
+        <h1 class="shok">שוק ללא אפליה</h1>
+    </div>
+    <div class="container-fluid" style="color : saddlebrown; text-align:center; margin-top:20px ">
+        <h1 class="shok">הסבר קצר על האתר במספר משפטים</h1>
+    </div>
+
+    <div class="container-fluid" style="background-color: rgb(119, 211, 227); margin-top:30px ">
+        <div class="text-right container-fluid" style="font-size:1.5em">
+            :חיפוש חופשי באתר
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+            </div>
+            <input type="search" class="form-control" aria-label="Default" placeholder="Search..." aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div style="height:1.5em"></div>
+    </div>
+    <div class="row" style="margin-top:2.5em">
+        <div class="col-6" style="padding-top: 25px; background-color: rgb(204,157,132)">
+            <div margin-top: 2.5em class="text-center"><h1>לוח דרושים/ות</h1></div>
+            <div class="text-center">:בחר/י אחת משתי האפשרויות</div>
+            <div style="margin-top:3em; margin-bottom:3em" class="d-flex justify-content-around align-self-stretch">
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני ספק</button>
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני לקוח</button>
+            </div>
+        </div>
+        <div class="col-6" style="padding-top: 25px; background-color: rgb(152,205,188)">
+            <div class="text-center"><h1>נותני שרות</h1></div>
+            <div class="text-center">:בחר/י אחת משתי האפשרויות</div>
+            <div style="margin-top:3em; margin-bottom:3em" class="d-flex justify-content-around align-self-stretch">
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני ספק</button>
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני לקוח</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6" style="padding-top: 25px; background-color: rgb(143,214,237)">
+            <div class="text-center"><h1>בידור ופנאי</h1></div>
+            <div class="text-center">:בחר/י אחת משתי האפשרויות</div>
+            <div style="margin-top:3em; margin-bottom:3em" class="d-flex justify-content-around align-self-stretch">
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני ספק</button>
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">אני לקוח</button>
+            </div>
+        </div>
+        <div class="col-6" style="padding-top: 25px; background-color: rgb(192,192,192)">
+            <div class="text-center"><h1>למסירה - הכל בחינם</h1></div>
+            <div style="margin-top:3em; margin-bottom:3em" class="d-flex justify-content-around align-self-stretch">
+                <button style="height:6em" class="col-4 btn-outline-info btn btn-dark">כניסה</button>
+            </div>
+        </div>
+    </div>

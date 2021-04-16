@@ -1,0 +1,32 @@
+/* 
+    Created on : Apr 15, 2021, 2:45:27 AM
+    Author     : artem
+*/
+
+.wrap-dtl {
+    background: lightgreen;
+    border-radius: 15px;
+    padding: 2vh 2vw;
+    margin: 3vh auto;
+
+    width: 90vw; 
+}
+.wrap-dtl img {
+    float: left;
+    max-width: 25vw;
+    margin-right: 2vh
+}
+.wrap-dtl p {
+    font-size: large;
+}
+.clear {
+    clear : both;
+}
+
+.wrap-comments {
+    padding: 2vh 2vw;
+    margin: 3vh auto;
+    width: 90vw
+}
+
+

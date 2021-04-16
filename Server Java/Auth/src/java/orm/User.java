@@ -16,6 +16,21 @@ public class User {
     Date regMoment;
     Date authMoment;
     int roleFk;
+    String salt;
+
+
+
+    public User(int id, String name, String nik, String email, String avatar, Date regMoment, Date authMoment, int roleFk, String salt) {
+        this.id = id;
+        this.name = name;
+        this.nik = nik;
+        this.email = email;
+        this.avatar = avatar;
+        this.regMoment = regMoment;
+        this.authMoment = authMoment;
+        this.roleFk = roleFk;
+        this.salt = salt;
+    }
 
     public User(int id, String name, String nik, String email, String avatar, Date regMoment, Date authMoment, int roleFk) {
         this.id = id;
@@ -64,6 +79,10 @@ public class User {
         this.roleFk = roleFk;
     }
 
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+    
     public int getId() {
         return id;
     }
@@ -96,4 +115,7 @@ public class User {
         return roleFk;
     }
   
+    public String getSalt() {
+        return salt;
+    }
 }

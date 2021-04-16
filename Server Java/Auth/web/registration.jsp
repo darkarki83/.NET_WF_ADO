@@ -10,12 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
-        <style>
-            .form-span {
-                display: inline-block;
-                width: 100px;
-            }
-        </style>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
         <% String msg = (String)request.getAttribute("regMassage");

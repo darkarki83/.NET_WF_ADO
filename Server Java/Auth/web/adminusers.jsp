@@ -13,26 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css"
+        <link rel="stylesheet" href="css/style.css"/>
               <title>Admin</title>
-        <style>
-            .tool-btn {
-                background: url(./img/tools.png) no-repeat;
-                height: 32px;
-                width: 32px;
-                display: inline-block;
-                margin: 5px
-            } 
-            .edit-btn {
-                background-position: -32px, 0;
-            }   
-            .done-btn {
-                background-position: -64px, 0;
-            }
-            .del-btn {
-                background-position: 0, 0;
-            }
-        </style>
     </head>
     <body class="bg-light" >
         <h1>Admin users</h1>

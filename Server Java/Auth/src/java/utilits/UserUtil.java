@@ -26,7 +26,8 @@ public class UserUtil {
                         res.getString("avatar"),
                         res.getDate("moment_create"),
                         res.getDate("moment_last_visit"),
-                        res.getInt("id_role")
+                        res.getInt("id_role"),
+                        res.getString("pass_salt")
                 );
             }
             //System.out.println(req.getAttribute("username"));
@@ -73,7 +74,18 @@ public class UserUtil {
                             )
                     );
         } catch (InstantiationException | SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("User updateById fail" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+    public static boolean update(String str) {
+        try {
+            Db.getConnection()
+                    .createStatement()
+                    .executeUpdate(str);
+        } catch (InstantiationException | SQLException ex) {
+            System.out.println("User update fail" + ex.getMessage());
             return false;
         }
         return true;
