@@ -13,9 +13,20 @@ public class NewsComment {
     int idRef;
     Date moment;
     String commint;
-    
     String authorNik;
+    int blocked;
 
+    public NewsComment(int id, int idAuthor, int idNews, int idRef, Date moment, String commint, String authorNik, int blocked) {
+        this.id = id;
+        this.idAuthor = idAuthor;
+        this.idNews = idNews;
+        this.idRef = idRef;
+        this.moment = moment;
+        this.commint = commint;
+        this.authorNik = authorNik;
+        this.blocked = blocked;
+    }
+    
     public NewsComment(int id, int idAuthor, int idNews, int idRef, Date moment, String commint, String authorNik) {
         this.id = id;
         this.idAuthor = idAuthor;
@@ -52,8 +63,10 @@ public class NewsComment {
     public void setCommint(String commint) {
         this.commint = commint;
     }
-    
-    
+
+    public void setBlocked(int blocked) {
+        this.blocked = blocked;
+    }
 
     public int getId() {
         return id;
@@ -81,5 +94,9 @@ public class NewsComment {
 
     public String getAuthorNik() {
         return authorNik;
+    }
+    
+    public int getBlocked() {
+        return blocked;
     }
 }

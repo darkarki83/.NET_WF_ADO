@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Предварительные проверки для входа в кабинет пользователя
  * @author artem
  */
-@WebFilter( "/cabmin" )
+//@WebFilter( "/cabmin" )
 public class CabinetFilter implements Filter {
 
     FilterConfig filterConfig;

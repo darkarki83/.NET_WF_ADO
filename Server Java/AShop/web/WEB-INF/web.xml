@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<web-app>
+    <filter>
+        <filter-name>Starter</filter-name>
+        <filter-class>filters.Starter</filter-class>
+    </filter>
+  
+    <filter>
+        <filter-name>AdminUserFilter</filter-name>
+        <filter-class>filters.AdminUserFilter</filter-class>
+    </filter>
+  
+    <filter>
+        <filter-name>ModeratorFilter</filter-name>
+        <filter-class>filters.ModeratorFilter</filter-class>
+    </filter>
+    
+      <filter>
+        <filter-name>CabinetFilter</filter-name>
+        <filter-class>filters.CabinetFilter</filter-class>
+    </filter>
+
+
+  
+    <filter-mapping>
+        <filter-name>Starter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
+    <filter-mapping>
+        <filter-name>AdminUserFilter</filter-name>
+        <url-pattern>/adminusers</url-pattern>
+    </filter-mapping>
+  
+    <filter-mapping>
+        <filter-name>ModeratorFilter</filter-name>
+        <url-pattern>/moder/*</url-pattern>
+    </filter-mapping>
+    
+      <filter-mapping>
+        <filter-name>CabinetFilter</filter-name>
+        <url-pattern>/cabmin</url-pattern>
+    </filter-mapping>
+ 
+  
+</web-app>

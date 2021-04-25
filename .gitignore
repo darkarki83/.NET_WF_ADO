@@ -450,3 +450,5 @@ fabric.properties
 /Server Java/Auth/build/
 /Server Java/AShop/nbproject/private/
 /Server Java/AShop/build/
+/Server Java/AShop/dist/
+/Server Java/WebApplication1/dist/

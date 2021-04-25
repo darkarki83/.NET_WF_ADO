@@ -24,7 +24,9 @@
        
         количество новостей: <b><%= news.size()%></b>
         <br>
-            <%for (orm.News onenews : news) {%>
+            <%for (orm.News onenews : news) {
+                if(onenews.getBlocked() == 0 ) {%>
+                
             <%--<tr class="news-container" >
                 <td><%= onenews.getId()  %></td>
                 <td><%= onenews.getTitle() %></td>
@@ -46,6 +48,7 @@
                 <h2><%= onenews.getMoment() %></h2>
                 <p><%= onenews.getContentShort() %></p>
             </div>
+            <% }%> 
             <% }%>     
     </body>
 </html>

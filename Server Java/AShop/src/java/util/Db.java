@@ -22,7 +22,7 @@ public class Db {
         //System.out.println(path.getAbsolutePath());
         // потом поигратся
         
-        File ini = new File(path, "db.ini");
+        File ini = new File(path, "db2.ini");
         Map<String, String> iniDate = new HashMap<>();
 
         if ( !ini.canRead()) {

@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author artem
  */
 public class News {
+
     int id;
     String title;
     String contentShort;
@@ -19,6 +20,20 @@ public class News {
     Date moment;
     int idAuthor;
     String avatar;
+    int blocked;
+    String blockedReason;
+
+    public News(int id, String title, String contentShort, String contentFull, Date moment, int idAuthor, String avatar, int blocked, String blockedReason) {
+        this.id = id;
+        this.title = title;
+        this.contentShort = contentShort;
+        this.contentFull = contentFull;
+        this.moment = moment;
+        this.idAuthor = idAuthor;
+        this.avatar = avatar;
+        this.blocked = blocked;
+        this.blockedReason = blockedReason;
+    }
 
     public News(int id, String title, String contentShort, String contentFull, Date moment, int idAuthor, String avatar) {
         this.id = id;
@@ -61,7 +76,14 @@ public class News {
         this.avatar = avatar;
     }
 
-    
+    public void setBlocked(int blocked) {
+        this.blocked = blocked;
+    }
+
+    public void setBlockedReason(String blockedReason) {
+        this.blockedReason = blockedReason;
+    }
+
     public int getId() {
         return id;
     }
@@ -90,5 +112,11 @@ public class News {
         return avatar;
     }
 
-    
+    public int getBlocked() {
+        return blocked;
+    }
+
+    public String getBlockedReason() {
+        return blockedReason;
+    }
 }

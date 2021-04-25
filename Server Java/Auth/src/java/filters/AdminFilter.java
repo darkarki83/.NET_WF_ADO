@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author artem
  */
-@WebFilter( "/admin" )
+//@WebFilter( "/admin" )
 public class AdminFilter implements Filter {
 
     FilterConfig filterConfig;

@@ -9,6 +9,40 @@ import java.sql.SQLException;
  */
 public class UserUtil {
 
+
+
+    public static boolean updateById(String uid, String role) {
+
+        try {
+            Db.getConnection()
+                    .createStatement()
+                    .executeUpdate(
+                            String.format(
+                                    "UPDATE Users SET id_role=%s WHERE id=%s",
+                                    role,
+                                    uid
+                            )
+                    );
+        } catch (InstantiationException | SQLException ex) {
+            System.out.println("User updateById fail" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
+    public static boolean deleteById(String uid) {
+
+        try {
+            Db.getConnection()
+                    .createStatement()
+                    .executeUpdate("DELETE FROM Users WHERE id=" + uid);
+        } catch (InstantiationException | SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
     public static orm.User getById(int uid) {
 
         try {
@@ -47,38 +81,7 @@ public class UserUtil {
         }
         return null;
     }
-
-    public static boolean deleteById(String uid) {
-
-        try {
-            Db.getConnection()
-                    .createStatement()
-                    .executeUpdate("DELETE FROM Users WHERE id=" + uid);
-        } catch (InstantiationException | SQLException ex) {
-            System.out.println(ex.getMessage());
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean updateById(String uid, String role) {
-
-        try {
-            Db.getConnection()
-                    .createStatement()
-                    .executeUpdate(
-                            String.format(
-                                    "UPDATE Users SET id_role=%s WHERE id=%s",
-                                    role,
-                                    uid
-                            )
-                    );
-        } catch (InstantiationException | SQLException ex) {
-            System.out.println("User updateById fail" + ex.getMessage());
-            return false;
-        }
-        return true;
-    }
+    
     public static boolean update(String str) {
         try {
             Db.getConnection()

@@ -46,7 +46,7 @@ public class CabinetServlet extends HttpServlet {
             // Изменение пароля
             // Проверяем совпадение паролей
             if (!userpass.equals(userpass2)) {
-                
+
                 req.setAttribute("error", "несовпадения паролей");
                 //  HW 12.04   Доработать реакцию на ошибку несовпадения паролей
                 req.getRequestDispatcher("cabinet.jsp").forward(req, resp);

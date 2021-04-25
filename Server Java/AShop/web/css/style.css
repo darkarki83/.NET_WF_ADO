@@ -1,0 +1,43 @@
+/* 
+    Created on : Apr 18, 2021, 2:26:35 AM
+    Author     : artem
+*/
+
+
+.role-hidden {
+    display: none;
+}
+
+.role-visible {
+    display: inline-block;
+}
+
+.form-hidden {
+    display: none;
+}
+
+.form-visible {
+    display: inline-block;
+}
+
+.form-span {
+    display: inline-block;
+    width: 100px;
+}
+
+.tool-btn {
+    background: url(../img/tools.png) no-repeat;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    margin: 5px
+} 
+.edit-btn {
+    background-position: -32px, 0;
+}   
+.done-btn {
+    background-position: -64px, 0;
+}
+.del-btn {
+    background-position: 0, 0;
+}

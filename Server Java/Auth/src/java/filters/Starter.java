@@ -20,7 +20,7 @@ import utilits.Db;
  *
  * @author artem
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class Starter implements Filter {
 
     FilterConfig filterConfig;
@@ -112,7 +112,8 @@ public class Starter implements Filter {
         // создаем исключения для страниц, не требующих авторизации
         if( authUser == null ) {
             if( req.getServletPath().startsWith( "/news" )
-             || req.getServletPath().startsWith( "/auth" ) ) {
+             || req.getServletPath().startsWith( "/auth" )
+             || req.getServletPath().startsWith( "/reg" )) {
                 // Прекращаем работу данного сервлета (включатся следующие)
                 chain.doFilter( request, response ) ;
                 return ;
