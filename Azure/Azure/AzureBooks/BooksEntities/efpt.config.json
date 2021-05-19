@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"AzurebooksContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"BooksEntities","SelectedToBeGenerated":0,"Tables":["dbo.Authors","dbo.AuthorsOfBooks","dbo.Books"],"UseDatabaseNames":false,"UseFluentApiOnly":true,"UseHandleBars":false,"UseInflector":true}
